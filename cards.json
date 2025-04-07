@@ -1,0 +1,91 @@
+[
+	{
+		"Card ID": 1,
+		"Name": "test card",
+		"Description": "test description",
+		"Type": "sea",
+		"Difficulty": 1,
+
+		"Choices":[
+			{
+				"Good Result Chance": 100,
+
+				"ResourcesAffectedGoodResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": 1
+					}
+				],
+				"ResourcesAffectedBadResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": 1
+					}
+				]
+			},
+
+			{
+				"Good Result Chance": 100,
+
+				"ResourcesAffectedGoodResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": 1
+					}
+				],
+				"ResourcesAffectedBadResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": 1
+					}
+				]
+			}
+		]
+		
+	},
+
+	{
+		"Card ID": 2,
+		"Name": "",
+		"Description": "",
+		"Type": "sea",
+		"Difficulty": 1,
+
+		"Choices":[
+			{
+				"Good Result Chance": 100,
+
+				"ResourcesAffectedGoodResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": 1
+					}
+				],
+				"ResourcesAffectedBadResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": 1
+					}
+				]
+			},
+
+			{
+				"Good Result Chance": 100,
+
+				"ResourcesAffectedGoodResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": 1
+					}
+				],
+				"ResourcesAffectedBadResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": 1
+					}
+				]
+			}
+		]
+		
+	}
+]
