@@ -9,7 +9,7 @@
 		"Choices":[
 			{
 				"Description": "",
-				"Good Result Chance": 100,
+				"GoodResultChance": 100,
 
 				"ResourcesAffectedGoodResult":[
 					{
@@ -27,7 +27,7 @@
 
 			{
 				"Description": "",
-				"Good Result Chance": 100,
+				"GoodResultChance": 100,
 
 				"ResourcesAffectedGoodResult":[
 					{
@@ -56,7 +56,7 @@
 		"Choices":[
 			{
 				"Description": "",
-				"Good Result Chance": 100,
+				"GoodResultChance": 100,
 
 				"ResourcesAffectedGoodResult":[
 					{
@@ -74,7 +74,7 @@
 
 			{
 				"Description": "",
-				"Good Result Chance": 100,
+				"GoodResultChance": 100,
 
 				"ResourcesAffectedGoodResult":[
 					{
