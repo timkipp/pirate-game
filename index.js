@@ -1,42 +1,32 @@
 const GameState = require('./GameState');
-const Card = require('./Card'); // Assuming Card.js is handled separately
-const Marketplace = require('./Marketplace'); // Assuming Marketplace.js is handled separately
 
 // Example usage
-const gameState = new GameState();
-const marketplace = new Marketplace();
+const userID = 'user123'; // Example user ID
+const gameState = new GameState(userID);
 
-// Add items and captains to the marketplace
-marketplace.addItem({ id: 1, cost: 50, boost: { gold: 10, food: 5 } });
-marketplace.addCaptain({ id: 1, unlockCost: 100, startingGold: 50, startingFood: 50, startingMorale: 50, startingCrewSize: 50 });
+// Initialize with a captain
+const defaultCaptain = {
+    startingGold: 50,
+    startingFood: 50,
+    startingMorale: 50,
+    startingCrewSize: 50
+};
+gameState.setCaptain(defaultCaptain);
 
-// Set initial market currency
+// Example of applying a stat boost from a purchased item
+const purchasedItemBoost = {
+    gold: 10,
+    food: 5
+};
+gameState.applyStatBoost(purchasedItemBoost);
+
+// Example of setting and getting market currency
 gameState.setMarketCurrency(200);
-
-// Unlock a captain
-marketplace.unlockCaptain(1, gameState);
-
-// Create a card and apply a choice
-const card = new Card(1, 'Pirate Attack', 'A fierce battle with pirates.', 'Combat', 3, [
-    {
-        choiceA: {
-            goodResultChance: 70,
-            resourcesAffected: [
-                { name: 'gold', shiftGood: 20, shiftBad: -10 },
-                { name: 'morale', shiftGood: 10, shiftBad: -5 }
-            ]
-        },
-        choiceB: {
-            goodResultChance: 50,
-            resourcesAffected: [
-                { name: 'food', shiftGood: 15, shiftBad: -10 },
-                { name: 'crewSize', shiftGood: 5, shiftBad: -5 }
-            ]
-        }
-    }
-]);
-
-card.applyChoice(card.choices[0].choiceA, gameState);
-
-console.log(gameState.resources);
 console.log('Market Currency:', gameState.getMarketCurrency());
+
+// Example of getting and setting resources
+console.log('Gold:', gameState.getResource('gold'));
+gameState.setResource('gold', 80);
+console.log('Updated Gold:', gameState.getResource('gold'));
+
+console.log('Current Resources:', gameState.resources);

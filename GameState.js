@@ -1,5 +1,6 @@
 class GameState {
-    constructor() {
+    constructor(userID) {
+        this.userID = userID;
         this.resources = {
             gold: 100,
             food: 100,
@@ -8,6 +9,7 @@ class GameState {
         };
         this.marketCurrency = 0; // Currency for marketplace use
         this.captain = null;
+        this.lost = false; // Track if the game is lost
     }
 
     setCaptain(captain) {
@@ -23,7 +25,8 @@ class GameState {
     }
 
     setResource(resource, value) {
-        this.resources[resource] = value;
+        this.resources[resource] = Math.max(0, Math.min(100, value)); // Ensure value is between 0 and 100
+        this.checkIfLost();
     }
 
     getMarketCurrency() {
@@ -36,8 +39,19 @@ class GameState {
 
     applyStatBoost(boost) {
         for (let resource in boost) {
-            this.resources[resource] += boost[resource];
+            this.resources[resource] = Math.max(0, Math.min(100, this.resources[resource] + boost[resource])); // Ensure value is between 0 and 100
         }
+        this.checkIfLost();
+    }
+
+    checkIfLost() {
+        for (let resource in this.resources) {
+            if (this.resources[resource] === 0) {
+                this.lost = true;
+                return;
+            }
+        }
+        this.lost = false;
     }
 }
 
