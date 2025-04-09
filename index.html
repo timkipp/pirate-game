@@ -33,7 +33,7 @@
             ${card.Choices.map((choice, index) => `
               <div class="choice">
                 <p><strong>Choice ${index + 1}</strong></p>
-                <p>Good Result Chance: ${choice["Good Result Chance"]}%</p>
+                <p>Good Result Chance: ${choice["GoodResultChance"]}%</p>
                 <p><strong>Good Effects:</strong> ${choice.ResourcesAffectedGoodResult.map(r => `${r.ResourceName}: ${r.ResourceShift}`).join(', ')}</p>
                 <p><strong>Bad Effects:</strong> ${choice.ResourcesAffectedBadResult.map(r => `${r.ResourceName}: ${r.ResourceShift}`).join(', ')}</p>
               </div>
