@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Card Viewer</title>
+  <style>
+    body { font-family: sans-serif; background: #f9f9f9; padding: 2rem; }
+    .card { background: white; border: 1px solid #ccc; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+    .card h2 { margin-top: 0; }
+    .choice { margin-left: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Adventure Cards</h1>
+  <div id="card-container"></div>
+
+  <script>
+    fetch('cards.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('card-container');
+
+        data.forEach(card => {
+          const cardDiv = document.createElement('div');
+          cardDiv.className = 'card';
+          
+          cardDiv.innerHTML = `
+            <h2>${card.Name}</h2>
+            <p><strong>Type:</strong> ${card.Type} | <strong>Difficulty:</strong> ${card.Difficulty}</p>
+            <p>${card.Description}</p>
+            <h4>Choices:</h4>
+            ${card.Choices.map((choice, index) => `
+              <div class="choice">
+                <p><strong>Choice ${index + 1}</strong></p>
+                <p>Good Result Chance: ${choice["GoodResultChance"]}%</p>
+                <p><strong>Good Effects:</strong> ${choice.ResourcesAffectedGoodResult.map(r => `${r.ResourceName}: ${r.ResourceShift}`).join(', ')}</p>
+                <p><strong>Bad Effects:</strong> ${choice.ResourcesAffectedBadResult.map(r => `${r.ResourceName}: ${r.ResourceShift}`).join(', ')}</p>
+              </div>
+            `).join('')}
+          `;
+          
+          container.appendChild(cardDiv);
+        });
+      })
+      .catch(error => {
+        console.error('Error loading cards:', error);
+      });
+  </script>
+</body>
+</html>

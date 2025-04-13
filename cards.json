@@ -8,7 +8,8 @@
 
 		"Choices":[
 			{
-				"Good Result Chance": 100,
+				"Description": "",
+				"GoodResultChance": 100,
 
 				"ResourcesAffectedGoodResult":[
 					{
@@ -25,7 +26,8 @@
 			},
 
 			{
-				"Good Result Chance": 100,
+				"Description": "",
+				"GoodResultChance": 100,
 
 				"ResourcesAffectedGoodResult":[
 					{
@@ -45,7 +47,7 @@
 	},
 
 	{
-		"Card ID": 2,
+		"CardID": 2,
 		"Name": "",
 		"Description": "",
 		"Type": "sea",
@@ -53,7 +55,8 @@
 
 		"Choices":[
 			{
-				"Good Result Chance": 100,
+				"Description": "",
+				"GoodResultChance": 100,
 
 				"ResourcesAffectedGoodResult":[
 					{
@@ -70,7 +73,8 @@
 			},
 
 			{
-				"Good Result Chance": 100,
+				"Description": "",
+				"GoodResultChance": 100,
 
 				"ResourcesAffectedGoodResult":[
 					{
