@@ -6,10 +6,7 @@ const mongoURI = process.env.NODE_ENV === 'production' ? process.env.MONGO_URI_R
 // Connect to MongoDB
 const connectDB = async () => {
   try {
-    await mongoose.connect(mongoURI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(mongoURI); // No need for useNewUrlParser and useUnifiedTopology anymore
     console.log('MongoDB connected');
   } catch (err) {
     console.error(err.message);

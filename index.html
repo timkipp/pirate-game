@@ -16,30 +16,45 @@
   <div id="card-container"></div>
 
   <script>
-    fetch('cards.json')
+    fetch('http://localhost:5000/cards')
       .then(response => response.json())
       .then(data => {
         const container = document.getElementById('card-container');
-
+  
         data.forEach(card => {
           const cardDiv = document.createElement('div');
           cardDiv.className = 'card';
-          
+  
+          // Start building the HTML for the card
           cardDiv.innerHTML = `
-            <h2>${card.Name}</h2>
-            <p><strong>Type:</strong> ${card.Type} | <strong>Difficulty:</strong> ${card.Difficulty}</p>
-            <p>${card.Description}</p>
+            <h2>${card.title}</h2>
+            <p><strong>Type:</strong> ${card.type} | <strong>Difficulty:</strong> ${card.difficulty}</p>
+            <p>${card.description}</p>
             <h4>Choices:</h4>
-            ${card.Choices.map((choice, index) => `
-              <div class="choice">
-                <p><strong>Choice ${index + 1}</strong></p>
-                <p>Good Result Chance: ${choice["GoodResultChance"]}%</p>
-                <p><strong>Good Effects:</strong> ${choice.ResourcesAffectedGoodResult.map(r => `${r.ResourceName}: ${r.ResourceShift}`).join(', ')}</p>
-                <p><strong>Bad Effects:</strong> ${choice.ResourcesAffectedBadResult.map(r => `${r.ResourceName}: ${r.ResourceShift}`).join(', ')}</p>
-              </div>
-            `).join('')}
           `;
-          
+  
+          // Loop through choices (A and B)
+          for (const [label, choice] of Object.entries(card.choices)) {
+            cardDiv.innerHTML += `
+              <div class="choice">
+                <p><strong>Choice ${label}</strong>: ${choice.action_taken}</p>
+                <p>Good Result Chance: ${choice.good_result_chance}</p>
+                <p><strong>Good Effects:</strong> 
+                  Gold: ${choice.good_result.gold_effect}, 
+                  Provisions: ${choice.good_result.provisions_effect}, 
+                  Morale: ${choice.good_result.morale_effect}, 
+                  Crew: ${choice.good_result.crew_effect}
+                </p>
+                <p><strong>Bad Effects:</strong> 
+                  Gold: ${choice.bad_result.gold_effect}, 
+                  Provisions: ${choice.bad_result.provisions_effect}, 
+                  Morale: ${choice.bad_result.morale_effect}, 
+                  Crew: ${choice.bad_result.crew_effect}
+                </p>
+              </div>
+            `;
+          }
+  
           container.appendChild(cardDiv);
         });
       })
