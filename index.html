@@ -1,85 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Interface</title>
-    <script>
-        async function fetchGameState() {
-            const response = await fetch('http://localhost:3000/game-state');
-            const gameState = await response.json();
-            document.getElementById('gold').innerText = gameState.resources.gold;
-            document.getElementById('food').innerText = gameState.resources.food;
-            document.getElementById('morale').innerText = gameState.resources.morale;
-            document.getElementById('crewSize').innerText = gameState.resources.crewSize;
-            document.getElementById('marketCurrency').innerText = gameState.marketCurrency;
-
-            if (gameState.lost) {
-                document.getElementById('status').innerText = 'You Lost!';
-            } else {
-                document.getElementById('status').innerText = '';
-            }
-        }
-
-        async function updateResource(resource, value) {
-            await fetch('http://localhost:3000/update-resource', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ resource, value })
-            });
-            fetchGameState();
-        }
-
-        async function setMarketCurrency(value) {
-            await fetch('http://localhost:3000/set-market-currency', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ value })
-            });
-            fetchGameState();
-        }
-
-        window.onload = fetchGameState;
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Demo</title>
+  <style>
+    body { font-family: sans-serif; background: #F9F9F9; padding: 2rem; }
+    .card { background: white; border: 1px solid #ccc; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+    .card h2 { margin-top: 0; }
+    .choice { margin-left: 1rem; }
+  </style>
 </head>
 <body>
-    <h1>Game Interface</h1>
-    <div>
-        <p>Gold: <span id="gold"></span></p>
-        <button onclick="updateResource('gold', parseInt(document.getElementById('gold').innerText) + 1)">+1 Gold</button>
-        <button onclick="updateResource('gold', parseInt(document.getElementById('gold').innerText) - 1)">-1 Gold</button>
-		<button onclick="updateResource('gold', parseInt(document.getElementById('gold').innerText) + 10)">+10 Gold</button>
-        <button onclick="updateResource('gold', parseInt(document.getElementById('gold').innerText) - 10)">-10 Gold</button>
-        
-        <p>Food: <span id="food"></span></p>
-        <button onclick="updateResource('food', parseInt(document.getElementById('food').innerText) + 1)">+1 Food</button>
-        <button onclick="updateResource('food', parseInt(document.getElementById('food').innerText) - 1)">-1 Food</button>
-		<button onclick="updateResource('food', parseInt(document.getElementById('food').innerText) + 10)">+10 Food</button>
-        <button onclick="updateResource('food', parseInt(document.getElementById('food').innerText) - 10)">-10 Food</button>
-        
-        <p>Morale: <span id="morale"></span></p>
-        <button onclick="updateResource('morale', parseInt(document.getElementById('morale').innerText) + 1)">+1 Morale</button>
-        <button onclick="updateResource('morale', parseInt(document.getElementById('morale').innerText) - 1)">-1 Morale</button>
-		<button onclick="updateResource('morale', parseInt(document.getElementById('morale').innerText) + 10)">+10 Morale</button>
-        <button onclick="updateResource('morale', parseInt(document.getElementById('morale').innerText) - 10)">-10 Morale</button>
-        
-        <p>Crew Size: <span id="crewSize"></span></p>
-        <button onclick="updateResource('crewSize', parseInt(document.getElementById('crewSize').innerText) + 1)">+1 Crew Size</button>
-        <button onclick="updateResource('crewSize', parseInt(document.getElementById('crewSize').innerText) - 1)">-1 Crew Size</button>
-		<button onclick="updateResource('crewSize', parseInt(document.getElementById('crewSize').innerText) + 10)">+10 Crew Size</button>
-        <button onclick="updateResource('crewSize', parseInt(document.getElementById('crewSize').innerText) - 10)">-10 Crew Size</button>
-        
-        <p>Market Currency: <span id="marketCurrency"></span></p>
-        <button onclick="setMarketCurrency(parseInt(document.getElementById('marketCurrency').innerText) + 1)">+1 Market Currency</button>
-        <button onclick="setMarketCurrency(parseInt(document.getElementById('marketCurrency').innerText) - 1)">-1 Market Currency</button>
-		<button onclick="setMarketCurrency(parseInt(document.getElementById('marketCurrency').innerText) + 10)">+10 Market Currency</button>
-        <button onclick="setMarketCurrency(parseInt(document.getElementById('marketCurrency').innerText) - 10)">-10 Market Currency</button>
-		
-    </div>
-    <p id="status"></p>
+  <h1>Game Interface</h1>
+  <!-- Resource Section -->
+  <div>
+    <p>Gold: <span id="gold"></span></p>
+    <button onclick="updateResource('gold', getVal('gold') + 1)">+1</button>
+    <button onclick="updateResource('gold', getVal('gold') - 1)">-1</button>
+    <p>Food: <span id="food"></span></p>
+    <button onclick="updateResource('food', getVal('food') + 1)">+1</button>
+    <button onclick="updateResource('food', getVal('food') - 1)">-1</button>
+    <p>Morale: <span id="morale"></span></p>
+    <button onclick="updateResource('morale', getVal('morale') + 1)">+1</button>
+    <button onclick="updateResource('morale', getVal('morale') - 1)">-1</button>
+    <p>Crew Size: <span id="crewSize"></span></p>
+    <button onclick="updateResource('crewSize', getVal('crewSize') + 1)">+1</button>
+    <button onclick="updateResource('crewSize', getVal('crewSize') - 1)">-1</button>
+    <p>Market Currency: <span id="marketCurrency"></span></p>
+    <button onclick="setMarketCurrency(getVal('marketCurrency') + 1)">+1</button>
+    <button onclick="setMarketCurrency(getVal('marketCurrency') - 1)">-1</button>
+  </div>
+  <p id="status"></p>
+  <!-- Card Section -->
+  <h2>Adventure Cards</h2>
+  <div id="card-container"></div>
+  <!-- Scripts -->
+  <script>
+    function getVal(id) {
+      return parseInt(document.getElementById(id).innerText) || 0;
+    }
+    async function fetchGameState() {
+      const response = await fetch('http://localhost:3000/game-state');
+      const gameState = await response.json();
+      document.getElementById('gold').innerText = gameState.resources.gold;
+      document.getElementById('food').innerText = gameState.resources.food;
+      document.getElementById('morale').innerText = gameState.resources.morale;
+      document.getElementById('crewSize').innerText = gameState.resources.crewSize;
+      document.getElementById('marketCurrency').innerText = gameState.marketCurrency;
+      document.getElementById('status').innerText = gameState.lost ? 'You Lost!' : '';
+    }
+    async function updateResource(resource, value) {
+      await fetch('http://localhost:3000/update-resource', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ resource, value })
+      });
+      fetchGameState();
+    }
+    async function setMarketCurrency(value) {
+      await fetch('http://localhost:3000/set-market-currency', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ value })
+      });
+      fetchGameState();
+    }
+    // Card Rendering
+    fetch('cards.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('card-container');
+        data.forEach(card => {
+          const cardDiv = document.createElement('div');
+          cardDiv.className = 'card';
+          cardDiv.innerHTML = `
+            <h2>${card.Name}</h2>
+            <p><strong>Type:</strong> ${card.Type} | <strong>Difficulty:</strong> ${card.Difficulty}</p>
+            <p>${card.Description}</p>
+            <h4>Choices:</h4>
+            ${card.Choices.map((choice, index) => `
+              <div class="choice">
+                <p><strong>Choice ${index + 1}</strong></p>
+                <p>Good Result Chance: ${choice["GoodResultChance"]}%</p>
+                <p><strong>Good Effects:</strong> ${choice.ResourcesAffectedGoodResult.map(r => ${r.ResourceName}: ${r.ResourceShift}).join(', ')}</p>
+                <p><strong>Bad Effects:</strong> ${choice.ResourcesAffectedBadResult.map(r => ${r.ResourceName}: ${r.ResourceShift}).join(', ')}</p>
+              </div>
+            `).join('')}
+          `;
+          container.appendChild(cardDiv);
+        });
+      })
+      .catch(error => {
+        console.error('Error loading cards:', error);
+      });
+    window.onload = fetchGameState;
+  </script>
 </body>
 </html>
