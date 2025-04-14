@@ -9,7 +9,7 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./db');
 const Card = require('./models/Card');
-const GameState = require(path.join(__dirname, '..', 'frontend', 'Gamestate'));
+const GameState = require(path.join(__dirname, '..', 'frontend', 'GameState'));
 
 
 // App setup
