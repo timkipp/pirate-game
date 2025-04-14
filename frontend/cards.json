@@ -1,0 +1,482 @@
+[
+	{
+		"CardID": 0,
+		"Name": "test card",
+		"Description": "test description",
+		"Type": "sea",
+		"Difficulty": 1,
+
+		"Choices":[
+			{
+				"Description": "",
+				"GoodResultChance": 100,
+
+				"ResourcesAffectedGoodResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": 1
+					}
+				],
+				"ResourcesAffectedBadResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": 1
+					}
+				]
+			},
+
+			{
+				"Description": "",
+				"GoodResultChance": 100,
+
+				"ResourcesAffectedGoodResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": 1
+					}
+				],
+				"ResourcesAffectedBadResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": 1
+					}
+				]
+			}
+		]
+		
+	},
+
+	{
+		"CardID": 1,
+		"Name": "Rough Waters",
+		"Description": "High waves bombard the ship",
+		"Type": "sea",
+		"Difficulty": 1,
+
+		"Choices":[
+			{
+				"Description": "Drop anchor",
+				"GoodResultChance": 80,
+
+				"ResourcesAffectedGoodResult":[
+					{
+						"ResourceName": "food",
+						"ResourceShift": -2
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": 3
+					},
+					{
+						"ResourceName": "crew",
+						"ResourceShift": 2
+					}
+				],
+				"ResourcesAffectedBadResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": -2
+					},
+					{
+						"ResourceName": "food",
+						"ResourceShift": -5
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": -5
+					},
+					{
+						"ResourceName": "crew",
+						"ResourceShift": -3
+					}
+				]
+			},
+
+			{
+				"Description": "Brave the waters",
+				"GoodResultChance": 70,
+
+				"ResourcesAffectedGoodResult":[
+					{
+						"ResourceName": "food",
+						"ResourceShift": -1
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": 4
+					},
+					{
+						"ResourceName": "crew",
+						"ResourceShift": 3
+					}
+				],
+				"ResourcesAffectedBadResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": -3
+					},
+					{
+						"ResourceName": "food",
+						"ResourceShift": -3
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": -6
+					},
+					{
+						"ResourceName": "crew",
+						"ResourceShift": -2
+					}
+				]
+			}
+		]
+		
+	},
+	{
+		"CardID": 2,
+		"Name": "Approaching Storm",
+		"Description": "The crew sees dark clouds on the horizon",
+		"Type": "sea",
+		"Difficulty": 3,
+
+		"Choices":[
+			{
+				"Description": "Brace for impact",
+				"GoodResultChance": 60,
+
+				"ResourcesAffectedGoodResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": -2
+					},
+					{
+						"ResourceName": "food",
+						"ResourceShift": 1
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": -1
+					},
+					{
+						"ResourceName": "crew",
+						"ResourceShift": -1
+					}
+				],
+				"ResourcesAffectedBadResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": 4
+					},
+					{
+						"ResourceName": "food",
+						"ResourceShift": -2
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": -3
+					},
+					{
+						"ResourceName": "crew",
+						"ResourceShift": -2
+					}
+				]
+			},
+
+			{
+				"Description": "Alter ship's course",
+				"GoodResultChance": 50,
+
+				"ResourcesAffectedGoodResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": -1
+					},
+					{
+						"ResourceName": "food",
+						"ResourceShift": 1
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": -2
+					},
+					{
+						"ResourceName": "crew",
+						"ResourceShift": -1
+					}
+				],
+				"ResourcesAffectedBadResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": -3
+					},
+					{
+						"ResourceName": "food",
+						"ResourceShift": -2
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": -3
+					},
+					{
+						"ResourceName": "crew",
+						"ResourceShift": -2
+					}
+				]
+			}
+		]
+	},
+	{
+		"CardID": 3,
+		"Name": "Navigation Error",
+		"Description": "A miscalculation results in a navigation error",
+		"Type": "sea",
+		"Difficulty": 3,
+
+		"Choices":[
+			{
+				"Description": "Chart a new course",
+				"GoodResultChance": 70,
+
+				"ResourcesAffectedGoodResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": -2
+					},
+					{
+						"ResourceName": "food",
+						"ResourceShift": 1
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": 1
+					},
+					{
+						"ResourceName": "crew",
+						"ResourceShift": 1
+					}
+				],
+				"ResourcesAffectedBadResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": -3
+					},
+					{
+						"ResourceName": "food",
+						"ResourceShift": -2
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": -3
+					},
+					{
+						"ResourceName": "crew",
+						"ResourceShift": -2
+					}
+				]
+			},
+
+			{
+				"Description": "Attempt to follow the original course",
+				"GoodResultChance": 60,
+
+				"ResourcesAffectedGoodResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": -2
+					},
+					{
+						"ResourceName": "food",
+						"ResourceShift": -1
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": -1
+					},
+					{
+						"ResourceName": "crew",
+						"ResourceShift": 1
+					}
+				],
+				"ResourcesAffectedBadResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": -4
+					},
+					{
+						"ResourceName": "food",
+						"ResourceShift": -4
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": -3
+					},
+					{
+						"ResourceName": "crew",
+						"ResourceShift": -1
+					}
+				]
+			}
+		]
+		
+	},
+	{
+		"CardID": 4,
+		"Name": "Search Party",
+		"Description": "A naval search party is dispatched to find and capture you. They are scouring the coastline.",
+		"Type": "island",
+		"Difficulty": 5,
+
+		"Choices":[
+			{
+				"Description": "Attempt to reach the island and evade the search",
+				"GoodResultChance": 50,
+
+				"ResourcesAffectedGoodResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": 6
+					},
+					{
+						"ResourceName": "food",
+						"ResourceShift": 5
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": 5
+					},
+					{
+						"ResourceName": "crew",
+						"ResourceShift": 2
+					}
+				],
+				"ResourcesAffectedBadResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": -2
+					},
+					{
+						"ResourceName": "food",
+						"ResourceShift": -1
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": -4
+					},
+					{
+						"ResourceName": "crew",
+						"ResourceShift": -7
+					}
+				]
+			},
+
+			{
+				"Description": "Leave the island and avoid the search entirely",
+				"GoodResultChance": 90,
+
+				"ResourcesAffectedGoodResult":[
+					{
+						"ResourceName": "food",
+						"ResourceShift": -1
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": 2
+					}
+				],
+				"ResourcesAffectedBadResult":[
+					{
+						"ResourceName": "food",
+						"ResourceShift": -1
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": -2
+					},
+					{
+						"ResourceName": "crew",
+						"ResourceShift": -2
+					}
+				]
+			}
+		]
+		
+	},
+	{
+		"CardID": 5,
+		"Name": "Rival Pirates",
+		"Description": "A rival pirate crew challenges you in open waters",
+		"Type": "combat",
+		"Difficulty": 4,
+
+		"Choices":[
+			{
+				"Description": "Stand and Fight",
+				"GoodResultChance": 50,
+
+				"ResourcesAffectedGoodResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": 8
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": 3
+					},
+					{
+						"ResourceName": "crew",
+						"ResourceShift": 1
+					}
+				],
+				"ResourcesAffectedBadResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": -4
+					},
+					{
+						"ResourceName": "food",
+						"ResourceShift": -2
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": -5
+					},
+					{
+						"ResourceName": "crew",
+						"ResourceShift": -3
+					}
+				]
+			},
+
+			{
+				"Description": "Attempt to flee",
+				"GoodResultChance": 60,
+
+				"ResourcesAffectedGoodResult":[
+					{
+						"ResourceName": "moral",
+						"ResourceShift": 2
+					}
+				],
+				"ResourcesAffectedBadResult":[
+					{
+						"ResourceName": "gold",
+						"ResourceShift": -3
+					},
+					{
+						"ResourceName": "food",
+						"ResourceShift": -1
+					},
+					{
+						"ResourceName": "moral",
+						"ResourceShift": -4
+					},
+					{
+						"ResourceName": "crew",
+						"ResourceShift": -2
+					}
+				]
+			}
+		]
+		
+	}
+]

@@ -6,7 +6,7 @@
     <title>Game Interface</title>
     <script>
         async function fetchGameState() {
-            const response = await fetch('http://localhost:3000/game-state');
+            const response = await fetch('http://localhost:5000/game-state');
             const gameState = await response.json();
             document.getElementById('gold').innerText = gameState.resources.gold;
             document.getElementById('food').innerText = gameState.resources.food;
@@ -22,7 +22,7 @@
         }
 
         async function updateResource(resource, value) {
-            await fetch('http://localhost:3000/update-resource', {
+            await fetch('http://localhost:5000/update-resource', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -33,7 +33,7 @@
         }
 
         async function setMarketCurrency(value) {
-            await fetch('http://localhost:3000/set-market-currency', {
+            await fetch('http://localhost:5000/set-market-currency', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
