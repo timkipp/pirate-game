@@ -1,17 +1,20 @@
 // Load environment variables
 require('dotenv').config();
 
+//handled path earlier to allow inputs to utilize it
+const path = require('path');
+
 // Imports
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./db');
 const Card = require('./models/Card');
-const GameState = require('./GameState');
+const GameState = require(path.join(__dirname, '..', 'frontend', 'Gamestate'));
+
 
 // App setup
 const app = express();
 const PORT = process.env.PORT || 5000;
-const path = require('path');
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 
