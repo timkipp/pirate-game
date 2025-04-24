@@ -1,8 +1,8 @@
 // Written by Jordan A. McCloud
 // Item JSON objects.
 let itemJSON = [
-    {itemID: "001", price: "5", name: "Test Item #1", description: "An item for testing."},
-    {itemID: "002", price: "10", name: "Test Item #2", description: "An item for testing."}
+    {itemID: "001", price: "5", name: "Test Item #1", description: "An item for testing.", resourceAffected: "gold", resourceShift: 1},
+    {itemID: "002", price: "10", name: "Test Item #2", description: "An item for testing.", resourceAffected: "food", resourceShift: 2}
 ];
 // Captian JSON objects.
 let captainJSON = [
