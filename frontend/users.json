@@ -1,0 +1,35 @@
+[
+    {
+        "userName": "testUser",
+        "password": "1234",
+        "highScore": 10,
+
+        "currentRun":{
+            "gold": 1,
+            "food": 1,
+            "moral": 1,
+            "crew": 1,
+            "activeCardID": 0
+        },
+
+        "itemInventory":[
+            {
+                "itemId": 0,
+                "itemQuantity": 1
+            },
+            {
+                "itemId": 1,
+                "itemQuantity": 1
+            }
+        ],
+
+        "captains":[
+            {
+                "captainID": 0
+            },
+            {
+                "captainID": 1
+            }
+        ]
+    }
+]
