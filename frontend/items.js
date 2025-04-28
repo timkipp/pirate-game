@@ -6,6 +6,6 @@ let itemJSON = [
 ];
 // Captian JSON objects.
 let captainJSON = [
-    {captainID: "001", price: "25", name: "Test Captain #1", description: "A captain for testing.", modifier: "Earn 1.5x gold."},
-    {captainID: "002", price: "50", name: "Test Captain #2", description: "A captain for testing.", modifier: "Improve morale by 50%"}
+    {captainID: "001", price: "25", name: "Test Captain #1", description: "A captain for testing.", modifier: "The basic starting values", goldStart: 10, foodStart: 10, moralStart: 10, crewStart: 10},
+    {captainID: "002", price: "50", name: "Test Captain #2", description: "A captain for testing.", modifier: "Improve morale by 50%", goldStart: 10, foodStart: 10, moralStart: 15, crewStart: 10}
 ];
