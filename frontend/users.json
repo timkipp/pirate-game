@@ -9,7 +9,8 @@
             "food": 1,
             "moral": 1,
             "crew": 1,
-            "activeCardID": 0
+            "activeCardID": 0,
+            "score": 0
         },
 
         "itemInventory":[
