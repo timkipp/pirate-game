@@ -1,0 +1,13 @@
+[
+  {
+    "captainID": "001",
+    "name": "Captain No-Beard",
+    "description": "A new pirate captain who has yet to forge their legend",
+    "modifier": "The basic captain without any specific strengths or weaknesses",
+    "price": 0,
+    "goldStart": 10,
+    "provisionStart": 10,
+    "moraleStart": 10,
+    "crewStart": 10
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "itemID": "001",
+    "price": 2,
+    "name": "Silver Ring",
+    "description": "A silver ring you found in the sewers",
+    "resourceAffected": "gold",
+    "resourceShift": 3
+  },
+  {
+    "itemID": "002",
+    "price": 2,
+    "name": "Barrel of Gunpowder",
+    "description": "A big barrel of gunpowder you found on the beach",
+    "resourceAffected": "provisions",
+    "resourceShift": 3
+  },
+  {
+    "itemID": "003",
+    "price": 2,
+    "name": "Handmade Flag",
+    "description": "A jolly roger you made yourself",
+    "resourceAffected": "morale",
+    "resourceShift": 3
+  },
+  {
+    "itemID": "004",
+    "price": 2,
+    "name": "Help Wanted Poster",
+    "description": "You put up a help wanted poster and gather a few extra crew members",
+    "resourceAffected": "crew",
+    "resourceShift": 3
+  },
+  {
+    "itemID": "005",
+    "price": 5,
+    "name": "Treasure Map",
+    "description": "A map to a lost treasure that you collected before setting sail",
+    "resourceAffected": "gold",
+    "resourceShift": 7
+  },
+  {
+    "itemID": "006",
+    "price": 5,
+    "name": "Call in some Favors",
+    "description": "You call in some favors and gather some extra food and gunpowder",
+    "resourceAffected": "provisions",
+    "resourceShift": 7
+  },
+  {
+    "itemID": "007",
+    "price": 5,
+    "name": "Barrel of Rum",
+    "description": "A large barrel filled with rum",
+    "resourceAffected": "morale",
+    "resourceShift": 7
+  },
+  {
+    "itemID": "008",
+    "price": 5,
+    "name": "Bribe Prison Guards",
+    "description": "You bribe a prison guard and break some pirates out of jail",
+    "resourceAffected": "crew",
+    "resourceShift": 7
+  }
+]
