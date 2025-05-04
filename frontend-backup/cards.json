@@ -60,7 +60,7 @@
 
 				"ResourcesAffectedGoodResult":[
 					{
-						"ResourceName": "food",
+						"ResourceName": "provisions",
 						"ResourceShift": -2
 					},
 					{
@@ -78,7 +78,7 @@
 						"ResourceShift": -2
 					},
 					{
-						"ResourceName": "food",
+						"ResourceName": "provisions",
 						"ResourceShift": -5
 					},
 					{
@@ -98,7 +98,7 @@
 
 				"ResourcesAffectedGoodResult":[
 					{
-						"ResourceName": "food",
+						"ResourceName": "provisions",
 						"ResourceShift": -1
 					},
 					{
@@ -116,7 +116,7 @@
 						"ResourceShift": -3
 					},
 					{
-						"ResourceName": "food",
+						"ResourceName": "provisions",
 						"ResourceShift": -3
 					},
 					{
@@ -150,7 +150,7 @@
 						"ResourceShift": -2
 					},
 					{
-						"ResourceName": "food",
+						"ResourceName": "provisions",
 						"ResourceShift": 1
 					},
 					{
@@ -168,7 +168,7 @@
 						"ResourceShift": 4
 					},
 					{
-						"ResourceName": "food",
+						"ResourceName": "provisions",
 						"ResourceShift": -2
 					},
 					{
@@ -192,7 +192,7 @@
 						"ResourceShift": -1
 					},
 					{
-						"ResourceName": "food",
+						"ResourceName": "provisions",
 						"ResourceShift": 1
 					},
 					{
@@ -210,7 +210,7 @@
 						"ResourceShift": -3
 					},
 					{
-						"ResourceName": "food",
+						"ResourceName": "provisions",
 						"ResourceShift": -2
 					},
 					{
@@ -243,7 +243,7 @@
 						"ResourceShift": -2
 					},
 					{
-						"ResourceName": "food",
+						"ResourceName": "provisions",
 						"ResourceShift": 1
 					},
 					{
@@ -261,7 +261,7 @@
 						"ResourceShift": -3
 					},
 					{
-						"ResourceName": "food",
+						"ResourceName": "provisions",
 						"ResourceShift": -2
 					},
 					{
@@ -285,7 +285,7 @@
 						"ResourceShift": -2
 					},
 					{
-						"ResourceName": "food",
+						"ResourceName": "provisions",
 						"ResourceShift": -1
 					},
 					{
@@ -303,7 +303,7 @@
 						"ResourceShift": -4
 					},
 					{
-						"ResourceName": "food",
+						"ResourceName": "provisions",
 						"ResourceShift": -4
 					},
 					{
@@ -337,7 +337,7 @@
 						"ResourceShift": 6
 					},
 					{
-						"ResourceName": "food",
+						"ResourceName": "provisions",
 						"ResourceShift": 5
 					},
 					{
@@ -355,7 +355,7 @@
 						"ResourceShift": -2
 					},
 					{
-						"ResourceName": "food",
+						"ResourceName": "provisions",
 						"ResourceShift": -1
 					},
 					{
@@ -375,7 +375,7 @@
 
 				"ResourcesAffectedGoodResult":[
 					{
-						"ResourceName": "food",
+						"ResourceName": "provisions",
 						"ResourceShift": -1
 					},
 					{
@@ -385,7 +385,7 @@
 				],
 				"ResourcesAffectedBadResult":[
 					{
-						"ResourceName": "food",
+						"ResourceName": "provisions",
 						"ResourceShift": -1
 					},
 					{
@@ -433,7 +433,7 @@
 						"ResourceShift": -4
 					},
 					{
-						"ResourceName": "food",
+						"ResourceName": "provisions",
 						"ResourceShift": -2
 					},
 					{
@@ -463,7 +463,7 @@
 						"ResourceShift": -3
 					},
 					{
-						"ResourceName": "food",
+						"ResourceName": "provisions",
 						"ResourceShift": -1
 					},
 					{

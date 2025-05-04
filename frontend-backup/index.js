@@ -16,7 +16,7 @@ gameState.setCaptain(defaultCaptain);
 // Example of applying a stat boost from a purchased item
 const purchasedItemBoost = {
     gold: 10,
-    food: 5
+    provisions: 5
 };
 gameState.applyStatBoost(purchasedItemBoost);
 

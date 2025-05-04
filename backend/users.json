@@ -6,7 +6,7 @@
 
         "currentRun":{
             "gold": 1,
-            "food": 1,
+            "provisions": 1,
             "moral": 1,
             "crew": 1,
             "activeCardID": 0

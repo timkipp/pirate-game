@@ -3,7 +3,7 @@ class GameState {
         this.userID = userID;
         this.resources = {
             gold: 100,
-            food: 100,
+            provisions: 100,
             morale: 100,
             crewSize: 100
         };
@@ -15,7 +15,7 @@ class GameState {
     setCaptain(captain) {
         this.captain = captain;
         this.resources.gold = captain.startingGold;
-        this.resources.food = captain.startingFood;
+        this.resources.provisions = captain.provisions;
         this.resources.morale = captain.startingMorale;
         this.resources.crewSize = captain.startingCrewSize;
     }
