@@ -1,0 +1,36 @@
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .leaderboard-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: #fff;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  #leaderboard-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #leaderboard-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  #leaderboard-list li:last-child {
+    border-bottom: none;
+  }
+  

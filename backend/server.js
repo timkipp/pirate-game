@@ -25,6 +25,9 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
+// Leaderboard route
+app.use('/api/leaderboard', leaderboardRouter);
+
 // Game state instance (in-memory, not tied to DB)
 let gameState = new GameState('user123');
 
