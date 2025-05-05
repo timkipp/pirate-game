@@ -29,7 +29,7 @@ body {
 	background-repeat: no-repeat; /* Prevent the image from repeating */
 	height: 100vh; /* Ensures the background covers the viewport */
 	margin: 0;
-	font-family: sans-serif;
+	font-family: 'Leander', serif;
 }
 
 code {
@@ -41,12 +41,20 @@ code {
   	font-family: 'Leander', serif;
 }
 
+.login-title {
+    text-align: center;
+    margin-top: 40px; /* pushes it down from the top */
+    font-family: 'Leander', serif;
+    font-size: 2.5rem;
+    color: #38241A; /* or any color that stands out against your background */
+  }
+
 .main-menu, .new-game-setup {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	font-family: 'Arial', sans-serif;
+	font-family: 'Leander', serif;
 }
 
 .menu-title {
