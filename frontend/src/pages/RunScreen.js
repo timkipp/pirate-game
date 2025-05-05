@@ -63,12 +63,16 @@ function RunScreen({ onLogout }) {
   };
 
   // Game over condition
-  if (currentCardIndex >= cards.length) {
+  const isResourceDepleted = Object.values(resources).some(value => value <= 0);
+
+  if (currentCardIndex >= cards.length || isResourceDepleted) {
     return (
-        <div className="run-screen">
-        <h2 className="game-over-title">Run Complete!</h2>
+      <div className="run-screen">
+        <h2 className="game-over-title">
+          {isResourceDepleted ? 'Game Over – You ran out of a vital resource!' : 'Run Complete!'}
+        </h2>
         <Resources resources={resources} />
-        </div>
+      </div>
     );
   }
 
