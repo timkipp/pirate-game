@@ -1,12 +1,9 @@
 # Ignore node_modules
 node_modules/
 
-# Ignore build folders if you have them
-frontend/build/
-backend/build/
+# Ignore package-lock.json
+package-lock.json
 
-# Ignore log files
+# Ignore other common files
 *.log
-
-# Ignore .env if you use environment variables
-.env
+*.env

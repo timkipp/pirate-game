@@ -1,53 +1,70 @@
-# COSC484-Project
+# Getting Started with Create React App
 
-# COSC484-Project-Group-4
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-[Potential Game Mechanics](https://tu-my.sharepoint.com/:w:/g/personal/colive9_students_towson_edu/EUNJ8HQ8N1xPiCloWGAFt0EBeu87fe_-cWc7bBHaFbN1_A?e=GgyVNy)
+## Available Scripts
 
-[Card Ideas spreadsheet](https://tu-my.sharepoint.com/:x:/g/personal/colive9_students_towson_edu/EfMEa5tfsRlMtnz7UlbTD_8BgYQwuRjSfMEm4pubseWdOQ?e=Egl2eu)
+In the project directory, you can run:
 
-[4/7/2025 Meeting Notes](https://1drv.ms/w/c/1554e71a8933ab94/EcGzrcT5mkRFsITK8kUe_BUB0encgGIibMc26284-ErSMg?e=lA944H)
+### `npm start`
 
-How to run instructions:
-1. Install Node.js and npm
-Ensure you have Node.js and npm (Node Package Manager) installed on your machine. You can download them from Node.js official website.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-2. Install Required Node Modules
-Navigate to your project directory and install the necessary dependencies:
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-npm install express cors
-3. Start the Express Server
-Run the following command to start the server:
+### `npm test`
 
-node server.js
-You should see a message indicating the server is running, such as:
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-Server running at http://localhost:3000
-4. Serve the HTML File
-Use a simple HTTP server to serve the HTML file. You can use http-server for this purpose. If you don't have it installed, you can install it globally:
+### `npm run build`
 
-npm install -g http-server
-Navigate to your project directory and start the server:
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-http-server
-By default, this will serve your files at http://localhost:8080.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-5. Open the HTML File
-Open your browser and navigate to http://localhost:8080/index.html.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-Summary of Commands
-Install dependencies:
+### `npm run eject`
 
-npm install express cors
-Start the Express server:
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-node server.js
-Install http-server (if not already installed):
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-npm install -g http-server
-Start the HTTP server:
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-http-server
-Open the HTML file in your browser:
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-http://localhost:8080/index.html
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

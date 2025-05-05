@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Interface</title>
+    <script>
+        async function fetchGameState() {
+            const response = await fetch('http://localhost:5000/game-state');
+            const gameState = await response.json();
+            document.getElementById('gold').innerText = gameState.resources.gold;
+            document.getElementById('provisions').innerText = gameState.resources.provisions;
+            document.getElementById('morale').innerText = gameState.resources.morale;
+            document.getElementById('crewSize').innerText = gameState.resources.crewSize;
+            document.getElementById('marketCurrency').innerText = gameState.marketCurrency;
+
+            if (gameState.lost) {
+                document.getElementById('status').innerText = 'You Lost!';
+            } else {
+                document.getElementById('status').innerText = '';
+            }
+        }
+
+        async function updateResource(resource, value) {
+            await fetch('http://localhost:5000/update-resource', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ resource, value })
+            });
+            fetchGameState();
+        }
+
+        async function setMarketCurrency(value) {
+            await fetch('http://localhost:5000/set-market-currency', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ value })
+            });
+            fetchGameState();
+        }
+
+        window.onload = fetchGameState;
+    </script>
+</head>
+<body>
+    <h1>Game Interface</h1>
+    <div>
+        <p>Gold: <span id="gold"></span></p>
+        <button onclick="updateResource('gold', parseInt(document.getElementById('gold').innerText) + 1)">+1 Gold</button>
+        <button onclick="updateResource('gold', parseInt(document.getElementById('gold').innerText) - 1)">-1 Gold</button>
+		<button onclick="updateResource('gold', parseInt(document.getElementById('gold').innerText) + 10)">+10 Gold</button>
+        <button onclick="updateResource('gold', parseInt(document.getElementById('gold').innerText) - 10)">-10 Gold</button>
+        
+        <p>Food: <span id="provisions"></span></p>
+        <button onclick="updateResource('provisions', parseInt(document.getElementById('provisions').innerText) + 1)">+1 Food</button>
+        <button onclick="updateResource('provisions', parseInt(document.getElementById('provisions').innerText) - 1)">-1 Food</button>
+		<button onclick="updateResource('provisions', parseInt(document.getElementById('provisions').innerText) + 10)">+10 Food</button>
+        <button onclick="updateResource('provisions', parseInt(document.getElementById('provisions').innerText) - 10)">-10 Food</button>
+        
+        <p>Morale: <span id="morale"></span></p>
+        <button onclick="updateResource('morale', parseInt(document.getElementById('morale').innerText) + 1)">+1 Morale</button>
+        <button onclick="updateResource('morale', parseInt(document.getElementById('morale').innerText) - 1)">-1 Morale</button>
+		<button onclick="updateResource('morale', parseInt(document.getElementById('morale').innerText) + 10)">+10 Morale</button>
+        <button onclick="updateResource('morale', parseInt(document.getElementById('morale').innerText) - 10)">-10 Morale</button>
+        
+        <p>Crew Size: <span id="crewSize"></span></p>
+        <button onclick="updateResource('crewSize', parseInt(document.getElementById('crewSize').innerText) + 1)">+1 Crew Size</button>
+        <button onclick="updateResource('crewSize', parseInt(document.getElementById('crewSize').innerText) - 1)">-1 Crew Size</button>
+		<button onclick="updateResource('crewSize', parseInt(document.getElementById('crewSize').innerText) + 10)">+10 Crew Size</button>
+        <button onclick="updateResource('crewSize', parseInt(document.getElementById('crewSize').innerText) - 10)">-10 Crew Size</button>
+        
+        <p>Market Currency: <span id="marketCurrency"></span></p>
+        <button onclick="setMarketCurrency(parseInt(document.getElementById('marketCurrency').innerText) + 1)">+1 Market Currency</button>
+        <button onclick="setMarketCurrency(parseInt(document.getElementById('marketCurrency').innerText) - 1)">-1 Market Currency</button>
+		<button onclick="setMarketCurrency(parseInt(document.getElementById('marketCurrency').innerText) + 10)">+10 Market Currency</button>
+        <button onclick="setMarketCurrency(parseInt(document.getElementById('marketCurrency').innerText) - 10)">-10 Market Currency</button>
+		
+    </div>
+    <p id="status"></p>
+</body>
+</html>

@@ -8,15 +8,20 @@ const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./db');
-const Card = require('./models/Card');
-const GameState = require(path.join(__dirname, '..', 'frontend', 'GameState'));
+const GameState = require('./GameState');
+
+// Import routes
+const captainRoutes = require('./routes/captains');
+const itemRoutes = require('./routes/items');
+const cardRoutes = require('./routes/cards');
+const userRoutes = require('./routes/users');
+const authRoutes = require('./routes/auth');
 
 
 // App setup
 const app = express();
 const PORT = process.env.PORT || 5000;
 app.use(express.static(path.join(__dirname, '../frontend')));
-
 
 // Connect to MongoDB
 connectDB();
@@ -38,15 +43,12 @@ app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
-// Route to get all cards from MongoDB
-app.get('/cards', async (req, res) => {
-  try {
-    const cards = await Card.find();
-    res.json(cards);
-  } catch (error) {
-    res.status(500).json({ message: 'Error fetching cards' });
-  }
-});
+// Use imported route files for captains, items, cards, and users
+app.use('/api/captains', captainRoutes);
+app.use('/api/items', itemRoutes);
+app.use('/api/cards', cardRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/auth', authRoutes);
 
 // Game state routes
 app.get('/game-state', (req, res) => {

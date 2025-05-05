@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Card Viewer</title>
+  <style>
+    body { font-family: sans-serif; background: #f9f9f9; padding: 2rem; }
+    .card { background: white; border: 1px solid #ccc; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+    .card h2 { margin-top: 0; }
+    .choice { margin-left: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Adventure Cards</h1>
+  <div id="card-container"></div>
+
+  <script>
+    fetch('http://localhost:5000/cards')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('card-container');
+  
+        data.forEach(card => {
+          const cardDiv = document.createElement('div');
+          cardDiv.className = 'card';
+  
+          // Start building the HTML for the card
+          cardDiv.innerHTML = `
+            <h2>${card.title}</h2>
+            <p><strong>Type:</strong> ${card.type} | <strong>Difficulty:</strong> ${card.difficulty}</p>
+            <p>${card.description}</p>
+            <h4>Choices:</h4>
+          `;
+  
+          // Loop through choices (A and B)
+          for (const [label, choice] of Object.entries(card.choices)) {
+            cardDiv.innerHTML += `
+              <div class="choice">
+                <p><strong>Choice ${label}</strong>: ${choice.action_taken}</p>
+                <p>Good Result Chance: ${choice.good_result_chance}</p>
+                <p><strong>Good Effects:</strong> 
+                  Gold: ${choice.good_result.gold_effect}, 
+                  Provisions: ${choice.good_result.provisions_effect}, 
+                  Morale: ${choice.good_result.morale_effect}, 
+                  Crew: ${choice.good_result.crew_effect}
+                </p>
+                <p><strong>Bad Effects:</strong> 
+                  Gold: ${choice.bad_result.gold_effect}, 
+                  Provisions: ${choice.bad_result.provisions_effect}, 
+                  Morale: ${choice.bad_result.morale_effect}, 
+                  Crew: ${choice.bad_result.crew_effect}
+                </p>
+              </div>
+            `;
+          }
+  
+          container.appendChild(cardDiv);
+        });
+      })
+      .catch(error => {
+        console.error('Error loading cards:', error);
+      });
+  </script>
+</body>
+</html>
