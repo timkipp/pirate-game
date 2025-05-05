@@ -16,6 +16,7 @@ const itemRoutes = require('./routes/items');
 const cardRoutes = require('./routes/cards');
 const userRoutes = require('./routes/users');
 const authRoutes = require('./routes/auth');
+const leaderboardRouter = require('./routes/leaderboard');
 
 
 // App setup
