@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";  // For navigation
-import axios from 'axios';
 
 // Example NewGameSetup Component
 function NewGameSetup({ userName, onLogout }) {
@@ -13,6 +12,26 @@ function NewGameSetup({ userName, onLogout }) {
     const [rawCaptains, setRawCaptains] = useState();
     const [selectedCaptain, setSelectedCaptain] = useState(["", "", 5, 5, 5, 5]);
     const [userData, setUserData] = useState();
+
+    const getUserData = async (e) => {
+        //e.preventDefault();
+    
+        const url = 'http://localhost:5000/api/users/:username?username=' + userName;
+    
+        try {
+          const response = await fetch(url, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+          });
+
+          const data = await response.json();
+          
+          //console.log(data[0].name);
+          setUserData(JSON.stringify(data));
+        } catch (err) {
+
+        }
+    };
 
     const getItems = async (e) => {
         //e.preventDefault();
@@ -84,16 +103,7 @@ function NewGameSetup({ userName, onLogout }) {
     };
 
     useEffect(() => {
-
-        axios.get('http://localhost:5000/api/users/:username?username=' + userName)
-            .then(response => {
-                setUserData(JSON.stringify(response.data));
-                console.log(response.data);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
+        getUserData();
         getItems();
         getCaptains();
     }, []);
