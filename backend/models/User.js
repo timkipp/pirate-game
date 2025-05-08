@@ -22,9 +22,16 @@ const userSchema = new mongoose.Schema({
   userName: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   highScore: { type: Number, default: 0 },
-  currentRun: currentRunSchema,
-  itemInventory: [itemInventorySchema],
-  captains: [captainSchema]
+  currentRun: {
+      gold: Number,
+      provisions: Number,
+      moral: Number,
+      crew: Number,
+      activeCardID: Number,
+      score: Number
+  },
+  itemInventory: [{itemId: String, itemQuantity: Number}],
+  captains: [String]
 });
 
 module.exports = mongoose.model('User', userSchema);

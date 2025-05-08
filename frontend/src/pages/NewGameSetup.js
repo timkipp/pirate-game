@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";  // For navigation
 // Example NewGameSetup Component
 function NewGameSetup({ userName, onLogout }) {
     const navigate = useNavigate();  // To navigate between screens
-    const [items, setItems] = useState(<option></option>);
+    const [items, setItems] = useState();
     const [rawItems, setRawItems] = useState();
     const [selectedItem, setSelectedItem] = useState(["No Item", "", 0]);
     const [captains, setCaptains] = useState(<option></option>);
@@ -19,44 +19,52 @@ function NewGameSetup({ userName, onLogout }) {
         const url = 'http://localhost:5000/api/users/:username?username=' + userName;
     
         try {
-          const response = await fetch(url, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-          });
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' }
+            });
 
-          const data = await response.json();
+            const data = await response.json();
           
-          //console.log(data[0].name);
-          setUserData(JSON.stringify(data));
+            //console.log(data);
+            setUserData(JSON.stringify(data));
+            getItems(data);
+            getCaptains(data);
         } catch (err) {
 
         }
     };
 
-    const getItems = async (e) => {
-        //e.preventDefault();
-    
-        const url = `http://localhost:5000/api/items`;
-    
+    const getItems = async (user) => {
+        var rawItemList = new Array(user.itemInventory.length);
+        for(var i = 0; i < user.itemInventory.length; i++){
+            const url = `http://localhost:5000/api/items/:id?id=${user.itemInventory[i].itemId}`;
+            const itemIndex = i;
+
         try {
-          const response = await fetch(url, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-          });
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json' }
+                });
 
-          const data = await response.json();
-          
-          //console.log(data[0].name);
-          setItems(data.map(item => <option key={item.itemID}>{item.name}</option>));
-          setRawItems(JSON.stringify(data));
-        } catch (err) {
-
+                const data = await response.json();
+                //console.log(data.name);
+                rawItemList[itemIndex] = data;
+                //console.log(rawItemList);
+            } catch (err) {}
         }
+
+        setRawItems(await new Promise((resolve) => {
+            if(!rawItemList.includes(null)){
+                setItems(rawItemList.map(item => <option key={item.name}>{item.name}</option>));
+                setSelectedItem(["No Item", "", 0]);
+                resolve(JSON.stringify(rawItemList));
+            }
+        }));
     };
 
 
     const itemSelect = (item) => {
-        console.log(item.target.value);
         if(item.target.value != "No Item"){
             try {
                 const data = JSON.parse(rawItems);
@@ -72,35 +80,41 @@ function NewGameSetup({ userName, onLogout }) {
         }
     };
 
-    const getCaptains = async (e) => {
-        //e.preventDefault();
-    
-        const url = `http://localhost:5000/api/captains`;
-    
+    const getCaptains = async (user) => {
+        var rawCaptainList = new Array(user.captains.length);
+        for(var i = 0; i < user.captains.length; i++){
+            const url = `http://localhost:5000/api/captains/:id?id=${user.captains[i]}`;
+            const captainIndex = i;
+
         try {
-          const response = await fetch(url, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-          });
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json' }
+                });
 
-          const data = await response.json();
-          
-          //console.log(data[0].name);
-          setCaptains(data.map(captain => <option key={captain.captainID}>{captain.name}</option>));
-          setRawCaptains(JSON.stringify(data));
-          setSelectedCaptain([data[0].name, data[0].description, data[0].goldStart, data[0].provisionStart, data[0].moralStart, data[0].crewStart]);
-        } catch (err) {
-
+                const data = await response.json();
+                console.log(data.name);
+                rawCaptainList[captainIndex] = data;
+                console.log(rawCaptainList);
+            } catch (err) {}
         }
+
+        setRawCaptains(await new Promise((resolve) => {
+            if(!rawCaptainList.includes(null)){
+                setCaptains(rawCaptainList.map(item => <option key={item.name}>{item.name}</option>));
+                setSelectedCaptain([rawCaptainList[0].name, rawCaptainList[0].description, rawCaptainList[0].goldStart, rawCaptainList[0].provisionStart, rawCaptainList[0].moraleStart, rawCaptainList[0].crewStart]);
+                resolve(JSON.stringify(rawCaptainList));
+            }
+        }));
     };
 
     const captainSelect = (captain) => {
         try {
             const data = JSON.parse(rawCaptains);
-        
+            
             for(var i = 0; i < data.length; i++){
                 if(data[i].name === captain.target.value){
-                    setSelectedItem([captain.target.value, data[i].description, data[i].goldStart, data[i].provisionStart, data[i].moralStart, data[i].crewStart]);
+                    setSelectedCaptain([captain.target.value, data[i].description, data[i].goldStart, data[i].provisionStart, data[i].moraleStart, data[i].crewStart]);
                 }
             }
         } catch {}
@@ -108,8 +122,6 @@ function NewGameSetup({ userName, onLogout }) {
 
     useEffect(() => {
         getUserData();
-        getItems();
-        getCaptains();
     }, []);
 
     function ItemDropdown(){
@@ -121,7 +133,6 @@ function NewGameSetup({ userName, onLogout }) {
                     id="ItemDropdown" 
                     onChange={itemSelect}
                     value={selectedItem[0]}
-                    defaultValue="No Item"
                 ><option>No Item</option>{items}</select>
 
                 <p>+{selectedItem[2]} {selectedItem[1]}</p>
@@ -130,6 +141,7 @@ function NewGameSetup({ userName, onLogout }) {
     }
 
     function CaptainDropdown(){
+        console.log(rawCaptains);
         return(
             <div>
                 <label for="CaptainDropdown">Select Captain: </label>

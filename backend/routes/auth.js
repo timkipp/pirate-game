@@ -20,8 +20,8 @@ router.post('/signup', async (req, res) => {
         password: hashedPassword,
         highScore: 0,
         currentRun: null,
-        itemInventory: [],
-        captains: []
+        itemInventory: [{"itemId": "001", "itemQuantity": 2}, {"itemId": "003", "itemQuantity": 1}, {"itemId": "006", "itemQuantity": 5}],
+        captains: ["001", "003"]
       });
   
       const savedUser = await newUser.save();
