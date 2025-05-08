@@ -1,0 +1,62 @@
+.marketplace {
+    text-align: center;
+}
+
+.back-button {
+	position: absolute;
+	padding: 8px 16px;
+	background-color: #FF6347; /* A color like tomato or any you prefer */
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	}
+
+.back-button:hover {
+  background-color: #FF4500; /* Darker color on hover */
+}
+
+.marketplace-tables table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: rgba(245, 222, 179, 0.5);
+}
+
+.header-row {
+    background-color: rgba(245, 222, 179, 0.8);
+}
+
+.marketplace-tables th, td {
+    padding: 8px;
+    text-align: center;
+    border: 2px solid black;
+}
+
+.marketplace-tables tr:not(.header-row):hover {
+    background-color: rgba(245, 222, 179, 0.7);
+}
+
+hr {
+    border: 1px solid black;
+    width: 70%;
+    height: 2px;
+    padding: 0;
+}
+
+.purchase-button {
+	padding: 8px 16px;
+	background-color: #FF6347; /* A color like tomato or any you prefer */
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.purchase-button:hover {
+    background-color: #FF4500; /* Darker color on hover */
+}

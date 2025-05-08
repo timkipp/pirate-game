@@ -4,6 +4,7 @@ import LoginScreen from "./pages/LoginScreen";
 import MainMenu from "./pages/MainMenu";
 import NewGameSetup from "./pages/NewGameSetup";
 import RunScreen from "./pages/RunScreen";
+import Marketplace from "./pages/Marketplace";
 
 function App() {
   // Initialize userName from localStorage to persist login
@@ -55,11 +56,17 @@ function App() {
         {/* Other protected routes */}
         <Route
           path="/setup"
-          element={userName ? <NewGameSetup onLogout={handleLogout} /> : <Navigate to="/" />}
+          element={userName ? <NewGameSetup userName={userName} onLogout={handleLogout} /> : <Navigate to="/" />}
         />
         <Route
           path="/run"
           element={userName ? <RunScreen onLogout={handleLogout} /> : <Navigate to="/" />}
+        />
+
+        {/* Marketplace */}
+        <Route
+          path="/marketplace"
+          element={userName ? <Marketplace userName = {userName} onLogout = {handleLogout} /> : <Navigate to="/" />}
         />
       </Routes>
     </Router>

@@ -1,23 +1,148 @@
-import React from "react";
+import { useEffect } from "react";
+import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";  // For navigation
+import axios from 'axios';
 
 // Example NewGameSetup Component
-function NewGameSetup({ onLogout }) {
+function NewGameSetup({ userName, onLogout }) {
     const navigate = useNavigate();  // To navigate between screens
-  
-    // Handle Captain selection
-    const handleSelectCaptain = () => {
-        // Logic for selecting a captain (could open a modal, or redirect to another screen)
-        console.log("Captain selected!");
-        navigate("/captain-selection");  // Redirect to the Captain Selection page (create this page separately)
+    const [items, setItems] = useState(<option></option>);
+    const [rawItems, setRawItems] = useState();
+    const [selectedItem, setSelectedItem] = useState(["", "", 0]);
+    const [captains, setCaptains] = useState(<option></option>);
+    const [rawCaptains, setRawCaptains] = useState();
+    const [selectedCaptain, setSelectedCaptain] = useState(["", "", 5, 5, 5, 5]);
+    const [userData, setUserData] = useState();
+
+    const getItems = async (e) => {
+        //e.preventDefault();
+    
+        const url = `http://localhost:5000/api/items`;
+    
+        try {
+          const response = await fetch(url, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+          });
+
+          const data = await response.json();
+          
+          //console.log(data[0].name);
+          setItems(data.map(item => <option key={item.itemID}>{item.name}</option>));
+          setRawItems(JSON.stringify(data));
+          setSelectedItem([data[0].name, data[0].resourceAffected, data[0].resourceShift]);
+        } catch (err) {
+
+        }
     };
 
-    // Handle Item selection
-    const handleSelectItems = () => {
-        // Logic for selecting items (could open a modal or go to another page)
-        console.log("Items selected!");
-        navigate("/items-selection");  // Redirect to the Items Selection page (create this page separately)
+
+    const itemSelect = (item) => {
+        try {
+            const data = JSON.parse(rawItems);
+        
+            for(var i = 0; i < data.length; i++){
+                if(data[i].name === item.target.value){
+                    setSelectedItem([item.target.value, data[i].resourceAffected, data[i].resourceShift]);
+                }
+            }
+        } catch {}
     };
+
+    const getCaptains = async (e) => {
+        //e.preventDefault();
+    
+        const url = `http://localhost:5000/api/captains`;
+    
+        try {
+          const response = await fetch(url, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+          });
+
+          const data = await response.json();
+          
+          //console.log(data[0].name);
+          setCaptains(data.map(captain => <option key={captain.captainID}>{captain.name}</option>));
+          setRawCaptains(JSON.stringify(data));
+          setSelectedCaptain([data[0].name, data[0].description, data[0].goldStart, data[0].provisionStart, data[0].moralStart, data[0].crewStart]);
+        } catch (err) {
+
+        }
+    };
+
+    const captainSelect = (captain) => {
+        try {
+            const data = JSON.parse(rawCaptains);
+        
+            for(var i = 0; i < data.length; i++){
+                if(data[i].name === captain.target.value){
+                    setSelectedItem([captain.target.value, data[i].description, data[i].goldStart, data[i].provisionStart, data[i].moralStart, data[i].crewStart]);
+                }
+            }
+        } catch {}
+    };
+
+    useEffect(() => {
+
+        axios.get('http://localhost:5000/api/users/:username?username=' + userName)
+            .then(response => {
+                setUserData(JSON.stringify(response.data));
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+        getItems();
+        getCaptains();
+    }, []);
+
+    function ItemDropdown(){
+        return(
+            <div>
+                <label for="ItemDropdown">Select Item: </label>
+                <select 
+                    className="ItemDropdown" 
+                    id="ItemDropdown" 
+                    onChange={itemSelect}
+                    value={selectedItem[0]}
+                >{items}</select>
+                <p>+{selectedItem[2]} {selectedItem[1]}</p>
+            </div>
+        );
+    }
+
+    function CaptainDropdown(){
+        return(
+            <div>
+                <label for="CaptainDropdown">Select Captain: </label>
+                <select 
+                    className="CaptainDropdown" 
+                    id="CaptainDropdown"
+                    onChange={captainSelect}
+                    value={selectedCaptain[0]}
+                >{captains}</select>
+                <p>{selectedCaptain[0]}: {selectedCaptain[1]}</p>
+                <p>gold: {selectedCaptain[2]}</p>
+                <p>provisions: {selectedCaptain[3]}</p>
+                <p>morale: {selectedCaptain[4]}</p>
+                <p>crew: {selectedCaptain[5]}</p>
+            </div>
+        );
+    }
+
+    function UserDisplay(){
+        if(userData != null){
+            return(
+                <p>{JSON.parse(userData).userName}</p>
+            );
+        } else {
+            return(
+                <p>No User Data</p>
+            );
+        }
+    }
 
     // Handle Starting the Run
     const handleStartRun = () => {
@@ -29,17 +154,17 @@ function NewGameSetup({ onLogout }) {
     return (
         <div className="new-game-setup">
             <button className="logout-button" onClick={onLogout}>Logout</button>
-            <h1 class="menu-title">New Game</h1>
+            <h1 className="menu-title">New Game</h1>
 
             <div className="menu-buttons">
-                {/* Button to select a captain */}
-                <button class="menu-button" onClick={handleSelectCaptain}>Select Captain</button>
+                <CaptainDropdown></CaptainDropdown>
 
-                {/* Button to select items */}
-                <button class="menu-button" onClick={handleSelectItems}>Select Items</button>
+                <ItemDropdown></ItemDropdown>
 
                 {/* Button to start the run */}
-                <button class="menu-button" onClick={handleStartRun}>Start Run</button>
+                <button className="menu-button" onClick={handleStartRun}>Start Run</button>
+
+                <UserDisplay></UserDisplay>
             </div>
         </div>
     );
