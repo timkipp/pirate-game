@@ -7,7 +7,7 @@ function NewGameSetup({ userName, onLogout }) {
     const navigate = useNavigate();  // To navigate between screens
     const [items, setItems] = useState(<option></option>);
     const [rawItems, setRawItems] = useState();
-    const [selectedItem, setSelectedItem] = useState(["", "", 0]);
+    const [selectedItem, setSelectedItem] = useState(["No Item", "", 0]);
     const [captains, setCaptains] = useState(<option></option>);
     const [rawCaptains, setRawCaptains] = useState();
     const [selectedCaptain, setSelectedCaptain] = useState(["", "", 5, 5, 5, 5]);
@@ -49,7 +49,6 @@ function NewGameSetup({ userName, onLogout }) {
           //console.log(data[0].name);
           setItems(data.map(item => <option key={item.itemID}>{item.name}</option>));
           setRawItems(JSON.stringify(data));
-          setSelectedItem([data[0].name, data[0].resourceAffected, data[0].resourceShift]);
         } catch (err) {
 
         }
@@ -57,15 +56,20 @@ function NewGameSetup({ userName, onLogout }) {
 
 
     const itemSelect = (item) => {
-        try {
-            const data = JSON.parse(rawItems);
-        
-            for(var i = 0; i < data.length; i++){
-                if(data[i].name === item.target.value){
-                    setSelectedItem([item.target.value, data[i].resourceAffected, data[i].resourceShift]);
+        console.log(item.target.value);
+        if(item.target.value != "No Item"){
+            try {
+                const data = JSON.parse(rawItems);
+            
+                for(var i = 0; i < data.length; i++){
+                    if(data[i].name === item.target.value){
+                        setSelectedItem([item.target.value, data[i].resourceAffected, data[i].resourceShift]);
+                    }
                 }
-            }
-        } catch {}
+            } catch {}
+        } else {
+            setSelectedItem([item.target.value, "", 0]);
+        }
     };
 
     const getCaptains = async (e) => {
@@ -117,7 +121,9 @@ function NewGameSetup({ userName, onLogout }) {
                     id="ItemDropdown" 
                     onChange={itemSelect}
                     value={selectedItem[0]}
-                >{items}</select>
+                    defaultValue="No Item"
+                ><option>No Item</option>{items}</select>
+
                 <p>+{selectedItem[2]} {selectedItem[1]}</p>
             </div>
         );
