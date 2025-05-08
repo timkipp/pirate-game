@@ -1,0 +1,19 @@
+.marketplace {
+    text-align: center;
+}
+
+.back-button {
+	position: absolute;
+	padding: 8px 16px;
+	background-color: #FF6347; /* A color like tomato or any you prefer */
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	}
+
+.back-button:hover {
+  background-color: #FF4500; /* Darker color on hover */
+}
