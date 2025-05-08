@@ -65,7 +65,7 @@ function Marketplace ({userName, onLogout}) {
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody> {/* For each item, create a row and fill the data. */}
                         {items.map((item) => (
                             <tr key = {item.itemID}>
                                 <td>{item.name}</td>
@@ -96,7 +96,7 @@ function Marketplace ({userName, onLogout}) {
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody> {/* For each captain, create a row and fill the data. */}
                         {captains.map((captain) => (
                             <tr key = {captain.captainID}>
                                 <td>{captain.name}</td>
