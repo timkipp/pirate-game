@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";  // For navigation
+import axios from 'axios';
 
 // Example NewGameSetup Component
-function NewGameSetup({ onLogout }) {
+function NewGameSetup({ userName, onLogout }) {
     const navigate = useNavigate();  // To navigate between screens
     const [items, setItems] = useState(<option></option>);
     const [rawItems, setRawItems] = useState();
@@ -11,6 +12,7 @@ function NewGameSetup({ onLogout }) {
     const [captains, setCaptains] = useState(<option></option>);
     const [rawCaptains, setRawCaptains] = useState();
     const [selectedCaptain, setSelectedCaptain] = useState(["", "", 5, 5, 5, 5]);
+    const [userData, setUserData] = useState();
 
     const getItems = async (e) => {
         //e.preventDefault();
@@ -82,6 +84,16 @@ function NewGameSetup({ onLogout }) {
     };
 
     useEffect(() => {
+
+        axios.get('http://localhost:5000/api/users/:username?username=' + userName)
+            .then(response => {
+                setUserData(JSON.stringify(response.data));
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
         getItems();
         getCaptains();
     }, []);
@@ -120,6 +132,18 @@ function NewGameSetup({ onLogout }) {
         );
     }
 
+    function UserDisplay(){
+        if(userData != null){
+            return(
+                <p>{JSON.parse(userData).userName}</p>
+            );
+        } else {
+            return(
+                <p>No User Data</p>
+            );
+        }
+    }
+
     // Handle Starting the Run
     const handleStartRun = () => {
         // Logic for starting the game run
@@ -139,6 +163,8 @@ function NewGameSetup({ onLogout }) {
 
                 {/* Button to start the run */}
                 <button className="menu-button" onClick={handleStartRun}>Start Run</button>
+
+                <UserDisplay></UserDisplay>
             </div>
         </div>
     );

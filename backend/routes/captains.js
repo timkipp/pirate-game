@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 // GET a captain by ID
 router.get('/:id', async (req, res) => {
   try {
-    const captain = await Captain.findOne({ captainID: req.params.id });
+    const captain = await Captain.findOne({ captainID: req.query.id });
     if (!captain) {
       return res.status(404).json({ message: 'Captain not found' });
     }

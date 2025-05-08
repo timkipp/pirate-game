@@ -56,7 +56,7 @@ function App() {
         {/* Other protected routes */}
         <Route
           path="/setup"
-          element={userName ? <NewGameSetup onLogout={handleLogout} /> : <Navigate to="/" />}
+          element={userName ? <NewGameSetup userName={userName} onLogout={handleLogout} /> : <Navigate to="/" />}
         />
         <Route
           path="/run"

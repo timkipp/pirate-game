@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 // GET an item by ID
 router.get('/:id', async (req, res) => {
   try {
-    const item = await Item.findOne({ itemID: req.params.id });
+    const item = await Item.findOne({ itemID: req.query.id });
     if (!item) {
       return res.status(404).json({ message: 'Item not found' });
     }
