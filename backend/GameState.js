@@ -7,7 +7,7 @@ class GameState {
             gold: 100,
             provisions: 100,
             morale: 100,
-            crewSize: 100
+            crew: 100
         };
         this.marketCurrency = 0; // Currency for marketplace use
         this.captain = null;
@@ -36,7 +36,7 @@ class GameState {
                 this.resources.gold = Math.min(100, user.currentRun.gold || 0);
                 this.resources.provisions = Math.min(100, user.currentRun.provisions || 0);
                 this.resources.morale = Math.min(100, user.currentRun.moral || 0);
-                this.resources.crewSize = Math.min(100, user.currentRun.crew || 0);
+                this.resources.crew = Math.min(100, user.currentRun.crew || 0);
                 this.marketCurrency = user.marketCurrency || 0;
             }
             this.checkIfLost(); // Ensure the lost state is recalculated
@@ -53,7 +53,7 @@ class GameState {
                 gold: this.resources.gold,
                 provisions: this.resources.provisions,
                 moral: this.resources.morale,
-                crew: this.resources.crewSize,
+                crew: this.resources.crew,
                 score: user.currentRun?.score || 0 // Preserve score if it exists
             };
             user.marketCurrency = this.marketCurrency;
@@ -66,10 +66,10 @@ class GameState {
     // Method to set the captain and update resources
     async setCaptain(captain) {
         this.captain = captain;
-        this.resources.gold = Math.min(100, captain.startingGold || 0);
-        this.resources.provisions = Math.min(100, captain.provisions || 0);
-        this.resources.morale = Math.min(100, captain.startingMorale || 0);
-        this.resources.crewSize = Math.min(100, captain.startingCrewSize || 0);
+        this.resources.gold = Math.min(100, captain.goldStart || 0);
+        this.resources.provisions = Math.min(100, captain.provisionStart || 0);
+        this.resources.morale = Math.min(100, captain.moraleStart || 0);
+        this.resources.crew = Math.min(100, captain.crewStart || 0);
         await this.saveUserData(); // Save updated data
     }
 

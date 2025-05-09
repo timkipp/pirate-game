@@ -12,7 +12,7 @@ function NewGameSetup({ userName, onLogout }) {
 
     const [captains, setCaptains] = useState(<option></option>);
     const [rawCaptains, setRawCaptains] = useState();
-    const [selectedCaptain, setSelectedCaptain] = useState(["", "", 5, 5, 5, 5]);
+    const [selectedCaptain, setSelectedCaptain] = useState();
 
     const [userData, setUserData] = useState();
 
@@ -68,7 +68,7 @@ function NewGameSetup({ userName, onLogout }) {
 
 
     const itemSelect = (item) => {
-        if(item.target.value != "No Item"){
+        if(item.target.value !== "No Item"){
             
             try {
                 const data = JSON.parse(rawItems);
@@ -106,7 +106,7 @@ function NewGameSetup({ userName, onLogout }) {
         setRawCaptains(await new Promise((resolve) => {
             if(!rawCaptainList.includes(null)){
                 setCaptains(rawCaptainList.map(item => <option key={item.name}>{item.name}</option>));
-                setSelectedCaptain([rawCaptainList[0].name, rawCaptainList[0].description, rawCaptainList[0].goldStart, rawCaptainList[0].provisionStart, rawCaptainList[0].moraleStart, rawCaptainList[0].crewStart]);
+                setSelectedCaptain(JSON.stringify(rawCaptainList[0]));
                 resolve(JSON.stringify(rawCaptainList));
             }
         }));
@@ -118,7 +118,7 @@ function NewGameSetup({ userName, onLogout }) {
             
             for(var i = 0; i < data.length; i++){
                 if(data[i].name === captain.target.value){
-                    setSelectedCaptain([captain.target.value, data[i].description, data[i].goldStart, data[i].provisionStart, data[i].moraleStart, data[i].crewStart]);
+                    setSelectedCaptain(JSON.stringify(data[i]));
                 }
             }
         } catch {}
@@ -145,26 +145,42 @@ function NewGameSetup({ userName, onLogout }) {
     }
 
     function CaptainDropdown(){
+        if(selectedCaptain != null){
+            var captainObject = JSON.parse(selectedCaptain)
+            return(
+                <div>
+                    <label for="CaptainDropdown">Select Captain: </label>
+                    <select 
+                        className="CaptainDropdown" 
+                        id="CaptainDropdown"
+                        onChange={captainSelect}
+                        value={captainObject.name}
+                    >{captains}</select>
+                    <p>{captainObject.name}: {captainObject.description}</p>
+                    <p>gold: {captainObject.goldStart}</p>
+                    <p>provisions: {captainObject.provisionStart}</p>
+                    <p>morale: {captainObject.moraleStart}</p>
+                    <p>crew: {captainObject.crewStart}</p>
+                </div>
+            );
+        }
         return(
             <div>
                 <label for="CaptainDropdown">Select Captain: </label>
-                <select 
-                    className="CaptainDropdown" 
-                    id="CaptainDropdown"
-                    onChange={captainSelect}
-                    value={selectedCaptain[0]}
-                >{captains}</select>
-                <p>{selectedCaptain[0]}: {selectedCaptain[1]}</p>
-                <p>gold: {selectedCaptain[2]}</p>
-                <p>provisions: {selectedCaptain[3]}</p>
-                <p>morale: {selectedCaptain[4]}</p>
-                <p>crew: {selectedCaptain[5]}</p>
+                <select className="CaptainDropdown" 
+                    id="CaptainDropdown"></select>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
             </div>
         );
     }
 
     function UserDisplay(){
         if(userData != null){
+            console.log(JSON.parse(userData))
             return(
                 <p>{JSON.parse(userData).userName}</p>
             );
@@ -175,10 +191,22 @@ function NewGameSetup({ userName, onLogout }) {
         }
     }
 
+    async function setCaptain () {
+        const userID = JSON.parse(userData).userName;
+        const captain = JSON.parse(selectedCaptain);
+        console.log(JSON.stringify({ userID, captain }));
+        const response = await fetch('http://localhost:5000/api/game-state/captain', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userID, captain }),
+        });
+    };
+
     // Handle Starting the Run
     const handleStartRun = () => {
         // Logic for starting the game run
         console.log("Game started!");
+        setCaptain();
         navigate("/run");  // Redirect to the RunScreen page where the game will run
     };
 

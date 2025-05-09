@@ -93,6 +93,19 @@ app.post('/api/game-state/resource', async (req, res) => {
     }
 });
 
+// Route to set captain
+app.post('/api/game-state/captain', async (req, res) => {
+    const { userID, captain } = req.body;
+    const gameState = new GameState(userID);
+    try {
+        await gameState.loadUserData();
+        await gameState.setCaptain(captain);
+        res.json({ message: 'Captain updated', captain: gameState.captain });
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating captain', error: error.message });
+    }
+});
+
 // Route to apply a stat boost
 app.post('/api/game-state/boost', async (req, res) => {
     const { userID, boost } = req.body;
