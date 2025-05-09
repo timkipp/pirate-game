@@ -192,13 +192,14 @@ function NewGameSetup({ userName, onLogout }) {
     }
 
     async function setCaptain () {
-        const userID = JSON.parse(userData).userName;
+        const userName = JSON.parse(userData).userName;
         const captain = JSON.parse(selectedCaptain);
-        console.log(JSON.stringify({ userID, captain }));
-        const response = await fetch('http://localhost:5000/api/game-state/captain', {
+        const itemShift = {shiftName: selectedItem[1], shiftAmount: selectedItem[2]};
+        console.log(JSON.stringify({ username: userName, captain }));
+        const response = await fetch('http://localhost:5000/api/users/initRun', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ userID, captain }),
+            body: JSON.stringify({ userName, captain , itemShift}),
         });
     };
 

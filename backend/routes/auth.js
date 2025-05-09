@@ -19,7 +19,7 @@ router.post('/signup', async (req, res) => {
         userName,
         password: hashedPassword,
         highScore: 0,
-        currentRun: null,
+        currentRun: { gold: 0, provisions: 0, morale: 0, crew: 0, score: 0 },
         itemInventory: [{"itemId": "001", "itemQuantity": 2}, {"itemId": "003", "itemQuantity": 1}, {"itemId": "006", "itemQuantity": 5}],
         captains: ["001", "003"]
       });

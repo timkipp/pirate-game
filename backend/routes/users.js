@@ -26,6 +26,32 @@ router.get('/:username', async (req, res) => {
   }
 });
 
+// POST initialize a run
+router.post('/initRun', async (req, res) => {
+  const { userName, captain, itemShift } = req.body;
+
+  try {
+    const user = await User.findOne({ userName: userName });
+    
+    user.currentRun = {
+      gold: captain.goldStart,
+      provisions: captain.provisionStart,
+      morale: captain.moraleStart,
+      crew: captain.crewStart,
+      score: 0
+    };
+
+    if(itemShift.shiftName != ""){
+      user.currentRun[itemShift.shiftName] = user.currentRun[itemShift.shiftName] + itemShift.shiftAmount;
+    }
+  
+    await user.save();
+    res.status(201).json({ message: "Run initialized" });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
 // POST create new user
 router.post('/', async (req, res) => {
   const user = new User({

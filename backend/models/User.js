@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
   currentRun: {
       gold: Number,
       provisions: Number,
-      moral: Number,
+      morale: Number,
       crew: Number,
       activeCardID: Number,
       score: Number
