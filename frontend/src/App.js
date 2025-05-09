@@ -5,6 +5,7 @@ import MainMenu from "./pages/MainMenu";
 import NewGameSetup from "./pages/NewGameSetup";
 import RunScreen from "./pages/RunScreen";
 import Marketplace from "./pages/Marketplace";
+import TestGameState from './pages/TestGameState';
 
 function App() {
   // Initialize userName from localStorage to persist login
@@ -67,6 +68,12 @@ function App() {
         <Route
           path="/marketplace"
           element={userName ? <Marketplace userName = {userName} onLogout = {handleLogout} /> : <Navigate to="/" />}
+        />
+
+        {/* TestGameState */}
+        <Route
+          path="/test-game-state"
+          element={<TestGameState />}
         />
       </Routes>
     </Router>

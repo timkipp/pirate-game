@@ -68,6 +68,56 @@ app.post('/set-market-currency', (req, res) => {
   res.json(gameState);
 });
 
+// Route to initialize game state for a user
+app.post('/api/game-state/init', async (req, res) => {
+    const { userID } = req.body;
+    const gameState = new GameState(userID);
+    try {
+        await gameState.loadUserData();
+        res.json({ message: 'Game state initialized', resources: gameState.resources });
+    } catch (error) {
+        res.status(500).json({ message: 'Error initializing game state', error: error.message });
+    }
+});
+
+// Route to update a resource
+app.post('/api/game-state/resource', async (req, res) => {
+    const { userID, resource, value } = req.body;
+    const gameState = new GameState(userID);
+    try {
+        await gameState.loadUserData();
+        await gameState.setResource(resource, value);
+        res.json({ message: 'Resource updated', resources: gameState.resources });
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating resource', error: error.message });
+    }
+});
+
+// Route to apply a stat boost
+app.post('/api/game-state/boost', async (req, res) => {
+    const { userID, boost } = req.body;
+    const gameState = new GameState(userID);
+    try {
+        await gameState.loadUserData();
+        await gameState.applyStatBoost(boost);
+        res.json({ message: 'Stat boost applied', resources: gameState.resources });
+    } catch (error) {
+        res.status(500).json({ message: 'Error applying stat boost', error: error.message });
+    }
+});
+
+// Route to check if the game is lost
+app.get('/api/game-state/lost', async (req, res) => {
+    const { userID } = req.query;
+    const gameState = new GameState(userID);
+    try {
+        await gameState.loadUserData();
+        res.json({ lost: gameState.lost });
+    } catch (error) {
+        res.status(500).json({ message: 'Error checking game state', error: error.message });
+    }
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
