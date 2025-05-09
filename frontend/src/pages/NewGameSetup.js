@@ -5,12 +5,15 @@ import { useNavigate } from "react-router-dom";  // For navigation
 // Example NewGameSetup Component
 function NewGameSetup({ userName, onLogout }) {
     const navigate = useNavigate();  // To navigate between screens
+
     const [items, setItems] = useState();
     const [rawItems, setRawItems] = useState();
     const [selectedItem, setSelectedItem] = useState(["No Item", "", 0]);
+
     const [captains, setCaptains] = useState(<option></option>);
     const [rawCaptains, setRawCaptains] = useState();
     const [selectedCaptain, setSelectedCaptain] = useState(["", "", 5, 5, 5, 5]);
+
     const [userData, setUserData] = useState();
 
     const getUserData = async (e) => {
@@ -56,7 +59,7 @@ function NewGameSetup({ userName, onLogout }) {
 
         setRawItems(await new Promise((resolve) => {
             if(!rawItemList.includes(null)){
-                setItems(rawItemList.map(item => <option key={item.name}>{item.name}</option>));
+                setItems(rawItemList.map((item, i) => <option key={item.name}>{item.name} ({user.itemInventory[i].itemQuantity})</option>));
                 setSelectedItem(["No Item", "", 0]);
                 resolve(JSON.stringify(rawItemList));
             }
@@ -66,11 +69,12 @@ function NewGameSetup({ userName, onLogout }) {
 
     const itemSelect = (item) => {
         if(item.target.value != "No Item"){
+            
             try {
                 const data = JSON.parse(rawItems);
             
                 for(var i = 0; i < data.length; i++){
-                    if(data[i].name === item.target.value){
+                    if(data[i].name === item.target.value.split(" (")[0]){
                         setSelectedItem([item.target.value, data[i].resourceAffected, data[i].resourceShift]);
                     }
                 }
@@ -93,9 +97,9 @@ function NewGameSetup({ userName, onLogout }) {
                 });
 
                 const data = await response.json();
-                console.log(data.name);
+                //console.log(data.name);
                 rawCaptainList[captainIndex] = data;
-                console.log(rawCaptainList);
+                //console.log(rawCaptainList);
             } catch (err) {}
         }
 
@@ -141,7 +145,6 @@ function NewGameSetup({ userName, onLogout }) {
     }
 
     function CaptainDropdown(){
-        console.log(rawCaptains);
         return(
             <div>
                 <label for="CaptainDropdown">Select Captain: </label>
