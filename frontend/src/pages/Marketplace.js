@@ -46,6 +46,8 @@ function Marketplace ({userName, onLogout}) {
 
     return (
         <div className = "marketplace">
+            {/* The back button */}
+            <button className = "back-button" onClick = {goBack}>Back</button>
             {/* Logout button */}
             <button className = "logout-button" onClick={onLogout}>Logout</button>
             {/* Title header */}
@@ -115,8 +117,6 @@ function Marketplace ({userName, onLogout}) {
                     </tbody>
                 </table>
             </div>
-            {/* The back button */}
-            <button className = "back-button" onClick = {goBack}>Back</button>
         </div>
     );
 }

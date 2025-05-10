@@ -59,7 +59,11 @@ function NewGameSetup({ userName, onLogout }) {
 
         setRawItems(await new Promise((resolve) => {
             if(!rawItemList.includes(null)){
-                setItems(rawItemList.map((item, i) => <option key={item.name}>{item.name} ({user.itemInventory[i].itemQuantity})</option>));
+                setItems(rawItemList.map((item, i) => {
+                    if(user.itemInventory[i].itemQuantity != 0){
+                       return <option key={item.name}>{item.name} ({user.itemInventory[i].itemQuantity})</option>; 
+                    }
+                }));
                 setSelectedItem(["No Item", "", 0]);
                 resolve(JSON.stringify(rawItemList));
             }
@@ -191,7 +195,7 @@ function NewGameSetup({ userName, onLogout }) {
         }
     }
 
-    async function setCaptain() {
+    async function setCaptainAndItemBoost() {
         const userName = JSON.parse(userData).userName;
         const captain = JSON.parse(selectedCaptain);
         const itemShift = { shiftName: selectedItem[1], shiftAmount: selectedItem[2] };
@@ -215,15 +219,21 @@ function NewGameSetup({ userName, onLogout }) {
     const handleStartRun = async () => {
         try {
             console.log("Starting game...");
-            await setCaptain(); // Ensure captain is set before navigating
+            await setCaptainAndItemBoost(); // Ensure captain is set before navigating
             navigate("/run"); // Redirect to the RunScreen page
         } catch (error) {
             console.error("Error starting game:", error);
         }
     };
 
+    // Go back to the main menu.
+    const goBack = () => {
+        navigate(-1);
+    };
+
     return (
         <div className="new-game-setup">
+            <button className = "back-button" onClick = {goBack}>Back</button>
             <button className="logout-button" onClick={onLogout}>Logout</button>
             <h1 className="menu-title">New Game</h1>
 

@@ -4,6 +4,8 @@
 
 .back-button {
 	position: absolute;
+	top: 10px;
+	left: 10px;
 	padding: 8px 16px;
 	background-color: #FF6347; /* A color like tomato or any you prefer */
 	color: white;
