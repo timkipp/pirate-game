@@ -41,8 +41,13 @@ router.post('/initRun', async (req, res) => {
       score: 0
     };
 
-    if(itemShift.shiftName != ""){
-      user.currentRun[itemShift.shiftName] = user.currentRun[itemShift.shiftName] + itemShift.shiftAmount;
+    if(itemShift.resourceName != ""){
+      user.currentRun[itemShift.resourceName] = user.currentRun[itemShift.resourceName] + itemShift.shiftAmount;
+      for(var i = 0; i < user.itemInventory.length; i++){
+        if(itemShift.itemId === user.itemInventory[i].itemId){
+          user.itemInventory[i].itemQuantity = user.itemInventory[i].itemQuantity - 1;
+        }
+      }
     }
   
     await user.save();

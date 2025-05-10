@@ -8,7 +8,7 @@ function NewGameSetup({ userName, onLogout }) {
 
     const [items, setItems] = useState();
     const [rawItems, setRawItems] = useState();
-    const [selectedItem, setSelectedItem] = useState(["No Item", "", 0]);
+    const [selectedItem, setSelectedItem] = useState(["No Item", "", 0, ""]);
 
     const [captains, setCaptains] = useState(<option></option>);
     const [rawCaptains, setRawCaptains] = useState();
@@ -59,8 +59,14 @@ function NewGameSetup({ userName, onLogout }) {
 
         setRawItems(await new Promise((resolve) => {
             if(!rawItemList.includes(null)){
-                setItems(rawItemList.map((item, i) => <option key={item.name}>{item.name} ({user.itemInventory[i].itemQuantity})</option>));
-                setSelectedItem(["No Item", "", 0]);
+                setItems(rawItemList.map((item, i) => {
+                    if(user.itemInventory[i].itemQuantity !== 0){
+                        return <option key={item.name}>{item.name} ({user.itemInventory[i].itemQuantity})</option>;
+                    } else {
+                        return <option key={item.name} disabled>{item.name} ({user.itemInventory[i].itemQuantity})</option>;
+                    }
+                }));
+                setSelectedItem(["No Item", "", 0, ""]);
                 resolve(JSON.stringify(rawItemList));
             }
         }));
@@ -75,12 +81,12 @@ function NewGameSetup({ userName, onLogout }) {
             
                 for(var i = 0; i < data.length; i++){
                     if(data[i].name === item.target.value.split(" (")[0]){
-                        setSelectedItem([item.target.value, data[i].resourceAffected, data[i].resourceShift]);
+                        setSelectedItem([item.target.value, data[i].resourceAffected, data[i].resourceShift, data[i].itemID]);
                     }
                 }
             } catch {}
         } else {
-            setSelectedItem([item.target.value, "", 0]);
+            setSelectedItem([item.target.value, "", 0, ""]);
         }
     };
 
@@ -128,6 +134,18 @@ function NewGameSetup({ userName, onLogout }) {
         getUserData();
     }, []);
 
+    function ItemBonusDisplay(){
+        if(selectedItem[0] === "No Item"){
+            return(
+                <p>No Item Bonus</p>
+            );
+        } else {
+            return(
+                <p>+{selectedItem[2]} {selectedItem[1]}</p>
+            );
+        }
+    }
+
     function ItemDropdown(){
         return(
             <div>
@@ -139,7 +157,7 @@ function NewGameSetup({ userName, onLogout }) {
                     value={selectedItem[0]}
                 ><option>No Item</option>{items}</select>
 
-                <p>+{selectedItem[2]} {selectedItem[1]}</p>
+                <ItemBonusDisplay></ItemBonusDisplay>
             </div>
         );
     }
@@ -178,24 +196,11 @@ function NewGameSetup({ userName, onLogout }) {
         );
     }
 
-    function UserDisplay(){
-        if(userData != null){
-            console.log(JSON.parse(userData))
-            return(
-                <p>{JSON.parse(userData).userName}</p>
-            );
-        } else {
-            return(
-                <p>No User Data</p>
-            );
-        }
-    }
-
-    async function setCaptain () {
+    async function setRunInitialValues () {
         const userName = JSON.parse(userData).userName;
         const captain = JSON.parse(selectedCaptain);
-        const itemShift = {shiftName: selectedItem[1], shiftAmount: selectedItem[2]};
-        console.log(JSON.stringify({ username: userName, captain }));
+        const itemShift = {itemId: selectedItem[3], resourceName: selectedItem[1], shiftAmount: selectedItem[2]};
+        //console.log(JSON.stringify({ username: userName, captain }));
         const response = await fetch('http://localhost:5000/api/users/initRun', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -207,7 +212,7 @@ function NewGameSetup({ userName, onLogout }) {
     const handleStartRun = () => {
         // Logic for starting the game run
         console.log("Game started!");
-        setCaptain();
+        setRunInitialValues();
         navigate("/run");  // Redirect to the RunScreen page where the game will run
     };
 
@@ -224,7 +229,6 @@ function NewGameSetup({ userName, onLogout }) {
                 {/* Button to start the run */}
                 <button className="menu-button" onClick={handleStartRun}>Start Run</button>
 
-                <UserDisplay></UserDisplay>
             </div>
         </div>
     );
