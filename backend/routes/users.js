@@ -28,33 +28,43 @@ router.get('/:username', async (req, res) => {
 
 // POST initialize a run
 router.post('/initRun', async (req, res) => {
-  const { userName, captain, itemShift } = req.body;
+    const { userName, captain, itemShift } = req.body;
 
-  try {
-    const user = await User.findOne({ userName: userName });
-    
-    user.currentRun = {
-      gold: captain.goldStart,
-      provisions: captain.provisionStart,
-      morale: captain.moraleStart,
-      crew: captain.crewStart,
-      score: 0
-    };
+    try {
+        const user = await User.findOne({ userName: userName });
+        console.log("Initializing run for user:", userName);
+        console.log("Captain data:", captain);
+        console.log("Item shift data:", itemShift);
 
-    if(itemShift.resourceName != ""){
-      user.currentRun[itemShift.resourceName] = user.currentRun[itemShift.resourceName] + itemShift.shiftAmount;
-      for(var i = 0; i < user.itemInventory.length; i++){
-        if(itemShift.itemId === user.itemInventory[i].itemId){
-          user.itemInventory[i].itemQuantity = user.itemInventory[i].itemQuantity - 1;
+        // Initialize currentRun with captain stats
+        user.currentRun = {
+            gold: Math.max(0, Math.min(100, captain.goldStart ?? 10)),
+            provisions: Math.max(0, Math.min(100, captain.provisionStart ?? 10)),
+            morale: Math.max(0, Math.min(100, captain.moraleStart ?? 10)),
+            crew: Math.max(0, Math.min(100, captain.crewStart ?? 10)),
+            score: 0,
+        };
+
+        // Apply itemShift to the appropriate resource
+        if (itemShift.shiftName) {
+            const resource = itemShift.shiftName.toLowerCase(); // Ensure lowercase for consistency
+            if (user.currentRun[resource] !== undefined) {
+                user.currentRun[resource] = Math.max(
+                    0,
+                    Math.min(100, user.currentRun[resource] + itemShift.shiftAmount)
+                );
+                console.log(`Applied item effect: +${itemShift.shiftAmount} to ${resource}`);
+            } else {
+                console.warn(`Invalid resource name in itemShift: ${itemShift.shiftName}`);
+            }
         }
-      }
+
+        await user.save();
+        res.status(201).json({ message: "Run initialized", currentRun: user.currentRun });
+    } catch (err) {
+        console.error("Error initializing run:", err);
+        res.status(400).json({ message: err.message });
     }
-  
-    await user.save();
-    res.status(201).json({ message: "Run initialized" });
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
 });
 
 // POST create new user

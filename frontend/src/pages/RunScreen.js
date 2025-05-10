@@ -23,8 +23,24 @@ function RunScreen({ onLogout }) {
         return shuffled;
     };
 
-    // Fetch cards on component mount
+    // Fetch cards and initialize game state on component mount
     useEffect(() => {
+        const initializeGameState = async () => {
+            try {
+                const userID = JSON.parse(localStorage.getItem('user')).userName; // Get userID from localStorage
+                const response = await fetch('http://localhost:5000/api/game-state/init', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userID }),
+                });
+                const data = await response.json();
+                console.log('Initialized game state:', data.resources); // Log resources for debugging
+                setResources(data.resources); // Set resources from backend
+            } catch (error) {
+                console.error('Error initializing game state:', error);
+            }
+        };
+
         const fetchCards = async () => {
             try {
                 const response = await fetch('/api/cards');
@@ -36,59 +52,75 @@ function RunScreen({ onLogout }) {
             }
         };
 
-    fetchCards();
-  }, []);
+        initializeGameState();
+        fetchCards();
+    }, []);
 
     // Handle user selecting a choice (A or B)
-    const handleChoiceMade = (choice) => {
-    const card = cards[currentCardIndex];
-    const selected = card.choices[choice];
+    const handleChoiceMade = async (choice) => {
+        const card = cards[currentCardIndex];
+        const selected = card.choices[choice];
 
-    // Convert string percentage to number (e.g., "70%" → 70)
-    const chance = parseInt(selected.good_result_chance.replace('%', ''), 10);
-    const roll = Math.random() * 100;
+        // Convert string percentage to number (e.g., "70%" → 70)
+        const chance = parseInt(selected.good_result_chance.replace('%', ''), 10);
+        const roll = Math.random() * 100;
 
-    const result = roll < chance ? selected.good_result : selected.bad_result;
+        const result = roll < chance ? selected.good_result : selected.bad_result;
 
-    // Update resources
-    setResources((prev) => ({
-        gold: prev.gold + result.gold_effect,
-        provisions: prev.provisions + result.provisions_effect,
-        morale: prev.morale + result.morale_effect,
-        crew: prev.crew + result.crew_effect,
-    }));
+        // Update resources locally
+        const updatedResources = {
+            gold: Math.max(0, Math.min(100, resources.gold + result.gold_effect)),
+            provisions: Math.max(0, Math.min(100, resources.provisions + result.provisions_effect)),
+            morale: Math.max(0, Math.min(100, resources.morale + result.morale_effect)),
+            crew: Math.max(0, Math.min(100, resources.crew + result.crew_effect)),
+        };
+        setResources(updatedResources);
 
-    // Move to next card
-    setCurrentCardIndex((prev) => prev + 1);
-  };
+        // Update resources in the backend
+        const userID = JSON.parse(localStorage.getItem('user')).userName; // Get userID from localStorage
+        try {
+            for (const [resource, value] of Object.entries(updatedResources)) {
+                await fetch('http://localhost:5000/api/game-state/resource', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userID, resource, value }),
+                });
+            }
+        } catch (error) {
+            console.error('Error updating resources:', error);
+        }
 
-  // Game over condition
-  const isResourceDepleted = Object.values(resources).some(value => value <= 0);
+        // Move to next card
+        setCurrentCardIndex((prev) => prev + 1);
+    };
 
-  if (currentCardIndex >= cards.length || isResourceDepleted) {
+    // Game over condition
+    const isResourceDepleted = Object.values(resources).some(value => value <= 0);
+
+    if (currentCardIndex >= cards.length || isResourceDepleted) {
+        return (
+            <div className="run-screen">
+                <h2 className="game-over-title">
+                    {isResourceDepleted ? 'Game Over – You ran out of a vital resource!' : 'Run Complete!'}
+                </h2>
+                <Resources resources={resources} />
+            </div>
+        );
+    }
+
     return (
-      <div className="run-screen">
-        <h2 className="game-over-title">
-          {isResourceDepleted ? 'Game Over – You ran out of a vital resource!' : 'Run Complete!'}
-        </h2>
-        <Resources resources={resources} />
-      </div>
-    );
-  }
-
-    return (
-    <div className="run-screen">
-        <button className="logout-button" onClick={onLogout}>Logout</button>
-        <Resources resources={resources} />
-        {cards.length > 0 && (
-            <Card
-                title={cards[currentCardIndex].title}
-                description={cards[currentCardIndex].description}
-                choices={cards[currentCardIndex].choices}
-                onChoiceMade={handleChoiceMade}
-            />
-        )}
-    </div>
+        <div className="run-screen">
+            <button className="logout-button" onClick={onLogout}>Logout</button>
+            <Resources resources={resources} />
+            {cards.length > 0 && (
+                <Card
+                    title={cards[currentCardIndex].title}
+                    description={cards[currentCardIndex].description}
+                    choices={cards[currentCardIndex].choices}
+                    onChoiceMade={handleChoiceMade}
+                />
+            )}
+        </div>
     );
 }
 

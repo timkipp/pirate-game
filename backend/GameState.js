@@ -32,16 +32,19 @@ class GameState {
     async loadUserData() {
         try {
             const user = await this.findUser(); // Use the helper method
+            console.log("Loaded user data:", user.currentRun); // Log currentRun for debugging
             if (user.currentRun) {
-                this.resources.gold = Math.min(100, user.currentRun.gold || 0);
-                this.resources.provisions = Math.min(100, user.currentRun.provisions || 0);
-                this.resources.morale = Math.min(100, user.currentRun.moral || 0);
-                this.resources.crew = Math.min(100, user.currentRun.crew || 0);
+                this.resources.gold = Math.min(100, user.currentRun.gold ?? 0);
+                this.resources.provisions = Math.min(100, user.currentRun.provisions ?? 0);
+                this.resources.morale = Math.min(100, user.currentRun.morale ?? 0);
+                this.resources.crew = Math.min(100, user.currentRun.crew ?? 0);
                 this.marketCurrency = user.marketCurrency || 0;
+            } else {
+                console.warn("No currentRun data found, using default values.");
             }
             this.checkIfLost(); // Ensure the lost state is recalculated
         } catch (error) {
-            console.error('Error loading user data:', error);
+            console.error("Error loading user data:", error);
         }
     }
 
@@ -52,7 +55,7 @@ class GameState {
             user.currentRun = {
                 gold: this.resources.gold,
                 provisions: this.resources.provisions,
-                moral: this.resources.morale,
+                morale: this.resources.morale,
                 crew: this.resources.crew,
                 score: user.currentRun?.score || 0 // Preserve score if it exists
             };
