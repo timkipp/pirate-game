@@ -8,6 +8,7 @@ function RunScreen({ onLogout }) {
     const navigate = useNavigate();
     const [cards, setCards] = useState([]);
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
+    const [score, setScore] = useState(0);
     const [resources, setResources] = useState({
     gold: 100,
     provisions: 100,
@@ -38,6 +39,7 @@ function RunScreen({ onLogout }) {
                 const data = await response.json();
                 console.log('Initialized game state:', data.resources); // Log resources for debugging
                 setResources(data.resources); // Set resources from backend
+                setScore(data.score);
             } catch (error) {
                 console.error('Error initializing game state:', error);
             }
@@ -92,6 +94,22 @@ function RunScreen({ onLogout }) {
             console.error('Error updating resources:', error);
         }
 
+        // Update score locally
+        const updatedScore = score + 1;
+        console.log(updatedScore);
+        setScore(updatedScore);
+
+        // Update score in the backend
+        try {
+            await fetch('http://localhost:5000/api/game-state/score', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userID, updatedScore }),
+            });
+        } catch (error) {
+            console.error('Error updating resources:', error);
+        }
+
         // Move to next card
         setCurrentCardIndex((prev) => prev + 1);
     };
@@ -110,6 +128,7 @@ function RunScreen({ onLogout }) {
                 <h2 className="game-over-title">
                     {isResourceDepleted ? 'Game Over – You ran out of a vital resource!' : 'Run Complete!'}
                 </h2>
+                <h2>Final Score: {score}</h2>
                 <Resources resources={resources} />
                 <button className="menu-button" onClick={returnToMenu}>Return to Menu</button>
             </div>
@@ -119,6 +138,7 @@ function RunScreen({ onLogout }) {
     return (
         <div className="run-screen">
             <button className="logout-button" onClick={onLogout}>Logout</button>
+            <h2>Score: {score}</h2>
             <Resources resources={resources} />
             {cards.length > 0 && (
                 <Card

@@ -9,7 +9,7 @@ class GameState {
             morale: 100,
             crew: 100
         };
-        this.marketCurrency = 0; // Currency for marketplace use
+        this.score = 100; // Currency for marketplace use
         this.captain = null;
         this.lost = false; // Track if the game is lost
     }
@@ -38,7 +38,7 @@ class GameState {
                 this.resources.provisions = Math.min(100, user.currentRun.provisions ?? 0);
                 this.resources.morale = Math.min(100, user.currentRun.morale ?? 0);
                 this.resources.crew = Math.min(100, user.currentRun.crew ?? 0);
-                this.marketCurrency = user.marketCurrency || 0;
+                this.score = user.currentRun.score;
             } else {
                 console.warn("No currentRun data found, using default values.");
             }
@@ -57,9 +57,8 @@ class GameState {
                 provisions: this.resources.provisions,
                 morale: this.resources.morale,
                 crew: this.resources.crew,
-                score: user.currentRun?.score || 0 // Preserve score if it exists
+                score: this.score
             };
-            user.marketCurrency = this.marketCurrency;
             await user.save();
         } catch (error) {
             console.error('Error saving user data:', error);
@@ -88,14 +87,14 @@ class GameState {
         await this.saveUserData(); // Save updated data
     }
 
-    // Method to get market currency
-    getMarketCurrency() {
-        return this.marketCurrency;
+    // Method to get score
+    getScore() {
+        return this.score;
     }
 
-    // Method to set market currency and save data
-    async setMarketCurrency(value) {
-        this.marketCurrency = value;
+    // Method to set score and save data
+    async setScore(value) {
+        this.score = value;
         await this.saveUserData(); // Save updated data
     }
 

@@ -74,7 +74,7 @@ app.post('/api/game-state/init', async (req, res) => {
     const gameState = new GameState(userID);
     try {
         await gameState.loadUserData();
-        res.json({ message: 'Game state initialized', resources: gameState.resources });
+        res.json({ message: 'Game state initialized', resources: gameState.resources, score: gameState.score });
     } catch (error) {
         res.status(500).json({ message: 'Error initializing game state', error: error.message });
     }
@@ -103,6 +103,19 @@ app.post('/api/game-state/captain', async (req, res) => {
         res.json({ message: 'Captain updated', captain: gameState.captain });
     } catch (error) {
         res.status(500).json({ message: 'Error updating captain', error: error.message });
+    }
+});
+
+// Route to set score
+app.post('/api/game-state/score', async (req, res) => {
+    const { userID, updatedScore } = req.body;
+    const gameState = new GameState(userID);
+    try {
+        await gameState.loadUserData();
+        await gameState.setScore(updatedScore);
+        res.json({ message: 'Score updated', score: gameState.updatedScore });
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating score', error: error.message });
     }
 });
 
