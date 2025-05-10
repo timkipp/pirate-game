@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Card from '../components/Card';
 import Resources from '../components/Resources';
+import { useNavigate } from "react-router-dom";  // For navigation
 import './RunScreen.css';
 
 function RunScreen({ onLogout }) {
+    const navigate = useNavigate();
     const [cards, setCards] = useState([]);
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
     const [resources, setResources] = useState({
@@ -94,6 +96,11 @@ function RunScreen({ onLogout }) {
         setCurrentCardIndex((prev) => prev + 1);
     };
 
+    // Handle returning to main menu
+    const returnToMenu = async () => {
+        navigate("/menu");
+    };
+
     // Game over condition
     const isResourceDepleted = Object.values(resources).some(value => value <= 0);
 
@@ -104,6 +111,7 @@ function RunScreen({ onLogout }) {
                     {isResourceDepleted ? 'Game Over – You ran out of a vital resource!' : 'Run Complete!'}
                 </h2>
                 <Resources resources={resources} />
+                <button className="menu-button" onClick={returnToMenu}>Return to Menu</button>
             </div>
         );
     }
