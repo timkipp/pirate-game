@@ -9,7 +9,8 @@ class GameState {
             morale: 100,
             crew: 100
         };
-        this.score = 100; // Currency for marketplace use
+        this.score = 0;
+        this.highScore = 0;
         this.captain = null;
         this.lost = false; // Track if the game is lost
     }
@@ -39,6 +40,7 @@ class GameState {
                 this.resources.morale = Math.min(100, user.currentRun.morale ?? 0);
                 this.resources.crew = Math.min(100, user.currentRun.crew ?? 0);
                 this.score = user.currentRun.score;
+                this.highScore = user.highScore
             } else {
                 console.warn("No currentRun data found, using default values.");
             }
@@ -59,6 +61,7 @@ class GameState {
                 crew: this.resources.crew,
                 score: this.score
             };
+            user.highScore = this.highScore
             await user.save();
         } catch (error) {
             console.error('Error saving user data:', error);
@@ -95,6 +98,9 @@ class GameState {
     // Method to set score and save data
     async setScore(value) {
         this.score = value;
+        if(value > this.highScore){
+            this.highScore = value;
+        }
         await this.saveUserData(); // Save updated data
     }
 

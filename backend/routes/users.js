@@ -67,6 +67,26 @@ router.post('/initRun', async (req, res) => {
     }
 });
 
+// POST spdate highScore
+router.post('/highscore', async (req, res) => {
+    const { userName, score } = req.body;
+
+    try {
+        const user = await User.findOne({ userName: userName });
+        console.log("Setting highscore for user:", userName);
+        console.log("Highscore value is:", score);
+
+        // Initialize currentRun with captain stats
+        user.highScore = score;
+
+        await user.save();
+        res.status(201).json({ message: "Highscore updated", highScore: user.highScore });
+    } catch (err) {
+        console.error("Error initializing run:", err);
+        res.status(400).json({ message: err.message });
+    }
+});
+
 // POST create new user
 router.post('/', async (req, res) => {
   const user = new User({

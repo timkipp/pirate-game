@@ -31,6 +31,7 @@ function NewGameSetup({ userName, onLogout }) {
           
             //console.log(data);
             setUserData(JSON.stringify(data));
+            console.log(data.highScore);
             getItems(data);
             getCaptains(data);
         } catch (err) {
