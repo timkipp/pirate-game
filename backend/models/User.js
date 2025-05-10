@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema({
   userName: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   highScore: { type: Number, default: 0 },
+  marketCurrency: { type: Number, default: 0},
   currentRun: {
       gold: Number,
       provisions: Number,

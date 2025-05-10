@@ -60,7 +60,7 @@ function NewGameSetup({ userName, onLogout }) {
         setRawItems(await new Promise((resolve) => {
             if(!rawItemList.includes(null)){
                 setItems(rawItemList.map((item, i) => {
-                    if(user.itemInventory[i].itemQuantity != 0){
+                    if(user.itemInventory[i].itemQuantity !== 0){
                        return <option key={item.name}>{item.name} ({user.itemInventory[i].itemQuantity})</option>; 
                     }
                 }));
