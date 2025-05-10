@@ -182,19 +182,6 @@ function NewGameSetup({ userName, onLogout }) {
         );
     }
 
-    function UserDisplay(){
-        if(userData != null){
-            console.log(JSON.parse(userData))
-            return(
-                <p>{JSON.parse(userData).userName}</p>
-            );
-        } else {
-            return(
-                <p>No User Data</p>
-            );
-        }
-    }
-
     async function setCaptainAndItemBoost() {
         const userName = JSON.parse(userData).userName;
         const captain = JSON.parse(selectedCaptain);
@@ -244,8 +231,6 @@ function NewGameSetup({ userName, onLogout }) {
 
                 {/* Button to start the run */}
                 <button className="menu-button" onClick={handleStartRun}>Start Run</button>
-
-                <UserDisplay></UserDisplay>
             </div>
         </div>
     );
