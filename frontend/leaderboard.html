@@ -14,17 +14,3 @@
   <script src="leaderboard.js"></script>
 </body>
 </html>
-<script>
-  // Fetch leaderboard data from the server
-  fetch('/api/leaderboard')
-    .then(response => response.json())
-    .then(data => {
-      const leaderboardList = document.getElementById('leaderboard-list');
-      data.forEach(player => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${player.name}: ${player.score}`;
-        leaderboardList.appendChild(listItem);
-      });
-    })
-    .catch(error => console.error('Error fetching leaderboard:', error));
-</script>

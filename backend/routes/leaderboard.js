@@ -1,29 +1,16 @@
 // backend/routes/leaderboard.js
-
 const express = require('express');
-const fs      = require('fs');
-const path    = require('path');
-const router  = express.Router();
+const router = express.Router();
+const User = require('../models/User');
+const GameState = require('../GameState');
 
-// points to backend/users.json
-const usersFilePath = path.join(__dirname, '..', 'users.json');
-
-/**
- * GET /api/leaderboard
- * → reads all users, sorts by highScore desc, 
- *    and returns [{ userName, highScore }, …]
- */
-router.get('/', (req, res) => {
+// GET /api/leaderboard - Return users sorted by high score
+router.get('/', async (req, res) => {
   try {
-    const raw = fs.readFileSync(usersFilePath, 'utf8');
-    const users = JSON.parse(raw);
+    const users = await User.find().sort({ highScore: -1 });
 
-    // sort descending by highScore
-    users.sort((a, b) => (b.highScore || 0) - (a.highScore || 0));
-
-    // map to only the necessary fields
     const leaderboard = users.map(u => ({
-      userName:  u.userName,
+      userName: u.userName,
       highScore: u.highScore || 0
     }));
 
@@ -31,6 +18,24 @@ router.get('/', (req, res) => {
   } catch (err) {
     console.error('Failed to load leaderboard:', err);
     res.status(500).json({ message: 'Could not load leaderboard.' });
+  }
+});
+
+// POST /api/leaderboard/submit - Submit a score and update if it’s a new high score
+router.post('/submit', async (req, res) => {
+  const { userName } = req.body;
+  if (!userName) {
+    return res.status(400).json({ message: 'userName is required.' });
+  }
+
+  try {
+    const gameState = new GameState(userName);
+    await gameState.loadUserData();
+    const result = await gameState.submitScoreIfHigh();
+    res.status(200).json(result);
+  } catch (err) {
+    console.error('Error submitting score:', err);
+    res.status(500).json({ message: 'Failed to submit score.' });
   }
 });
 
