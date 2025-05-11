@@ -7,8 +7,8 @@ const captainSchema = new mongoose.Schema({
   description: String,
   modifier: String,
   goldStart: Number,
-  provisionsStart: Number,
-  moralStart: Number,
+  provisionStart: Number,
+  moraleStart: Number,
   crewStart: Number
 });
 

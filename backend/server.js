@@ -17,6 +17,7 @@ const itemRoutes = require('./routes/items');
 const cardRoutes = require('./routes/cards');
 const userRoutes = require('./routes/users');
 const authRoutes = require('./routes/auth');
+const leaderboardRouter = require('./routes/leaderboard');
 
 
 // App setup
@@ -66,6 +67,82 @@ app.post('/set-market-currency', (req, res) => {
   const { value } = req.body;
   gameState.setMarketCurrency(value);
   res.json(gameState);
+});
+
+// Route to initialize game state for a user
+app.post('/api/game-state/init', async (req, res) => {
+    const { userID } = req.body;
+    const gameState = new GameState(userID);
+    try {
+        await gameState.loadUserData();
+        res.json({ message: 'Game state initialized', resources: gameState.resources, score: gameState.score });
+    } catch (error) {
+        res.status(500).json({ message: 'Error initializing game state', error: error.message });
+    }
+});
+
+// Route to update a resource
+app.post('/api/game-state/resource', async (req, res) => {
+    const { userID, resource, value } = req.body;
+    const gameState = new GameState(userID);
+    try {
+        await gameState.loadUserData();
+        await gameState.setResource(resource, value);
+        res.json({ message: 'Resource updated', resources: gameState.resources });
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating resource', error: error.message });
+    }
+});
+
+// Route to set captain
+app.post('/api/game-state/captain', async (req, res) => {
+    const { userID, captain } = req.body;
+    const gameState = new GameState(userID);
+    try {
+        await gameState.loadUserData();
+        await gameState.setCaptain(captain);
+        res.json({ message: 'Captain updated', captain: gameState.captain });
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating captain', error: error.message });
+    }
+});
+
+// Route to set score
+app.post('/api/game-state/score', async (req, res) => {
+    const { userID, updatedScore } = req.body;
+    const gameState = new GameState(userID);
+    try {
+        await gameState.loadUserData();
+        await gameState.setScore(updatedScore);
+        res.json({ message: 'Score updated', score: gameState.updatedScore });
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating score', error: error.message });
+    }
+});
+
+// Route to apply a stat boost
+app.post('/api/game-state/boost', async (req, res) => {
+    const { userID, boost } = req.body;
+    const gameState = new GameState(userID);
+    try {
+        await gameState.loadUserData();
+        await gameState.applyStatBoost(boost);
+        res.json({ message: 'Stat boost applied', resources: gameState.resources });
+    } catch (error) {
+        res.status(500).json({ message: 'Error applying stat boost', error: error.message });
+    }
+});
+
+// Route to check if the game is lost
+app.get('/api/game-state/lost', async (req, res) => {
+    const { userID } = req.query;
+    const gameState = new GameState(userID);
+    try {
+        await gameState.loadUserData();
+        res.json({ lost: gameState.lost });
+    } catch (error) {
+        res.status(500).json({ message: 'Error checking game state', error: error.message });
+    }
 });
 
 // Start the server
