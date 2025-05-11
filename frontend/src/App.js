@@ -6,6 +6,7 @@ import NewGameSetup from "./pages/NewGameSetup";
 import RunScreen from "./pages/RunScreen";
 import Marketplace from "./pages/Marketplace";
 import TestGameState from './pages/TestGameState';
+import Leaderboard from "./pages/Leaderboard";
 
 function App() {
   // Initialize userName from localStorage to persist login
@@ -74,6 +75,11 @@ function App() {
         <Route
           path="/test-game-state"
           element={<TestGameState />}
+        />
+        {/* Leaderboard */}
+        <Route
+          path="/leaderboard"
+          element={userName ? <Leaderboard userName={userName} onLogout={handleLogout} /> : <Navigate to="/" />}
         />
       </Routes>
     </Router>

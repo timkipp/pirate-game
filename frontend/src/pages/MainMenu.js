@@ -15,6 +15,11 @@ function MainMenu({ userName, onLogout }) {
         navigate("/marketplace"); // Navigate to the Marketplace page
     };
 
+    // Event handler for Leaderboard button
+    const goToLeaderboard = () => {
+        navigate("/leaderboard"); // Navigate to the Leaderboard page
+    };
+
     return (
         <div className="main-menu">
             <button className="logout-button" onClick={onLogout}>Logout</button>
@@ -22,7 +27,7 @@ function MainMenu({ userName, onLogout }) {
             <div className="menu-buttons">
                 <button className="menu-button" onClick={handleNewGame}>New Game</button>
                 <button className="menu-button" onClick={goToMarketplace}>Marketplace</button>
-                <button className="menu-button">Leaderboard</button>
+                <button className="menu-button" onClick={goToLeaderboard}>Leaderboard</button>
             </div>
         </div>
     );

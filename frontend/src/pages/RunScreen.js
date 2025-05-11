@@ -11,6 +11,7 @@ function RunScreen({ onLogout }) {
     const [score, setScore] = useState(0);
     const [newHighscore, setNewHighScore] = useState(false);
     const [currencyGiven, setCurrencyGiven] = useState(false);
+    const [gameOverHandled, setGameOverHandled] = useState(false);
     const [resources, setResources] = useState({
     gold: 100,
     provisions: 100,
@@ -18,6 +19,23 @@ function RunScreen({ onLogout }) {
     crew: 10,
     });
 
+    const submitFinalScore = async () => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        const userName = user?.userName;
+        if (!userName) return;
+        try {
+            const res = await fetch('/api/game/complete', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userName })
+            });
+            const data = await res.json();
+            console.log("Final score submitted:", data);
+        } catch (error) {
+            console.error('Error submitting final score:', error);
+        }
+    };
+    
     // Shuffle to randomize the order of cards
     const shuffleCards = (cards) => {
         const shuffled = [...cards];
@@ -148,22 +166,24 @@ function RunScreen({ onLogout }) {
         }
     };
 
-    function HighScore() {
-        if(Object.values(resources).some(value => value <= 0) && !currencyGiven){
-            setCurrencyGiven(true);
-            giveCurrency();
-        }
-        if(newHighscore){
-            return(<h1>New High Score</h1>);
-        } else {
-            return(<p></p>);
-        }
-    }
+function HighScore() {
+    return newHighscore ? <h1>New High Score</h1> : <p></p>;
+}
+
 
     // Game over condition
     const isResourceDepleted = Object.values(resources).some(value => value <= 0);
+    const gameIsOver = currentCardIndex >= cards.length || isResourceDepleted;
 
-    if (currentCardIndex >= cards.length || isResourceDepleted) {
+    useEffect(() => {
+        if (gameIsOver && !gameOverHandled) {
+            setGameOverHandled(true);
+            giveCurrency();
+            submitFinalScore();
+        }
+    }, [gameIsOver, gameOverHandled]);
+
+    if (gameIsOver) {
         return (
             <div className="run-screen">
                 <h2 className="game-over-title">

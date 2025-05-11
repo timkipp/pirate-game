@@ -9,7 +9,6 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./db');
 const GameState = require('./GameState');
-const leaderboardRouter = require('./routes/leaderboard');
 
 // Import routes
 const captainRoutes = require('./routes/captains');

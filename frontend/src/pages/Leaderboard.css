@@ -1,0 +1,51 @@
+.leaderboard-screen {
+    text-align: center;
+    padding: 2rem;
+    font-family: sans-serif;
+}
+
+.menu-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.leaderboard-table {
+    margin: 0 auto;
+    width: 80%;
+    border-collapse: collapse;
+    background-color: rgba(245, 222, 179, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-row {
+    background-color: rgba(245, 222, 179, 0.8);
+    font-weight: bold;
+}
+
+.leaderboard-table th, .leaderboard-table td {
+    padding: 12px;
+    border: 2px solid black;
+    text-align: center;
+}
+
+.leaderboard-table tr:not(.header-row):hover {
+    background-color: rgba(245, 222, 179, 0.7);
+}
+
+.back-button,
+.logout-button {
+    padding: 8px 16px;
+    background-color: #FF6347;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+.back-button:hover,
+.logout-button:hover {
+    background-color: #FF4500;
+}
