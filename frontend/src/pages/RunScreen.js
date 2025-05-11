@@ -10,6 +10,7 @@ function RunScreen({ onLogout }) {
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
     const [score, setScore] = useState(0);
     const [newHighscore, setNewHighScore] = useState(false);
+    const [currencyGiven, setCurrencyGiven] = useState(false);
     const [resources, setResources] = useState({
     gold: 100,
     provisions: 100,
@@ -133,7 +134,25 @@ function RunScreen({ onLogout }) {
         navigate("/menu");
     };
 
+    const giveCurrency = async () => {
+        try {
+            const userName = JSON.parse(localStorage.getItem('user')).userName;
+            const value = Math.floor(score/10);
+            await fetch('http://localhost:5000/api/users/addcurrency', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userName, value }),
+            });
+        } catch (error) {
+            console.error('Error updating resources:', error);
+        }
+    };
+
     function HighScore() {
+        if(Object.values(resources).some(value => value <= 0) && !currencyGiven){
+            setCurrencyGiven(true);
+            giveCurrency();
+        }
         if(newHighscore){
             return(<h1>New High Score</h1>);
         } else {
@@ -145,7 +164,6 @@ function RunScreen({ onLogout }) {
     const isResourceDepleted = Object.values(resources).some(value => value <= 0);
 
     if (currentCardIndex >= cards.length || isResourceDepleted) {
-        
         return (
             <div className="run-screen">
                 <h2 className="game-over-title">

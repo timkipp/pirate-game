@@ -67,7 +67,7 @@ router.post('/initRun', async (req, res) => {
     }
 });
 
-// POST spdate highScore
+// POST update highScore
 router.post('/highscore', async (req, res) => {
     const { userName, score } = req.body;
 
@@ -76,13 +76,31 @@ router.post('/highscore', async (req, res) => {
         console.log("Setting highscore for user:", userName);
         console.log("Highscore value is:", score);
 
-        // Initialize currentRun with captain stats
         user.highScore = score;
 
         await user.save();
         res.status(201).json({ message: "Highscore updated", highScore: user.highScore });
     } catch (err) {
         console.error("Error initializing run:", err);
+        res.status(400).json({ message: err.message });
+    }
+});
+
+// POST add market currency to user
+router.post('/addcurrency', async (req, res) => {
+    const { userName, value } = req.body;
+
+    try {
+        const user = await User.findOne({ userName: userName });
+        console.log("Adding market currency to user:", userName);
+        console.log("Market currency added:", value);
+
+        user.marketCurrency = user.marketCurrency + value;
+
+        await user.save();
+        res.status(201).json({ message: "market currency added", marketCurrency: user.marketCurrency });
+    } catch (err) {
+        console.error("Error adding market currency:", err);
         res.status(400).json({ message: err.message });
     }
 });
