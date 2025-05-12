@@ -67,9 +67,8 @@ function RunScreen({ onLogout }) {
         const card = cards[currentCardIndex];
         const selected = card.choices[choice];
 
-        // Convert string percentage to number (e.g., "70%" → 70)
-        const chance = parseInt(selected.good_result_chance.replace('%', ''), 10);
-        const roll = Math.random() * 100;
+        const chance = selected.good_result_chance;
+        const roll = Math.random();
 
         const result = roll < chance ? selected.good_result : selected.bad_result;
 
