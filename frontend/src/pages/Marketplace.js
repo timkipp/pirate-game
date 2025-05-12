@@ -158,7 +158,6 @@ function Marketplace ({userName, onLogout}) {
 
     return (
         <div className = "marketplace">
-            <button onClick = {test}>Test</button>
             {/* The back button */}
             <button className = "back-button" onClick = {goBack}>Back</button>
             {/* Logout button */}
