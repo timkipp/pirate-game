@@ -33,7 +33,7 @@ function RunScreen({ onLogout }) {
         const initializeGameState = async () => {
             try {
                 const userID = JSON.parse(localStorage.getItem('user')).userName; // Get userID from localStorage
-                const response = await fetch('http://localhost:5000/api/game-state/init', {
+                const response = await fetch('https://cosc484-project-group-4.onrender.com/api/game-state/init', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ userID }),
@@ -49,7 +49,7 @@ function RunScreen({ onLogout }) {
 
         const fetchCards = async () => {
             try {
-                const response = await fetch('/api/cards');
+                const response = await fetch('https://cosc484-project-group-4.onrender.com/api/cards');
                 const data = await response.json();
                 const shuffled = shuffleCards(data);
                 setCards(shuffled);
@@ -85,7 +85,7 @@ function RunScreen({ onLogout }) {
         const userID = JSON.parse(localStorage.getItem('user')).userName; // Get userID from localStorage
         try {
             for (const [resource, value] of Object.entries(updatedResources)) {
-                await fetch('http://localhost:5000/api/game-state/resource', {
+                await fetch('https://cosc484-project-group-4.onrender.com/api/game-state/resource', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ userID, resource, value }),
@@ -98,7 +98,7 @@ function RunScreen({ onLogout }) {
         // Update score locally
         const updatedScore = score + 1;
         //console.log(updatedScore);
-        const url = 'http://localhost:5000/api/users/:username?username=' + JSON.parse(localStorage.getItem('user')).userName;
+        const url = 'https://cosc484-project-group-4.onrender.com/api/users/:username?username=' + JSON.parse(localStorage.getItem('user')).userName;
         try {
             const response = await fetch(url, {
                 method: 'GET',
@@ -115,7 +115,7 @@ function RunScreen({ onLogout }) {
 
         // Update score in the backend
         try {
-            await fetch('http://localhost:5000/api/game-state/score', {
+            await fetch('https://cosc484-project-group-4.onrender.com/api/game-state/score', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userID, updatedScore }),
@@ -137,7 +137,7 @@ function RunScreen({ onLogout }) {
         try {
             const userName = JSON.parse(localStorage.getItem('user')).userName;
             const value = Math.floor(score/10);
-            await fetch('http://localhost:5000/api/users/addcurrency', {
+            await fetch('https://cosc484-project-group-4.onrender.com/api/users/addcurrency', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userName, value }),

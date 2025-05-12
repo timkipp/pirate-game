@@ -13,13 +13,13 @@ function Marketplace ({userName, onLogout}) {
     const navigate = useNavigate();
 
     // URL for the items within the database.
-    const itemsURL = `http://localhost:5000/api/items`;
+    const itemsURL = `https://cosc484-project-group-4.onrender.com/api/items`;
 
     // URL for the captains within the database.
-    const captainsURL = `http://localhost:5000/api/captains`;
+    const captainsURL = `https://cosc484-project-group-4.onrender.com/api/captains`;
 
     // URL for the user data.
-    const userURL = `http://localhost:5000/api/users/:username?username=${userName}`;
+    const userURL = `https://cosc484-project-group-4.onrender.com/api/users/:username?username=${userName}`;
 
     // The items to be displayed.
     const [items, setItems] = useState([]);
@@ -112,7 +112,7 @@ function Marketplace ({userName, onLogout}) {
     const updateCurrency = async(value) => {
         try {
             const userName = JSON.parse(localStorage.getItem('user')).userName;
-            await fetch('http://localhost:5000/api/users/addcurrency', {
+            await fetch('https://cosc484-project-group-4.onrender.com/api/users/addcurrency', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userName, value }),
@@ -127,7 +127,7 @@ function Marketplace ({userName, onLogout}) {
         try {
             const item = { itemId: rawItem.itemID, itemQuantity: 1 };
             const userName = JSON.parse(localStorage.getItem('user')).userName;
-            await fetch('http://localhost:5000/api/users/additem', {
+            await fetch('https://cosc484-project-group-4.onrender.com/api/users/additem', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userName, item }),
@@ -141,7 +141,7 @@ function Marketplace ({userName, onLogout}) {
     const updateCaptains = async(captain) => {
         try {
             const userName = JSON.parse(localStorage.getItem('user')).userName;
-            await fetch('http://localhost:5000/api/users/addcaptain', {
+            await fetch('https://cosc484-project-group-4.onrender.com/api/users/addcaptain', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userName, captain }),
