@@ -215,7 +215,7 @@ function Marketplace ({userName, onLogout}) {
                                 <td>{captain.crewStart}</td>
                                 <td>
                                     {user.captains.includes(captain.captainID) ? (
-                                        <span>PURCHASED</span>
+                                        <span>OWNED</span>
                                     ) : (
                                         <button className="purchase-button" onClick={() => handleCaptainPurchase(captain.captainID)}>Purchase</button>
                                     )}

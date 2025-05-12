@@ -108,18 +108,23 @@ router.post('/addcurrency', async (req, res) => {
 // POST add item to user.
 router.post('/additem', async (req, res) => {
   const {userName, item } = req.body;
+  console.log("Item received:", item);
   try {
+    // Find the user.
     const user = await User.findOne({ userName: userName });
     console.log("Adding item to user: ", userName);
-    // Check if the item already exists in the inventory.
-    const existingItem = user.itemInventory.findIndex(i => i.itemId === item.itemId);
-    if(existingItem !== -1) { // The item exists, increase the quantity.
-      user.itemInventory[existingItem].itemQuantity += 1;
+    // Check if the item already exists in the user's inventory.
+    const existingItem = user.itemInventory.find(i => i.itemId === item.itemId);
+    if(existingItem) { // The item exists, increase the quantity.
+      if(existingItem.itemQuantity == null) {
+        existingItem.itemQuantity = 1;
+      }
+      existingItem.itemQuantity = Number(existingItem.itemQuantity) + 1;
     } else { // The item does not exist, push it to the inventory.
       user.itemInventory.push(item);
     }
     await user.save();
-    console.log("Item added: ", item.name);
+    console.log("Item added/updated: ", item.name);
     res.status(201).json({ message: "item added", item: item});
   } catch (err) {
     console.error("Error adding item: ", err);
