@@ -47,6 +47,11 @@ router.post('/initRun', async (req, res) => {
 
         // Apply itemShift to the appropriate resource
         if (itemShift.shiftName) {
+          for(var i = 0; i < user.itemInventory.length; i++){
+            if(itemShift.itemID === user.itemInventory[i].itemId){
+              user.itemInventory[i].itemQuantity = user.itemInventory[i].itemQuantity - 1;
+            }
+          }
             const resource = itemShift.shiftName.toLowerCase(); // Ensure lowercase for consistency
             if (user.currentRun[resource] !== undefined) {
                 user.currentRun[resource] = Math.max(
