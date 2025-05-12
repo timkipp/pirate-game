@@ -30,6 +30,8 @@ function Marketplace ({userName, onLogout}) {
      // The user data to be displayed and updated.
     const [user, setUser] = useState([]);
 
+    const [currency, setCurrency] = useState(0);
+
     // Go back to the main menu.
     const goBack = () => {
         navigate(-1);
@@ -45,6 +47,7 @@ function Marketplace ({userName, onLogout}) {
                 setItems(itemData);
                 setCaptains(captainData);
                 setUser(userData);
+                setCurrency(userData.marketCurrency);
             } catch (error) {
                 console.error("ERROR FETCHING DATA: " + error);
             }
@@ -71,6 +74,7 @@ function Marketplace ({userName, onLogout}) {
             updateItems(item);
             // Subtract the price from the user's currency.
             updateCurrency(0 - item.price);
+            setCurrency(currency - item.price);
             console.log("Successfully purchased " + item.name);
         }
     }
@@ -94,6 +98,12 @@ function Marketplace ({userName, onLogout}) {
             updateCaptains(captain);
             // Subtract the price from the user's currency.
             updateCurrency(0 - captain.price);
+            setCurrency(currency - captain.price);
+            var captainList = user.captains;
+            captainList.push(captain.captainID);
+            var newUserData = user;
+            newUserData.captains = captainList;
+            setUser(newUserData);
             console.log("Successfully purchased " + captain.name);
         }
     }
@@ -113,8 +123,9 @@ function Marketplace ({userName, onLogout}) {
     }
 
     // Function to update the user's item inventory.
-    const updateItems = async(item) => {
+    const updateItems = async(rawItem) => {
         try {
+            const item = { itemId: rawItem.itemID, itemQuantity: 1 };
             const userName = JSON.parse(localStorage.getItem('user')).userName;
             await fetch('http://localhost:5000/api/users/additem', {
                 method: 'POST',
@@ -156,7 +167,7 @@ function Marketplace ({userName, onLogout}) {
             <br />
             <h1 className = "menu-title">Welcome to the marketplace, {userName}!</h1>
             {/* The user's currency */}
-            <h2 className = "currency-title">Your currency: {user.marketCurrency}</h2>
+            <h2 className = "currency-title">Your currency: {currency}</h2>
             {/* Item table */}
             <hr />
             <div className = "marketplace-tables">
