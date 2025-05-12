@@ -21,9 +21,6 @@ function Marketplace ({userName, onLogout}) {
     // URL for the user data.
     const userURL = `http://localhost:5000/api/users/:username?username=${userName}`;
 
-    // User ID
-    const userID = JSON.parse(localStorage.getItem('user')).userName;
-
     // The items to be displayed.
     const [items, setItems] = useState([]);
     
@@ -104,10 +101,11 @@ function Marketplace ({userName, onLogout}) {
     // Function to update the user's currency.
     const updateCurrency = async(value) => {
         try {
+            const userName = JSON.parse(localStorage.getItem('user')).userName;
             await fetch('http://localhost:5000/api/users/addcurrency', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ userID, value }),
+                body: JSON.stringify({ userName, value }),
             });
         } catch (error) {
             console.error('ERROR: Could not update currency.');
@@ -117,10 +115,11 @@ function Marketplace ({userName, onLogout}) {
     // Function to update the user's item inventory.
     const updateItems = async(item) => {
         try {
+            const userName = JSON.parse(localStorage.getItem('user')).userName;
             await fetch('http://localhost:5000/api/users/additem', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ userID, item }),
+                body: JSON.stringify({ userName, item }),
             });
         } catch (error) {
             console.error("ERROR: Could not add item.");
@@ -130,10 +129,11 @@ function Marketplace ({userName, onLogout}) {
     // Function to update the user's captain inventory.
     const updateCaptains = async(captain) => {
         try {
+            const userName = JSON.parse(localStorage.getItem('user')).userName;
             await fetch('http://localhost:5000/api/users/addcaptain', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ userID, captain }),
+                body: JSON.stringify({ userName, captain }),
             });
         } catch (error) {
             console.error("ERROR: Could not add captain.");
@@ -180,11 +180,7 @@ function Marketplace ({userName, onLogout}) {
                                 <td>{item.resourceAffected}</td>
                                 <td>{item.resourceShift}</td>
                                 <td>
-                                    {user.itemInventory.some(invItem => invItem.itemId === item.itemID) ? (
-                                        <span>PURCHASED</span>
-                                    ) : (
-                                        <button className="purchase-button" onClick={() => handleItemPurchase(item.itemID)}>Purchase</button>
-                                    )}
+                                    <button className="purchase-button" onClick={() => handleItemPurchase(item.itemID)}>Purchase</button>
                                 </td>
                             </tr>
                         ))}

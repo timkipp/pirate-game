@@ -111,7 +111,13 @@ router.post('/additem', async (req, res) => {
   try {
     const user = await User.findOne({ userName: userName });
     console.log("Adding item to user: ", userName);
-    user.itemInventory.push(item);
+    // Check if the item already exists in the inventory.
+    const existingItem = user.itemInventory.findIndex(i => i.itemId === item.itemId);
+    if(existingItem !== -1) { // The item exists, increase the quantity.
+      user.itemInventory[existingItem].itemQuantity += 1;
+    } else { // The item does not exist, push it to the inventory.
+      user.itemInventory.push(item);
+    }
     await user.save();
     console.log("Item added: ", item.name);
     res.status(201).json({ message: "item added", item: item});
