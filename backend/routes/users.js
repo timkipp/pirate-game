@@ -110,6 +110,55 @@ router.post('/addcurrency', async (req, res) => {
     }
 });
 
+// POST add item to user.
+router.post('/additem', async (req, res) => {
+  const {userName, item } = req.body;
+  console.log("Item received:", item);
+  try {
+    // Find the user.
+    const user = await User.findOne({ userName: userName });
+    console.log("Adding item to user: ", userName);
+    // Check if the item already exists in the user's inventory.
+    for(var i = 0; i < user.itemInventory.length; i++){
+      if(item.itemId === user.itemInventory[i].itemId){
+        user.itemInventory[i].itemQuantity = user.itemInventory[i].itemQuantity + 1;
+
+        await user.save();
+
+        console.log("Item added/updated: ", item.itemId);
+        res.status(201).json({ message: "item added", item: item});
+        return;
+      }
+    }
+    
+    user.itemInventory.push(item);
+
+    await user.save();
+
+    console.log("Item added/updated: ", item.name);
+    res.status(201).json({ message: "item added", item: item});
+  } catch (err) {
+    console.error("Error adding item: ", err);
+    res.status(400).json({ message: err.message });
+  }
+});
+
+// POST add captain to user.
+router.post('/addcaptain', async (req, res) => {
+  const {userName, captain } = req.body;
+  try {
+    const user = await User.findOne({ userName: userName });
+    console.log("Adding captain to user: ", userName);
+    user.captains.push(captain.captainID);
+    await user.save();
+    console.log("Captain added: ", captain.name);
+    res.status(201).json({ message: "captain added", captain: captain});
+  } catch (err) {
+    console.error("Error adding captain: ", err);
+    res.status(400).json({ message: err.message });
+  }
+});
+
 // POST create new user
 router.post('/', async (req, res) => {
   const user = new User({
