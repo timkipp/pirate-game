@@ -58,7 +58,7 @@ code {
 }
 
 .menu-title {
-	font-size: 10rem;
+	font-size: 4rem;
 	margin-bottom: 2rem;
 	color: #553628;
 }
@@ -67,6 +67,7 @@ code {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
+	padding-top: 1rem;
 }
 
 .menu-button {
