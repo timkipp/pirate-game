@@ -49,7 +49,7 @@ function RunScreen({ onLogout }) {
 
         const fetchCards = async () => {
             try {
-                const response = await fetch('/api/cards');
+                const response = await fetch('https://cosc484-project-group-4.onrender.com/api/cards');
                 const data = await response.json();
                 const shuffled = shuffleCards(data);
                 setCards(shuffled);

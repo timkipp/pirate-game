@@ -147,7 +147,7 @@ app.get('/api/game-state/lost', async (req, res) => {
 // Route to fetch all cards
 app.get('/api/cards', async (req, res) => {
     try {
-        const cards = require('./database/cards.json'); // Adjust the path if needed
+        const cards = require('./database/cards.json'); 
         res.json(cards);
     } catch (error) {
         console.error('Error fetching cards:', error);
