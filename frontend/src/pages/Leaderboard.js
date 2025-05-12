@@ -8,7 +8,7 @@ function Leaderboard({ userName, onLogout }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('/api/leaderboard')
+    fetch('https://cosc484-project-group-4.onrender.com/api/leaderboard')
       .then(res => res.json())
       .then(data => {
         setLeaders(data);
