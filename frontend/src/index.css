@@ -68,7 +68,7 @@ code {
 	font-family: 'Leander', serif;
 }
 
-.menu-title {
+.menu-title, .runscree h2 {
 	margin-bottom: 2rem;
 	padding: 1rem;
 	font-size: 4rem;	
