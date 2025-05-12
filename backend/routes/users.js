@@ -135,7 +135,7 @@ router.post('/additem', async (req, res) => {
 
     await user.save();
 
-    console.log("Item added/updated: ", item.name);
+    console.log("Item added/updated: ", item.itemId);
     res.status(201).json({ message: "item added", item: item});
   } catch (err) {
     console.error("Error adding item: ", err);
