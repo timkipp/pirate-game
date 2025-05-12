@@ -18,34 +18,136 @@ function Marketplace ({userName, onLogout}) {
     // URL for the captains within the database.
     const captainsURL = `http://localhost:5000/api/captains`;
 
+    // URL for the user data.
+    const userURL = `http://localhost:5000/api/users/:username?username=${userName}`;
+
+    // User ID
+    const userID = JSON.parse(localStorage.getItem('user')).userName;
+
     // The items to be displayed.
     const [items, setItems] = useState([]);
     
     // The captains to be displayed.
     const [captains, setCaptains] = useState([]);
 
+     // The user data to be displayed and updated.
+    const [user, setUser] = useState([]);
+
     // Go back to the main menu.
     const goBack = () => {
         navigate(-1);
     };
 
-    // Fetch the items and captains.
     useEffect(() => {
-        const fetchStock = async() => {
+        // Fetch the items and captains.
+        const fetchData = async() => {
             try {
                 const itemData = await (await fetch(itemsURL)).json();
                 const captainData = await (await fetch(captainsURL)).json();
+                const userData = await (await fetch(userURL)).json();
                 setItems(itemData);
                 setCaptains(captainData);
+                setUser(userData);
             } catch (error) {
-                console.error("ERROR FETCHING ITEMS & CAPTAINS: " + error);
+                console.error("ERROR FETCHING DATA: " + error);
             }
         };
-        fetchStock();
+        fetchData();
     }, []);
+
+    // Function to handle the purchase of an item.
+    // Called when the purchase button is clicked.
+    const handleItemPurchase = async(itemID) => {
+        // Find the item with the matching ID.
+        const item = items.find(item => item.itemID === itemID);
+        console.log("Attempting to purchase " + item.name);
+        // Check if the user has enough currency.
+        if(item.price > user.marketCurrency) {
+            console.error("ERROR: Not enough currency.");
+            return;
+        // Check if the user already owns the item.
+        } else if(user.itemInventory.includes(itemID)) {
+            console.error("ERROR: Item already purchased.");
+            return;
+        } else {
+            // Add the item to the user's inventory.
+            updateItems(item);
+            // Subtract the price from the user's currency.
+            updateCurrency(0 - item.price);
+            console.log("Successfully purchased " + item.name);
+        }
+    }
+
+    // Function to handle the purchase of a captain.
+    // Called when the purchase button is clicked.
+    const handleCaptainPurchase = async(captainID) => {
+        // Find the item with the matching ID.
+        const captain = captains.find(captain => captain.captainID === captainID);
+        console.log("Attempting to purchase " + captain.name);
+        // Check if the user has enough currency.
+        if(captain.price > user.marketCurrency) {
+            console.error("ERROR: Not enough currency.");
+            return;
+        // Check if the user already owns the item.
+        } else if(user.captains.includes(captainID)) {
+            console.error("ERROR: Captain already purchased.");
+            return;
+        } else {
+            // Add the captain to the user's inventory.
+            updateCaptains(captain);
+            // Subtract the price from the user's currency.
+            updateCurrency(0 - captain.price);
+            console.log("Successfully purchased " + captain.name);
+        }
+    }
+
+    // Function to update the user's currency.
+    const updateCurrency = async(value) => {
+        try {
+            await fetch('http://localhost:5000/api/users/addcurrency', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userID, value }),
+            });
+        } catch (error) {
+            console.error('ERROR: Could not update currency.');
+        }
+    }
+
+    // Function to update the user's item inventory.
+    const updateItems = async(item) => {
+        try {
+            await fetch('http://localhost:5000/api/users/additem', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userID, item }),
+            });
+        } catch (error) {
+            console.error("ERROR: Could not add item.");
+        }
+    }
+
+    // Function to update the user's captain inventory.
+    const updateCaptains = async(captain) => {
+        try {
+            await fetch('http://localhost:5000/api/users/addcaptain', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userID, captain }),
+            });
+        } catch (error) {
+            console.error("ERROR: Could not add captain.");
+        }
+    }
+
+    const test = () => {
+        updateCurrency(50);
+        console.log("test");
+    }
 
     return (
         <div className = "marketplace">
+            <button onClick = {test}>Test</button>
             {/* The back button */}
             <button className = "back-button" onClick = {goBack}>Back</button>
             {/* Logout button */}
@@ -53,6 +155,8 @@ function Marketplace ({userName, onLogout}) {
             {/* Title header */}
             <br />
             <h1 className = "menu-title">Welcome to the marketplace, {userName}!</h1>
+            {/* The user's currency */}
+            <h2 className = "currency-title">Your currency: {user.marketCurrency}</h2>
             {/* Item table */}
             <hr />
             <div className = "marketplace-tables">
@@ -76,7 +180,11 @@ function Marketplace ({userName, onLogout}) {
                                 <td>{item.resourceAffected}</td>
                                 <td>{item.resourceShift}</td>
                                 <td>
-                                    <button className = "purchase-button">Purchase</button>
+                                    {user.itemInventory.some(invItem => invItem.itemId === item.itemID) ? (
+                                        <span>PURCHASED</span>
+                                    ) : (
+                                        <button className="purchase-button" onClick={() => handleItemPurchase(item.itemID)}>Purchase</button>
+                                    )}
                                 </td>
                             </tr>
                         ))}
@@ -110,7 +218,11 @@ function Marketplace ({userName, onLogout}) {
                                 <td>{captain.moraleStart}</td>
                                 <td>{captain.crewStart}</td>
                                 <td>
-                                    <button className = "purchase-button">Purchase</button>
+                                    {user.captains.includes(captain.captainID) ? (
+                                        <span>PURCHASED</span>
+                                    ) : (
+                                        <button className="purchase-button" onClick={() => handleCaptainPurchase(captain.captainID)}>Purchase</button>
+                                    )}
                                 </td>
                             </tr>
                         ))}

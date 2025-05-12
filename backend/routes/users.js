@@ -105,6 +105,36 @@ router.post('/addcurrency', async (req, res) => {
     }
 });
 
+// POST add item to user.
+router.post('/additem', async (req, res) => {
+  const {userName, item } = req.body;
+  try {
+    const user = await User.findOne({ userName: userName });
+    console.log("Adding item to user: ", userName);
+    user.itemInventory.push(item);
+    console.log("Item added: ", item.name);
+    res.status(201).json({ message: "item added", item: item});
+  } catch (err) {
+    console.error("Error adding item: ", err);
+    res.status(400).json({ message: err.message });
+  }
+});
+
+// POST add captain to user.
+router.post('/addcaptain', async (req, res) => {
+  const {userName, captain } = req.body;
+  try {
+    const user = await User.findOne({ userName: userName });
+    console.log("Adding captain to user: ", userName);
+    user.captains.push(captain);
+    console.log("Captain added: ", captain.name);
+    res.status(201).json({ message: "captain added", captain: captain});
+  } catch (err) {
+    console.error("Error adding captain: ", err);
+    res.status(400).json({ message: err.message });
+  }
+});
+
 // POST create new user
 router.post('/', async (req, res) => {
   const user = new User({
