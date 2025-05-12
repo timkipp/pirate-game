@@ -1,0 +1,2462 @@
+[
+  {
+    "id": 1,
+    "title": "Rough Waters",
+    "description": "High waves bombard the ship",
+    "type": "Sea",
+    "difficulty": 1,
+    "choices": {
+      "A": {
+        "action_taken": "Drop anchor",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": -2,
+          "morale_effect": 3,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Brave the waters",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": -1,
+          "morale_effect": 4,
+          "crew_effect": 3
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": -3,
+          "morale_effect": -2,
+          "crew_effect": -1
+        }
+      }
+    }
+  },
+  {
+    "id": 2,
+    "title": "Approaching Storm",
+    "description": "The crew sees dark clouds on the horizon",
+    "type": "Sea",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Continue ahead",
+        "good_result_chance": "0.6",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 4,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": -2,
+          "morale_effect": -2,
+          "crew_effect": -2
+        }
+      },
+      "B": {
+        "action_taken": "Alter ship's course",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": -1,
+          "provisions_effect": -1,
+          "morale_effect": 1,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 3,
+    "title": "Caught in Storm",
+    "description": "The ship is caught in a sudden storm",
+    "type": "Sea",
+    "difficulty": 4,
+    "choices": {
+      "A": {
+        "action_taken": "Push through the storm",
+        "good_result_chance": "0.4",
+        "good_result": {
+          "gold_effect": -1,
+          "provisions_effect": -2,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -3,
+          "provisions_effect": -5,
+          "morale_effect": -4,
+          "crew_effect": -3
+        }
+      },
+      "B": {
+        "action_taken": "Drop anchor and weather the storm",
+        "good_result_chance": "0.6",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": -3,
+          "morale_effect": -2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -3,
+          "provisions_effect": -4,
+          "morale_effect": -4,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 4,
+    "title": "Crew Mutiny",
+    "description": "Crew rebels against the captain",
+    "type": "Sea",
+    "difficulty": 5,
+    "choices": {
+      "A": {
+        "action_taken": "Kill the traitors",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 2,
+          "provisions_effect": 0,
+          "morale_effect": 3,
+          "crew_effect": -10
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": -5,
+          "crew_effect": -15
+        }
+      },
+      "B": {
+        "action_taken": "Kill the mutiny's leader",
+        "good_result_chance": "0.5",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 3,
+          "crew_effect": -1
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": -4,
+          "crew_effect": -5
+        }
+      }
+    }
+  },
+  {
+    "id": 5,
+    "title": "Navigation Error",
+    "description": "A miscalculation results in a navigation error",
+    "type": "Sea",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Chart a new course",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": -2,
+          "provisions_effect": -3,
+          "morale_effect": 1,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Attempt to follow the original course",
+        "good_result_chance": "0.6",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": -1,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -2,
+          "provisions_effect": -3,
+          "morale_effect": -3,
+          "crew_effect": -2
+        }
+      }
+    }
+  },
+  {
+    "id": 6,
+    "title": "Fire on the Ship",
+    "description": "A fire in the galley spread towards the gunpowder magazine",
+    "type": "Sea",
+    "difficulty": 5,
+    "choices": {
+      "A": {
+        "action_taken": "Form bucket brigade and throw barrels of gunpowder overboard",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": -4,
+          "provisions_effect": -8,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Sail upwind to blow flames away from ship and attempt to smother the fire",
+        "good_result_chance": "0.5",
+        "good_result": {
+          "gold_effect": -2,
+          "provisions_effect": -2,
+          "morale_effect": 5,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -7,
+          "provisions_effect": -10,
+          "morale_effect": -5,
+          "crew_effect": -3
+        }
+      }
+    }
+  },
+  {
+    "id": 7,
+    "title": "Food Shortage",
+    "description": "Food spoils due to saltwater contaimination and heat",
+    "type": "Sea",
+    "difficulty": 4,
+    "choices": {
+      "A": {
+        "action_taken": "Ration what remains unspoiled",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": -2,
+          "morale_effect": -1,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Search for land and try to resupply",
+        "good_result_chance": "0.65",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 4,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": -4,
+          "morale_effect": -3,
+          "crew_effect": -1
+        }
+      }
+    }
+  },
+  {
+    "id": 8,
+    "title": "Water Shortage",
+    "description": "Fresh water spills from water casks due to improper storage  and rough seas",
+    "type": "Sea",
+    "difficulty": 5,
+    "choices": {
+      "A": {
+        "action_taken": "Collect fresh water from rainfall",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 2,
+          "morale_effect": 1,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": -2,
+          "crew_effect": -3
+        }
+      },
+      "B": {
+        "action_taken": "Return to pirate haven to resupply",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": -2,
+          "provisions_effect": 4,
+          "morale_effect": 0,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 9,
+    "title": "Smallpox Outbreak",
+    "description": "Smallpox begins to spread among the crew from an infected crew member",
+    "type": "Sea",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Quarantine infected crew",
+        "good_result_chance": "0.8",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": -4,
+          "crew_effect": -5
+        }
+      },
+      "B": {
+        "action_taken": "Force infected crew to abandon ship using the ship's boats",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 1,
+          "crew_effect": -1
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 10,
+    "title": "Foggy Waters",
+    "description": "A dense fog envelops the ship",
+    "type": "Sea",
+    "difficulty": 2,
+    "choices": {
+      "A": {
+        "action_taken": "Navigate slowly through the fog",
+        "good_result_chance": "0.75",
+        "good_result": {
+          "gold_effect": -1,
+          "provisions_effect": 1,
+          "morale_effect": -1,
+          "crew_effect": -1
+        },
+        "bad_result": {
+          "gold_effect": -2,
+          "provisions_effect": -3,
+          "morale_effect": -3,
+          "crew_effect": -2
+        }
+      },
+      "B": {
+        "action_taken": "Drop anchor and wait for fog to clear",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": -1,
+          "provisions_effect": -1,
+          "morale_effect": 1,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 11,
+    "title": "Ship Runs Aground",
+    "description": "Ship strikes a barrier reef in shallow water",
+    "type": "Sea",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Attempt to free the ship using anchors and ropes",
+        "good_result_chance": "0.6",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": -1,
+          "morale_effect": 3,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -2,
+          "provisions_effect": -3,
+          "morale_effect": -2,
+          "crew_effect": -2
+        }
+      },
+      "B": {
+        "action_taken": "Use the ship's longboat to search for nearby land",
+        "good_result_chance": "0.5",
+        "good_result": {
+          "gold_effect": 3,
+          "provisions_effect": 5,
+          "morale_effect": 4,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -1,
+          "provisions_effect": -3,
+          "morale_effect": -2,
+          "crew_effect": -3
+        }
+      }
+    }
+  },
+  {
+    "id": 12,
+    "title": "Sudden Squall",
+    "description": "A small, unexpected squall suddenly hits the ship",
+    "type": "Sea",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Drop the sails to reduce wind resistance and stabilize the ship",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": -1,
+          "provisions_effect": -2,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Adjust the course to angle the ship into the wind and ride it out",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 3,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -2,
+          "provisions_effect": -3,
+          "morale_effect": -3,
+          "crew_effect": -2
+        }
+      }
+    }
+  },
+  {
+    "id": 13,
+    "title": "Unfamiliar Waters",
+    "description": "The ship enters an unknown and dangerous part of the sea",
+    "type": "Sea",
+    "difficulty": 4,
+    "choices": {
+      "A": {
+        "action_taken": "Carefully navigate using the stars and compass",
+        "good_result_chance": "0.8",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 3,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -4,
+          "provisions_effect": -3,
+          "morale_effect": -4,
+          "crew_effect": -3
+        }
+      },
+      "B": {
+        "action_taken": "Risk a faster route through uncharted waters",
+        "good_result_chance": "0.4",
+        "good_result": {
+          "gold_effect": 2,
+          "provisions_effect": 0,
+          "morale_effect": 2,
+          "crew_effect": -2
+        },
+        "bad_result": {
+          "gold_effect": -5,
+          "provisions_effect": -3,
+          "morale_effect": -5,
+          "crew_effect": -5
+        }
+      }
+    }
+  },
+  {
+    "id": 14,
+    "title": "Pirate Encounter",
+    "description": "Another pirate ship is spotted on the horizon",
+    "type": "Sea",
+    "difficulty": 5,
+    "choices": {
+      "A": {
+        "action_taken": "Avoid the pirates and continue on your way",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 2,
+          "provisions_effect": -1,
+          "morale_effect": 1,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Make contact with ship and form alliance to attack a coastal city",
+        "good_result_chance": "0.4",
+        "good_result": {
+          "gold_effect": 8,
+          "provisions_effect": 7,
+          "morale_effect": 5,
+          "crew_effect": 12
+        },
+        "bad_result": {
+          "gold_effect": -5,
+          "provisions_effect": -4,
+          "morale_effect": -3,
+          "crew_effect": -12
+        }
+      }
+    }
+  },
+  {
+    "id": 15,
+    "title": "Rogue Wave",
+    "description": "A massive, unpredictable wave strikes the ship",
+    "type": "Sea",
+    "difficulty": 5,
+    "choices": {
+      "A": {
+        "action_taken": "Main the pumps and bail out the water",
+        "good_result_chance": "0.4",
+        "good_result": {
+          "gold_effect": -1,
+          "provisions_effect": -2,
+          "morale_effect": 5,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -12,
+          "provisions_effect": -12,
+          "morale_effect": -5,
+          "crew_effect": -6
+        }
+      },
+      "B": {
+        "action_taken": "Abandon the ship and escape in the ship's boats",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": -10,
+          "provisions_effect": -10,
+          "morale_effect": -4,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 16,
+    "title": "Whale Carcass",
+    "description": "Crew sights a whale carcass floating on the surface of the water",
+    "type": "Sea",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Collect and harvest the carcass for oil, blubber, and baleen",
+        "good_result_chance": "0.5",
+        "good_result": {
+          "gold_effect": 5,
+          "provisions_effect": 6,
+          "morale_effect": 4,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -1,
+          "provisions_effect": -2,
+          "morale_effect": -2,
+          "crew_effect": -3
+        }
+      },
+      "B": {
+        "action_taken": "Ignore the whale carcass and continue with your journey",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 17,
+    "title": "Sinking Ship Sighted",
+    "description": "A nearby ship is seen sinking, potentially in need of help",
+    "type": "Sea",
+    "difficulty": 4,
+    "choices": {
+      "A": {
+        "action_taken": "Rescue survivors from the sinking ship",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 4,
+          "crew_effect": 5
+        },
+        "bad_result": {
+          "gold_effect": -2,
+          "provisions_effect": -3,
+          "morale_effect": -2,
+          "crew_effect": -2
+        }
+      },
+      "B": {
+        "action_taken": "Ignore the survivors and collect loot",
+        "good_result_chance": "0.8",
+        "good_result": {
+          "gold_effect": 7,
+          "provisions_effect": 6,
+          "morale_effect": 3,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": -2,
+          "crew_effect": -3
+        }
+      }
+    }
+  },
+  {
+    "id": 18,
+    "title": "Man overboard",
+    "description": "Crew member working the sails loses balance and falls into the sea below",
+    "type": "Sea",
+    "difficulty": 4,
+    "choices": {
+      "A": {
+        "action_taken": "Deploy jolly boat to rescue crew member",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": -1,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Use ropes and boat hook to try to rescue crew member",
+        "good_result_chance": "0.5",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 3,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": -2,
+          "morale_effect": -3,
+          "crew_effect": -1
+        }
+      }
+    }
+  },
+  {
+    "id": 19,
+    "title": "Violation of Pirate Code",
+    "description": "Crewmember commits an infraction against pirate code",
+    "type": "Sea",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Flog the crew member but allow them to stay on the crew",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": -2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": -2,
+          "morale_effect": -6,
+          "crew_effect": -1
+        }
+      },
+      "B": {
+        "action_taken": "Set crewmember adrift in one of the ship's small boats",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": -3,
+          "morale_effect": 1,
+          "crew_effect": -1
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 20,
+    "title": "Calm Sea",
+    "description": "The sea becomes unexpectedly calm and still",
+    "type": "Sea",
+    "difficulty": 2,
+    "choices": {
+      "A": {
+        "action_taken": "Take advantage of the calm for rest and repairs",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 4,
+          "provisions_effect": 4,
+          "morale_effect": 4,
+          "crew_effect": 2
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Use the opportunity to move the ship further along the course",
+        "good_result_chance": "0.8",
+        "good_result": {
+          "gold_effect": 7,
+          "provisions_effect": 6,
+          "morale_effect": 6,
+          "crew_effect": 4
+        },
+        "bad_result": {
+          "gold_effect": -3,
+          "provisions_effect": -5,
+          "morale_effect": -2,
+          "crew_effect": -3
+        }
+      }
+    }
+  },
+  {
+    "id": 21,
+    "title": "Treasure Hunt",
+    "description": "The crew discovers a map leading to hidden treasure on a remote island.",
+    "type": "Island",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Follow the path on the map to the treasure",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 10,
+          "provisions_effect": -3,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Go in a straight line to the treasure's location",
+        "good_result_chance": "0.6",
+        "good_result": {
+          "gold_effect": 10,
+          "provisions_effect": 0,
+          "morale_effect": 4,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 2,
+          "provisions_effect": -5,
+          "morale_effect": -2,
+          "crew_effect": -1
+        }
+      }
+    }
+  },
+  {
+    "id": 22,
+    "title": "Deserted Island",
+    "description": "The ship comes across an uninhabited island with potential resources.",
+    "type": "Island",
+    "difficulty": 1,
+    "choices": {
+      "A": {
+        "action_taken": "Gather food and materials for ship repairs",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 10,
+          "morale_effect": 4,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Gather valuable trade goods and treasure",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 8,
+          "provisions_effect": 2,
+          "morale_effect": 4,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 23,
+    "title": "Lost Crew Member",
+    "description": "A crew member goes missing after a shore excursion.",
+    "type": "Island",
+    "difficulty": 4,
+    "choices": {
+      "A": {
+        "action_taken": "Wait for the crew member to return to the ship",
+        "good_result_chance": "0.5",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 7,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -2,
+          "provisions_effect": -4,
+          "morale_effect": -2,
+          "crew_effect": -1
+        }
+      },
+      "B": {
+        "action_taken": "Deploy a search party to find the crew member",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": -3,
+          "morale_effect": 3,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": -6,
+          "morale_effect": -4,
+          "crew_effect": -3
+        }
+      }
+    }
+  },
+  {
+    "id": 24,
+    "title": "Shipwrecked Goods",
+    "description": "A shipwreck is found on the shore with salvageable goods.",
+    "type": "Island",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Search the wreck for food and resources",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 6,
+          "morale_effect": 3,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Search the wreck for gold and treasure",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 8,
+          "provisions_effect": 0,
+          "morale_effect": 4,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 25,
+    "title": "Pirates' Hideout",
+    "description": "The crew stumbles upon an old pirate hideout with goods to steal.",
+    "type": "Island",
+    "difficulty": 4,
+    "choices": {
+      "A": {
+        "action_taken": "Gather the treasure and resources that are easily found",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 5,
+          "provisions_effect": 5,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Search through the more dilapidated sections of the hideout for hidden goods",
+        "good_result_chance": "0.6",
+        "good_result": {
+          "gold_effect": 10,
+          "provisions_effect": 10,
+          "morale_effect": 5,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 3,
+          "provisions_effect": 2,
+          "morale_effect": -2,
+          "crew_effect": -5
+        }
+      }
+    }
+  },
+  {
+    "id": 26,
+    "title": "Lost in the Jungle",
+    "description": "The crew gets lost in a thick jungle while searching for resources.",
+    "type": "Island",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Retrace your footsteps to return to the ship",
+        "good_result_chance": "0.8",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": -3,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -1,
+          "provisions_effect": -5,
+          "morale_effect": -1,
+          "crew_effect": -2
+        }
+      },
+      "B": {
+        "action_taken": "Set the jungle on fire to clear a path",
+        "good_result_chance": "0.8",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": -1,
+          "morale_effect": 7,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -2,
+          "provisions_effect": -5,
+          "morale_effect": -4,
+          "crew_effect": -8
+        }
+      }
+    }
+  },
+  {
+    "id": 27,
+    "title": "Coastal Harvest",
+    "description": "You happen across a large amount of coastal resources.",
+    "type": "Island",
+    "difficulty": 2,
+    "choices": {
+      "A": {
+        "action_taken": "Collect fish, seaweed, and driftwood",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 9,
+          "morale_effect": 3,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Dive for pearls and other valuables",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 9,
+          "provisions_effect": 0,
+          "morale_effect": 4,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 28,
+    "title": "Trade with Locals",
+    "description": "The crew meets locals on a nearby island and they wish to trade with you.",
+    "type": "Island",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Threaten the locals for goods",
+        "good_result_chance": "0.8",
+        "good_result": {
+          "gold_effect": 15,
+          "provisions_effect": 12,
+          "morale_effect": 5,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 2,
+          "provisions_effect": -3,
+          "morale_effect": -2,
+          "crew_effect": -6
+        }
+      },
+      "B": {
+        "action_taken": "Trade with the locals peacefully",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 10,
+          "provisions_effect": -7,
+          "morale_effect": 3,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 29,
+    "title": "Forbidden Temple",
+    "description": "The crew finds an ancient temple rumored to hold riches.",
+    "type": "Island",
+    "difficulty": 5,
+    "choices": {
+      "A": {
+        "action_taken": "Take your time completing each of the puzzels and traps",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 30,
+          "provisions_effect": -30,
+          "morale_effect": 10,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Rush through the temple, using force to make your way through",
+        "good_result_chance": "0.4",
+        "good_result": {
+          "gold_effect": 30,
+          "provisions_effect": -3,
+          "morale_effect": 10,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 8,
+          "provisions_effect": -40,
+          "morale_effect": -6,
+          "crew_effect": -12
+        }
+      }
+    }
+  },
+  {
+    "id": 30,
+    "title": "Desert Crossing",
+    "description": "The crew navigates through a desert following a treasure map you found.",
+    "type": "Island",
+    "difficulty": 4,
+    "choices": {
+      "A": {
+        "action_taken": "Ensure you have all the necessary supplies before heading out",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 7,
+          "provisions_effect": -5,
+          "morale_effect": 3,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Head into the desert immediately to ensure you can retieve the treasure",
+        "good_result_chance": "0.4",
+        "good_result": {
+          "gold_effect": 15,
+          "provisions_effect": -2,
+          "morale_effect": 10,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -4,
+          "provisions_effect": -7,
+          "morale_effect": -5,
+          "crew_effect": -10
+        }
+      }
+    }
+  },
+  {
+    "id": 31,
+    "title": "Pirate Hunter",
+    "description": "A bounty hunter has caught wind of the crew's hideout and is actively searching for them.",
+    "type": "Island",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Stand and fight off the bounty hunter",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 4,
+          "provisions_effect": 1,
+          "morale_effect": 5,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -3,
+          "provisions_effect": -2,
+          "morale_effect": -5,
+          "crew_effect": -8
+        }
+      },
+      "B": {
+        "action_taken": "Pack up only the most valuable supplies and escape before the bounty hunter arrives",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": -3,
+          "provisions_effect": -4,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 32,
+    "title": "Tavern Informant",
+    "description": "A crew member hears whispers about an informant selling pirate whereabouts for gold.",
+    "type": "Island",
+    "difficulty": 2,
+    "choices": {
+      "A": {
+        "action_taken": "Kill the informant so they can't reveal information about you",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 5,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "\"Convince\" the informant to reveal the location of your rivals",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 6,
+          "provisions_effect": 4,
+          "morale_effect": 3,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": -2,
+          "morale_effect": -2,
+          "crew_effect": -3
+        }
+      }
+    }
+  },
+  {
+    "id": 33,
+    "title": "Spy Network",
+    "description": "A local spy has been gathering information about your crew and plans to alert the authorities.",
+    "type": "Island",
+    "difficulty": 4,
+    "choices": {
+      "A": {
+        "action_taken": "Kill the spy before any information can be revealed",
+        "good_result_chance": "0.9",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 4,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -6,
+          "provisions_effect": -5,
+          "morale_effect": -3,
+          "crew_effect": -10
+        }
+      },
+      "B": {
+        "action_taken": "Convince the spy to join your crew",
+        "good_result_chance": "0.5",
+        "good_result": {
+          "gold_effect": 4,
+          "provisions_effect": 6,
+          "morale_effect": 8,
+          "crew_effect": 4
+        },
+        "bad_result": {
+          "gold_effect": -10,
+          "provisions_effect": -8,
+          "morale_effect": -7,
+          "crew_effect": -9
+        }
+      }
+    }
+  },
+  {
+    "id": 34,
+    "title": "Captured at the Market",
+    "description": "Crew members get recognized in a bustling market or village square. The authorities are alerted.",
+    "type": "Island",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Leave the crew member to be captured and escape the port",
+        "good_result_chance": "0.9",
+        "good_result": {
+          "gold_effect": 3,
+          "provisions_effect": 3,
+          "morale_effect": 2,
+          "crew_effect": -1
+        },
+        "bad_result": {
+          "gold_effect": -3,
+          "provisions_effect": -4,
+          "morale_effect": -2,
+          "crew_effect": -5
+        }
+      },
+      "B": {
+        "action_taken": "Rescue the crew member, risking the capture of more crew members",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 4,
+          "provisions_effect": 3,
+          "morale_effect": 10,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -3,
+          "provisions_effect": -5,
+          "morale_effect": -4,
+          "crew_effect": -8
+        }
+      }
+    }
+  },
+  {
+    "id": 35,
+    "title": "Search Party",
+    "description": "A naval search party is dispatched to find and capture you. They are scouring the coastline.",
+    "type": "Island",
+    "difficulty": 5,
+    "choices": {
+      "A": {
+        "action_taken": "Risk capture and make landfall to gather resources",
+        "good_result_chance": "0.3",
+        "good_result": {
+          "gold_effect": 15,
+          "provisions_effect": 15,
+          "morale_effect": 15,
+          "crew_effect": 8
+        },
+        "bad_result": {
+          "gold_effect": -16,
+          "provisions_effect": -20,
+          "morale_effect": -10,
+          "crew_effect": -30
+        }
+      },
+      "B": {
+        "action_taken": "Don't make landfall and return to the sea",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": -3,
+          "provisions_effect": -5,
+          "morale_effect": 3,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 36,
+    "title": "Betrayed by a Local",
+    "description": "A local villager betrays the crew in exchange for gold.",
+    "type": "Island",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Burn and pillage the village to set an example",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 8,
+          "provisions_effect": 10,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 3,
+          "provisions_effect": 4,
+          "morale_effect": -4,
+          "crew_effect": -6
+        }
+      },
+      "B": {
+        "action_taken": "Leave the island quickly to avoid unnecessary conflict",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 4,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 37,
+    "title": "Pirate Haven Raid",
+    "description": "Authorities raid a known pirate haven in search of crews.",
+    "type": "Island",
+    "difficulty": 4,
+    "choices": {
+      "A": {
+        "action_taken": "Abandon the haven and with it the resources you have stashed there",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": -4,
+          "provisions_effect": -5,
+          "morale_effect": 0,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Join the other pirates in fighting off the invading authorities",
+        "good_result_chance": "0.4",
+        "good_result": {
+          "gold_effect": 15,
+          "provisions_effect": 12,
+          "morale_effect": 10,
+          "crew_effect": 16
+        },
+        "bad_result": {
+          "gold_effect": -10,
+          "provisions_effect": -8,
+          "morale_effect": -5,
+          "crew_effect": -20
+        }
+      }
+    }
+  },
+  {
+    "id": 38,
+    "title": "Rumor at the Dock",
+    "description": "Pirates are spotted at the docks by a merchant crew who’s eager to profit from your location.",
+    "type": "Island",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Preemptively attack the pirates and merchants before they can attack",
+        "good_result_chance": "0.8",
+        "good_result": {
+          "gold_effect": 8,
+          "provisions_effect": 6,
+          "morale_effect": 5,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -3,
+          "provisions_effect": -4,
+          "morale_effect": -2,
+          "crew_effect": -7
+        }
+      },
+      "B": {
+        "action_taken": "Convince the merchants to betray the other pirates",
+        "good_result_chance": "0.6",
+        "good_result": {
+          "gold_effect": 12,
+          "provisions_effect": 14,
+          "morale_effect": 9,
+          "crew_effect": 6
+        },
+        "bad_result": {
+          "gold_effect": -7,
+          "provisions_effect": -8,
+          "morale_effect": -6,
+          "crew_effect": -9
+        }
+      }
+    }
+  },
+  {
+    "id": 39,
+    "title": "Naval Patrol Arrival",
+    "description": "A nearby naval patrol is on high alert and combing coastal towns for pirate crews.",
+    "type": "Island",
+    "difficulty": 5,
+    "choices": {
+      "A": {
+        "action_taken": "Pretend to be a merchant ship to get past the patrol",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 4,
+          "provisions_effect": 5,
+          "morale_effect": 1,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -3,
+          "provisions_effect": -2,
+          "morale_effect": -8,
+          "crew_effect": -5
+        }
+      },
+      "B": {
+        "action_taken": "Charge forward proudly flying the jolly roger",
+        "good_result_chance": "0.4",
+        "good_result": {
+          "gold_effect": 4,
+          "provisions_effect": 5,
+          "morale_effect": 25,
+          "crew_effect": 3
+        },
+        "bad_result": {
+          "gold_effect": -7,
+          "provisions_effect": -6,
+          "morale_effect": 0,
+          "crew_effect": -15
+        }
+      }
+    }
+  },
+  {
+    "id": 40,
+    "title": "Public Outing",
+    "description": "A pirate captain gets publicly recognized by a former associate who now works for the authorities.",
+    "type": "Island",
+    "difficulty": 4,
+    "choices": {
+      "A": {
+        "action_taken": "Rescue the captain from the authorities",
+        "good_result_chance": "0.6",
+        "good_result": {
+          "gold_effect": 12,
+          "provisions_effect": 6,
+          "morale_effect": 5,
+          "crew_effect": 5
+        },
+        "bad_result": {
+          "gold_effect": -3,
+          "provisions_effect": -5,
+          "morale_effect": -2,
+          "crew_effect": -12
+        }
+      },
+      "B": {
+        "action_taken": "Capture the captain and collect the reward",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 20,
+          "provisions_effect": 15,
+          "morale_effect": 0,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -5,
+          "provisions_effect": -4,
+          "morale_effect": -6,
+          "crew_effect": -8
+        }
+      }
+    }
+  },
+  {
+    "id": 41,
+    "title": "Merchant Ambush",
+    "description": "A lone merchant ship sails nearby with minimal escort.",
+    "type": "Combat",
+    "difficulty": 2,
+    "choices": {
+      "A": {
+        "action_taken": "Launch an ambush",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 8,
+          "provisions_effect": 5,
+          "morale_effect": 4,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -1,
+          "provisions_effect": -3,
+          "morale_effect": -2,
+          "crew_effect": -5
+        }
+      },
+      "B": {
+        "action_taken": "Let it pass",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 1,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 42,
+    "title": "Rival Pirates",
+    "description": "A rival pirate crew challenges you in open waters.",
+    "type": "Combat",
+    "difficulty": 4,
+    "choices": {
+      "A": {
+        "action_taken": "Stand and fight",
+        "good_result_chance": "0.5",
+        "good_result": {
+          "gold_effect": 8,
+          "provisions_effect": 8,
+          "morale_effect": 7,
+          "crew_effect": 4
+        },
+        "bad_result": {
+          "gold_effect": -6,
+          "provisions_effect": -5,
+          "morale_effect": -3,
+          "crew_effect": -10
+        }
+      },
+      "B": {
+        "action_taken": "Attempt to flee",
+        "good_result_chance": "0.8",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": -2,
+          "morale_effect": -2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -3,
+          "provisions_effect": -5,
+          "morale_effect": -6,
+          "crew_effect": -15
+        }
+      }
+    }
+  },
+  {
+    "id": 43,
+    "title": "Port Blockade",
+    "description": "A port is under blockade by enemy forces.",
+    "type": "Combat",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Break through blockade",
+        "good_result_chance": "0.4",
+        "good_result": {
+          "gold_effect": 12,
+          "provisions_effect": 10,
+          "morale_effect": 5,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -2,
+          "provisions_effect": -3,
+          "morale_effect": -2,
+          "crew_effect": -6
+        }
+      },
+      "B": {
+        "action_taken": "Wait it out",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 3,
+          "provisions_effect": 4,
+          "morale_effect": 1,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 44,
+    "title": "Naval Escort",
+    "description": "You spot a cargo ship being protected by a naval escort.",
+    "type": "Combat",
+    "difficulty": 5,
+    "choices": {
+      "A": {
+        "action_taken": "Attack anyway",
+        "good_result_chance": "0.3",
+        "good_result": {
+          "gold_effect": 16,
+          "provisions_effect": 14,
+          "morale_effect": 7,
+          "crew_effect": 2
+        },
+        "bad_result": {
+          "gold_effect": -6,
+          "provisions_effect": -7,
+          "morale_effect": -7,
+          "crew_effect": -10
+        }
+      },
+      "B": {
+        "action_taken": "Trail them for later",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 6,
+          "provisions_effect": 5,
+          "morale_effect": 3,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -2,
+          "provisions_effect": -3,
+          "morale_effect": -1,
+          "crew_effect": -6
+        }
+      }
+    }
+  },
+  {
+    "id": 45,
+    "title": "Night Raid",
+    "description": "A sleeping crew lies anchored and unaware of your ship.",
+    "type": "Combat",
+    "difficulty": 2,
+    "choices": {
+      "A": {
+        "action_taken": "Sneak aboard quietly",
+        "good_result_chance": "0.75",
+        "good_result": {
+          "gold_effect": 8,
+          "provisions_effect": 7,
+          "morale_effect": 2,
+          "crew_effect": 1
+        },
+        "bad_result": {
+          "gold_effect": -3,
+          "provisions_effect": -2,
+          "morale_effect": -2,
+          "crew_effect": -6
+        }
+      },
+      "B": {
+        "action_taken": "Fire cannons from afar",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 2,
+          "provisions_effect": 3,
+          "morale_effect": 4,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 46,
+    "title": "Hostile Boarding",
+    "description": "An enemy ship attempts to board your vessel during a storm.",
+    "type": "Combat",
+    "difficulty": 4,
+    "choices": {
+      "A": {
+        "action_taken": "Repel the boarders",
+        "good_result_chance": "0.6",
+        "good_result": {
+          "gold_effect": 1,
+          "provisions_effect": 2,
+          "morale_effect": 3,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -5,
+          "provisions_effect": -3,
+          "morale_effect": -4,
+          "crew_effect": -7
+        }
+      },
+      "B": {
+        "action_taken": "Evade using the storm",
+        "good_result_chance": "0.8",
+        "good_result": {
+          "gold_effect": 1,
+          "provisions_effect": 0,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -2,
+          "provisions_effect": -5,
+          "morale_effect": -3,
+          "crew_effect": -5
+        }
+      }
+    }
+  },
+  {
+    "id": 47,
+    "title": "Smuggler Standoff",
+    "description": "You cross paths with smugglers guarding a secret shipment.",
+    "type": "Combat",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Confront them for the loot",
+        "good_result_chance": "0.55",
+        "good_result": {
+          "gold_effect": 15,
+          "provisions_effect": 4,
+          "morale_effect": 6,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -2,
+          "provisions_effect": -2,
+          "morale_effect": -3,
+          "crew_effect": -6
+        }
+      },
+      "B": {
+        "action_taken": "Try to negotiate",
+        "good_result_chance": "0.8",
+        "good_result": {
+          "gold_effect": 6,
+          "provisions_effect": 3,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -2,
+          "provisions_effect": -1,
+          "morale_effect": -1,
+          "crew_effect": -4
+        }
+      }
+    }
+  },
+  {
+    "id": 48,
+    "title": "Surprise Cannon Fire",
+    "description": "You're ambushed by a hidden shore battery while sailing close to land.",
+    "type": "Combat",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Return fire",
+        "good_result_chance": "0.5",
+        "good_result": {
+          "gold_effect": 4,
+          "provisions_effect": 3,
+          "morale_effect": 4,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -3,
+          "provisions_effect": -8,
+          "morale_effect": -4,
+          "crew_effect": -8
+        }
+      },
+      "B": {
+        "action_taken": "Retreat to deeper water",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 49,
+    "title": "Dueling Captains",
+    "description": "Another pirate captain challenges yours to a one-on-one duel.",
+    "type": "Combat",
+    "difficulty": 2,
+    "choices": {
+      "A": {
+        "action_taken": "Accept the duel",
+        "good_result_chance": "0.55",
+        "good_result": {
+          "gold_effect": 7,
+          "provisions_effect": 5,
+          "morale_effect": 6,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -4,
+          "provisions_effect": -3,
+          "morale_effect": -15,
+          "crew_effect": -1
+        }
+      },
+      "B": {
+        "action_taken": "Refuse and prepare battle",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 4,
+          "provisions_effect": 2,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -3,
+          "provisions_effect": -4,
+          "morale_effect": -4,
+          "crew_effect": -14
+        }
+      }
+    }
+  },
+  {
+    "id": 50,
+    "title": "Outgunned",
+    "description": "You spot a heavily armed ship carrying valuable cargo.",
+    "type": "Combat",
+    "difficulty": 5,
+    "choices": {
+      "A": {
+        "action_taken": "Go in fast and aggressive",
+        "good_result_chance": "0.35",
+        "good_result": {
+          "gold_effect": 15,
+          "provisions_effect": 15,
+          "morale_effect": 7,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 3,
+          "provisions_effect": 4,
+          "morale_effect": -2,
+          "crew_effect": -9
+        }
+      },
+      "B": {
+        "action_taken": "Shadow and wait to strike",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 15,
+          "provisions_effect": 15,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -3,
+          "provisions_effect": -2,
+          "morale_effect": -3,
+          "crew_effect": -3
+        }
+      }
+    }
+  },
+  {
+    "id": 51,
+    "title": "Marooned Mutineers",
+    "description": "You find crew marooned after a failed mutiny.",
+    "type": "Combat",
+    "difficulty": 2,
+    "choices": {
+      "A": {
+        "action_taken": "Take them in",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 2,
+          "morale_effect": 3,
+          "crew_effect": 10
+        },
+        "bad_result": {
+          "gold_effect": -4,
+          "provisions_effect": -3,
+          "morale_effect": -2,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Leave them behind",
+        "good_result_chance": "0.8",
+        "good_result": {
+          "gold_effect": 2,
+          "provisions_effect": 4,
+          "morale_effect": 2,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -1,
+          "provisions_effect": -3,
+          "morale_effect": -4,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 52,
+    "title": "Dockside Ambush",
+    "description": "Rival pirates lie in wait at a secluded dock.",
+    "type": "Combat",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Fight through the ambush",
+        "good_result_chance": "0.55",
+        "good_result": {
+          "gold_effect": 6,
+          "provisions_effect": 5,
+          "morale_effect": 4,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -3,
+          "provisions_effect": -4,
+          "morale_effect": -3,
+          "crew_effect": -8
+        }
+      },
+      "B": {
+        "action_taken": "Flee and regroup",
+        "good_result_chance": "0.9",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 1,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -2,
+          "provisions_effect": -4,
+          "morale_effect": -5,
+          "crew_effect": -14
+        }
+      }
+    }
+  },
+  {
+    "id": 53,
+    "title": "Raided Outpost",
+    "description": "A coastal outpost has been sacked—survivors request help.",
+    "type": "Combat",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Hunt the raiders",
+        "good_result_chance": "0.5",
+        "good_result": {
+          "gold_effect": 10,
+          "provisions_effect": 7,
+          "morale_effect": 4,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -2,
+          "provisions_effect": -1,
+          "morale_effect": -2,
+          "crew_effect": -5
+        }
+      },
+      "B": {
+        "action_taken": "Ignore the request",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 1,
+          "provisions_effect": 2,
+          "morale_effect": 0,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 54,
+    "title": "Mercenary Offer",
+    "description": "Mercenaries offer their services for a price.",
+    "type": "Combat",
+    "difficulty": 2,
+    "choices": {
+      "A": {
+        "action_taken": "Hire them",
+        "good_result_chance": "0.75",
+        "good_result": {
+          "gold_effect": -7,
+          "provisions_effect": 2,
+          "morale_effect": 3,
+          "crew_effect": 14
+        },
+        "bad_result": {
+          "gold_effect": -4,
+          "provisions_effect": -2,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Save the coin and move on",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 2,
+          "morale_effect": 1,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 55,
+    "title": "Escaped Prisoners",
+    "description": "Escaped naval prisoners offer to join your crew.",
+    "type": "Combat",
+    "difficulty": 2,
+    "choices": {
+      "A": {
+        "action_taken": "Welcome them aboard",
+        "good_result_chance": "0.65",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 2,
+          "morale_effect": 2,
+          "crew_effect": 10
+        },
+        "bad_result": {
+          "gold_effect": -5,
+          "provisions_effect": -3,
+          "morale_effect": -2,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Refuse and send them away",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 1,
+          "provisions_effect": 2,
+          "morale_effect": 0,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 56,
+    "title": "Coastal Raid",
+    "description": "A small seaport town lies vulnerable to attack.",
+    "type": "Combat",
+    "difficulty": 4,
+    "choices": {
+      "A": {
+        "action_taken": "Launch a surprise raid",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 10,
+          "provisions_effect": 10,
+          "morale_effect": 4,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 2,
+          "provisions_effect": 3,
+          "morale_effect": 0,
+          "crew_effect": -7
+        }
+      },
+      "B": {
+        "action_taken": "Sneak in to quietly steal goods",
+        "good_result_chance": "0.9",
+        "good_result": {
+          "gold_effect": 7,
+          "provisions_effect": 7,
+          "morale_effect": 1,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 1,
+          "provisions_effect": 1,
+          "morale_effect": -2,
+          "crew_effect": -5
+        }
+      }
+    }
+  },
+  {
+    "id": 57,
+    "title": "Sabotaged Supplies",
+    "description": "Saboteurs have poisoned part of your provisions.",
+    "type": "Combat",
+    "difficulty": 4,
+    "choices": {
+      "A": {
+        "action_taken": "Find and kill the saboteur",
+        "good_result_chance": "0.8",
+        "good_result": {
+          "gold_effect": 3,
+          "provisions_effect": -10,
+          "morale_effect": 7,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -3,
+          "provisions_effect": -10,
+          "morale_effect": -2,
+          "crew_effect": 0
+        }
+      },
+      "B": {
+        "action_taken": "Pawn off the poisoned provisions on a revial crew",
+        "good_result_chance": "0.65",
+        "good_result": {
+          "gold_effect": 5,
+          "provisions_effect": 4,
+          "morale_effect": 3,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -2,
+          "provisions_effect": -12,
+          "morale_effect": -2,
+          "crew_effect": 0
+        }
+      }
+    }
+  },
+  {
+    "id": 58,
+    "title": "Siege at Sea",
+    "description": "You're caught between two warring ships exchanging fire.",
+    "type": "Combat",
+    "difficulty": 5,
+    "choices": {
+      "A": {
+        "action_taken": "Break through the fight",
+        "good_result_chance": "0.5",
+        "good_result": {
+          "gold_effect": 12,
+          "provisions_effect": 7,
+          "morale_effect": 5,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 4,
+          "provisions_effect": 2,
+          "morale_effect": 0,
+          "crew_effect": -7
+        }
+      },
+      "B": {
+        "action_taken": "Lay low and wait it out",
+        "good_result_chance": "0.8",
+        "good_result": {
+          "gold_effect": 7,
+          "provisions_effect": 7,
+          "morale_effect": 3,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 4,
+          "provisions_effect": 3,
+          "morale_effect": -3,
+          "crew_effect": -5
+        }
+      }
+    }
+  },
+  {
+    "id": 59,
+    "title": "Captain’s Challenge",
+    "description": "A crew member questions your leadership and demands a vote.",
+    "type": "Combat",
+    "difficulty": 3,
+    "choices": {
+      "A": {
+        "action_taken": "Excute the crew member ",
+        "good_result_chance": "0.7",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": -3,
+          "crew_effect": -1
+        },
+        "bad_result": {
+          "gold_effect": -7,
+          "provisions_effect": -6,
+          "morale_effect": -14,
+          "crew_effect": -15
+        }
+      },
+      "B": {
+        "action_taken": "Allow the vote",
+        "good_result_chance": "0.8",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 8,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -20,
+          "provisions_effect": -20,
+          "morale_effect": -15,
+          "crew_effect": -30
+        }
+      }
+    }
+  },
+  {
+    "id": 60,
+    "title": "Stolen Map",
+    "description": "Another crew tries to steal your treasure map.",
+    "type": "Combat",
+    "difficulty": 4,
+    "choices": {
+      "A": {
+        "action_taken": "Fight to keep the map",
+        "good_result_chance": "0.65",
+        "good_result": {
+          "gold_effect": 10,
+          "provisions_effect": 7,
+          "morale_effect": 5,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": -5,
+          "provisions_effect": -6,
+          "morale_effect": -8,
+          "crew_effect": -7
+        }
+      },
+      "B": {
+        "action_taken": "Let them have it",
+        "good_result_chance": "1",
+        "good_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": -8,
+          "crew_effect": 0
+        },
+        "bad_result": {
+          "gold_effect": 0,
+          "provisions_effect": 0,
+          "morale_effect": 0,
+          "crew_effect": 0
+        }
+      }
+    }
+  }
+]

@@ -24,10 +24,10 @@ body {
 		rgba(141, 88, 35, 0.7) 100%
 		),
 		url('./assets/images/pirate_background.png');
-	background-size: contain; /* Ensure the image fits the viewport without stretching */
-	background-position: center top-center; /* Center the background image */
-	background-repeat: no-repeat; /* Prevent the image from repeating */
-	height: 100vh; /* Ensures the background covers the viewport */
+	background-size: contain;
+	background-position: center top;
+	background-repeat: no-repeat;
+	height: 100vh;
 	margin: 0;
 	font-family: 'Leander', serif;
 }
@@ -43,10 +43,10 @@ code {
 
 .login-title {
     text-align: center;
-    margin-top: 40px; /* pushes it down from the top */
+    margin-top: 40px;
     font-family: 'Leander', serif;
     font-size: 2.5rem;
-    color: #38241A; /* or any color that stands out against your background */
+    color: #38241A;
   }
 
 .main-menu, .new-game-setup {
@@ -58,7 +58,7 @@ code {
 }
 
 .menu-title {
-	font-size: 2.5rem;
+	font-size: 10rem;
 	margin-bottom: 2rem;
 	color: #553628;
 }

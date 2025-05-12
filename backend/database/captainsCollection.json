@@ -1,0 +1,68 @@
+[
+    {
+    "captainID": "001",
+    "name": "Captain No-Beard",
+    "description": "A new pirate captain who has yet to forge their legend",
+    "modifier": "The basic captain without any specific strengths or weaknesses",
+    "price": 0,
+    "goldStart": 10,
+    "provisionStart": 10,
+    "moraleStart": 10,
+    "crewStart": 10
+  }
+  {
+    "captainID": "002",
+    "name": "Henry Morgan",
+    "description": "An experienced pirate who has already completed several raids",
+    "modifier": "He has amassed a good sum of wealth from previous work although it has come at the cost of some of his crew",
+    "price": 10,
+    "goldStart": 15,
+    "provisionStart": 10,
+    "moraleStart": 10,
+    "crewStart": 7
+  },
+  {
+    "captainID": "003",
+    "name": "Calico Jack",
+    "description": "A captain named after the calico clothing he wore",
+    "modifier": "His experience as a quartermaster has led to him always having supplies on hand at the cost of his starting gold",
+    "price": 10,
+    "goldStart": 7,
+    "provisionStart": 15,
+    "moraleStart": 10,
+    "crewStart": 10
+  },
+  {
+    "captainID": "004",
+    "name": "William Kidd",
+    "description": "A scottish pirate who started out as a privateer",
+    "modifier": "He has skill in raising his crew's moral although he is still unused to how many provisions are needed as a pirate",
+    "price": 10,
+    "goldStart": 10,
+    "provisionStart": 7,
+    "moraleStart": 15,
+    "crewStart": 10
+  },
+  {
+    "captainID": "005",
+    "name": "Anne Bonny",
+    "description": "A pirate who has recently commited a mutiny and taken control of the ship",
+    "modifier": "Her crew is quite large but as she is an inexperienced captain their morale isn't at its highest when they first set sail",
+    "price": 10,
+    "goldStart": 10,
+    "provisionStart": 10,
+    "moraleStart": 7,
+    "crewStart": 15
+  },
+  {
+    "captainID": "006",
+    "name": "Captain Blackbeard",
+    "description": "One of the most feared pirates to ever sail the seas",
+    "modifier": "A true scourge on the seas he has no weaknesses and it stronger than his piers in all respects",
+    "price": 30,
+    "goldStart": 17,
+    "provisionStart": 17,
+    "moraleStart": 17,
+    "crewStart": 17
+  }
+]

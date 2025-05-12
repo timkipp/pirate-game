@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";  // For navigation
+import './NewGameSetup.css';
 
 // Example NewGameSetup Component
 function NewGameSetup({ userName, onLogout }) {
@@ -134,7 +135,7 @@ function NewGameSetup({ userName, onLogout }) {
 
     function ItemDropdown(){
         return(
-            <div>
+            <div id="items">
                 <label for="ItemDropdown">Select Item: </label>
                 <select 
                     className="ItemDropdown" 
@@ -152,19 +153,26 @@ function NewGameSetup({ userName, onLogout }) {
         if(selectedCaptain != null){
             var captainObject = JSON.parse(selectedCaptain)
             return(
-                <div>
-                    <label for="CaptainDropdown">Select Captain: </label>
-                    <select 
-                        className="CaptainDropdown" 
-                        id="CaptainDropdown"
-                        onChange={captainSelect}
-                        value={captainObject.name}
-                    >{captains}</select>
-                    <p>{captainObject.name}: {captainObject.description}</p>
-                    <p>gold: {captainObject.goldStart}</p>
-                    <p>provisions: {captainObject.provisionStart}</p>
-                    <p>morale: {captainObject.moraleStart}</p>
-                    <p>crew: {captainObject.crewStart}</p>
+                <div className="selection-and-stats">
+                    <div className="resources">
+                        <h3>Resources</h3>
+                        <ul className="resource-stats">
+                            <li>Gold: {captainObject.goldStart}</li>
+                            <li>Provisions: {captainObject.provisionStart}</li>
+                            <li>Morale: {captainObject.moraleStart}</li>
+                            <li>Crew: {captainObject.crewStart}</li>
+                        </ul>
+                    </div>
+                    <div id="captain">
+                        <label for="CaptainDropdown">Select Captain: </label>
+                        <select 
+                            className="CaptainDropdown" 
+                            id="CaptainDropdown"
+                            onChange={captainSelect}
+                            value={captainObject.name}
+                        >{captains}</select>
+                        <p>{captainObject.name}: {captainObject.description}</p>
+                    </div>                    
                 </div>
             );
         }

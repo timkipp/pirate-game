@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const connectDB = require('./db');
-const Card = require('./models/Card');
+const connectDB = require('../db');
+const Card = require('../models/Card');
 
 const run = async () => {
   await connectDB();
