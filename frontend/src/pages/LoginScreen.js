@@ -15,7 +15,7 @@ function LoginScreen({ onAuthSuccess }) {
 
   return (
     <div className="login-screen">
-      <h1 className="login-title">Welcome to Pirate Adventure</h1>
+      <h1 className="login-title">Welcome to Pirates of Barataria!</h1>
       <AuthForm onAuthSuccess={handleAuthSuccess} />
     </div>
   );

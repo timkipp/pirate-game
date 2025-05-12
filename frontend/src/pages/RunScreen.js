@@ -169,7 +169,7 @@ function RunScreen({ onLogout }) {
                 <h2 className="game-over-title">
                     {isResourceDepleted ? 'Game Over – You ran out of a vital resource!' : 'Run Complete!'}
                 </h2>
-                <h2>Final Score: {score}</h2>
+                <h2 className="score">Final Score: {score}</h2>
                 <HighScore></HighScore>
                 <Resources resources={resources} />
                 <button className="menu-button" onClick={returnToMenu}>Return to Menu</button>
@@ -180,7 +180,7 @@ function RunScreen({ onLogout }) {
     return (
         <div className="run-screen">
             <button className="logout-button" onClick={onLogout}>Logout</button>
-            <h2>Score: {score}</h2>
+            <h2 className="score">Score: {score}</h2>
             <Resources resources={resources} />
             {cards.length > 0 && (
                 <Card

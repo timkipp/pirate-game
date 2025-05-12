@@ -18,7 +18,16 @@
     max-width: 600px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
-  
+
+.score {
+    padding: 1rem;
+	font-size: 2rem;	
+	color: #38241A;
+	background-color: #B0E1D1;
+	border: 2px solid #3FB3B1;
+	border-radius: 1rem;
+}
+
 .resources h3 {
     margin-bottom: 0rem;
     font-size: 1.5rem;
@@ -75,8 +84,8 @@
 }
 
 .feathered-image {
-	width: 200px;
-  	height: 200px;
+	width: 300px;
+  	height: 300px;
   	object-fit: cover;
   	box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.3);
   	border-radius: 8px;
