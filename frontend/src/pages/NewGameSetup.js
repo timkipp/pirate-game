@@ -9,7 +9,7 @@ function NewGameSetup({ userName, onLogout }) {
 
     const [items, setItems] = useState();
     const [rawItems, setRawItems] = useState();
-    const [selectedItem, setSelectedItem] = useState(["No Item", "", 0]);
+    const [selectedItem, setSelectedItem] = useState(["No Item", "", 0, ""]);
 
     const [captains, setCaptains] = useState(<option></option>);
     const [rawCaptains, setRawCaptains] = useState();
@@ -65,7 +65,7 @@ function NewGameSetup({ userName, onLogout }) {
                        return <option key={item.name}>{item.name} ({user.itemInventory[i].itemQuantity})</option>; 
                     }
                 }));
-                setSelectedItem(["No Item", "", 0]);
+                setSelectedItem(["No Item", "", 0, ""]);
                 resolve(JSON.stringify(rawItemList));
             }
         }));
@@ -77,15 +77,14 @@ function NewGameSetup({ userName, onLogout }) {
             
             try {
                 const data = JSON.parse(rawItems);
-            
                 for(var i = 0; i < data.length; i++){
                     if(data[i].name === item.target.value.split(" (")[0]){
-                        setSelectedItem([item.target.value, data[i].resourceAffected, data[i].resourceShift]);
+                        setSelectedItem([item.target.value, data[i].resourceAffected, data[i].resourceShift, data[i].itemID]);
                     }
                 }
             } catch {}
         } else {
-            setSelectedItem([item.target.value, "", 0]);
+            setSelectedItem([item.target.value, "", 0, ""]);
         }
     };
 
@@ -193,7 +192,7 @@ function NewGameSetup({ userName, onLogout }) {
     async function setCaptainAndItemBoost() {
         const userName = JSON.parse(userData).userName;
         const captain = JSON.parse(selectedCaptain);
-        const itemShift = { shiftName: selectedItem[1], shiftAmount: selectedItem[2] };
+        const itemShift = { itemID: selectedItem[3], shiftName: selectedItem[1], shiftAmount: selectedItem[2] };
 
         console.log("Sending captain and item data to backend:", { userName, captain, itemShift });
 
