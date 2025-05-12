@@ -112,6 +112,7 @@ router.post('/additem', async (req, res) => {
     const user = await User.findOne({ userName: userName });
     console.log("Adding item to user: ", userName);
     user.itemInventory.push(item);
+    await user.save();
     console.log("Item added: ", item.name);
     res.status(201).json({ message: "item added", item: item});
   } catch (err) {
@@ -127,6 +128,7 @@ router.post('/addcaptain', async (req, res) => {
     const user = await User.findOne({ userName: userName });
     console.log("Adding captain to user: ", userName);
     user.captains.push(captain);
+    await user.save();
     console.log("Captain added: ", captain.name);
     res.status(201).json({ message: "captain added", captain: captain});
   } catch (err) {
