@@ -9,7 +9,7 @@ function TestGameState() {
     const [boost, setBoost] = useState({ gold: 0, provisions: 0, morale: 0, crewSize: 0 });
 
     const initializeGameState = async () => {
-        const response = await fetch('https://cosc484-project-group-4.onrender.com/api/game-state/init', {
+        const response = await fetch('https://pirate-game-7tm0.onrender.com/api/game-state/init', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userID }),
@@ -19,7 +19,7 @@ function TestGameState() {
     };
 
     const updateResource = async () => {
-        const response = await fetch('https://cosc484-project-group-4.onrender.com/api/game-state/resource', {
+        const response = await fetch('https://pirate-game-7tm0.onrender.com/api/game-state/resource', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userID, resource, value }),
@@ -29,7 +29,7 @@ function TestGameState() {
     };
 
     const applyBoost = async () => {
-        const response = await fetch('https://cosc484-project-group-4.onrender.com/api/game-state/boost', {
+        const response = await fetch('https://pirate-game-7tm0.onrender.com/api/game-state/boost', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userID, boost }),
@@ -40,7 +40,7 @@ function TestGameState() {
 
     const checkIfLost = async () => {
         try {
-            const response = await fetch(`https://cosc484-project-group-4.onrender.com/api/game-state/lost?userID=${userID}`);
+            const response = await fetch(`https://pirate-game-7tm0.onrender.com/api/game-state/lost?userID=${userID}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch game state');
             }

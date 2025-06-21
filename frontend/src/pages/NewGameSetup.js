@@ -20,7 +20,7 @@ function NewGameSetup({ userName, onLogout }) {
     const getUserData = async (e) => {
         //e.preventDefault();
     
-        const url = 'https://cosc484-project-group-4.onrender.com/api/users/:username?username=' + userName;
+        const url = 'https://pirate-game-7tm0.onrender.com/api/users/:username?username=' + userName;
     
         try {
             const response = await fetch(url, {
@@ -42,7 +42,7 @@ function NewGameSetup({ userName, onLogout }) {
     const getItems = async (user) => {
         var rawItemList = new Array(user.itemInventory.length);
         for(var i = 0; i < user.itemInventory.length; i++){
-            const url = `https://cosc484-project-group-4.onrender.com/api/items/:id?id=${user.itemInventory[i].itemId}`;
+            const url = `https://pirate-game-7tm0.onrender.com/api/items/:id?id=${user.itemInventory[i].itemId}`;
             const itemIndex = i;
 
         try {
@@ -91,7 +91,7 @@ function NewGameSetup({ userName, onLogout }) {
     const getCaptains = async (user) => {
         var rawCaptainList = new Array(user.captains.length);
         for(var i = 0; i < user.captains.length; i++){
-            const url = `https://cosc484-project-group-4.onrender.com/api/captains/:id?id=${user.captains[i]}`;
+            const url = `https://pirate-game-7tm0.onrender.com/api/captains/:id?id=${user.captains[i]}`;
             const captainIndex = i;
 
         try {
@@ -196,7 +196,7 @@ function NewGameSetup({ userName, onLogout }) {
 
         console.log("Sending captain and item data to backend:", { userName, captain, itemShift });
 
-        const response = await fetch('https://cosc484-project-group-4.onrender.com/api/users/initRun', {
+        const response = await fetch('https://pirate-game-7tm0.onrender.com/api/users/initRun', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userName, captain, itemShift }),

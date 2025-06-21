@@ -10,7 +10,7 @@ function AuthForm({ onAuthSuccess }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const url = `https://cosc484-project-group-4.onrender.com/api/auth/${isSignup ? 'signup' : 'login'}`;
+    const url = `https://pirate-game-7tm0.onrender.com/api/auth/${isSignup ? 'signup' : 'login'}`;
     const body = JSON.stringify({ userName, password });
 
     try {
