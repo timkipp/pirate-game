@@ -1,3 +1,4 @@
+// frontend/src/components/Card.js
 import React from 'react';
 
 // Preload all .png and .jpg images in the cards folder
