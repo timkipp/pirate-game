@@ -1,3 +1,4 @@
+// frontend/src/pages/NewGameSetup.js
 import { useEffect } from "react";
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";  // For navigation
@@ -11,7 +12,8 @@ function NewGameSetup({ userName, onLogout }) {
     const [rawItems, setRawItems] = useState();
     const [selectedItem, setSelectedItem] = useState(["No Item", "", 0, ""]);
 
-    const [captains, setCaptains] = useState(<option></option>);
+    // const [captains, setCaptains] = useState(<option></option>);
+    const [captains, setCaptains] = useState([]);
     const [rawCaptains, setRawCaptains] = useState();
     const [selectedCaptain, setSelectedCaptain] = useState();
 
@@ -89,31 +91,33 @@ function NewGameSetup({ userName, onLogout }) {
     };
 
     const getCaptains = async (user) => {
-        var rawCaptainList = new Array(user.captains.length);
-        for(var i = 0; i < user.captains.length; i++){
-            const url = `https://pirate-game-7tm0.onrender.com/api/captains/:id?id=${user.captains[i]}`;
-            const captainIndex = i;
-
         try {
+            const rawCaptainList = [];
+
+            for(let i = 0; i < user.captains.length; i++){
+                const url = `https://pirate-game-7tm0.onrender.com/api/captains/:id?id=${user.captains[i]}`;
+                // const captainIndex = i;
                 const response = await fetch(url, {
                     method: 'GET',
                     headers: { 'Content-Type': 'application/json' }
                 });
-
+                
                 const data = await response.json();
                 //console.log(data.name);
-                rawCaptainList[captainIndex] = data;
+                rawCaptainList.push(data);
                 //console.log(rawCaptainList);
-            } catch (err) {}
-        }
-
-        setRawCaptains(await new Promise((resolve) => {
-            if(!rawCaptainList.includes(null)){
-                setCaptains(rawCaptainList.map(item => <option key={item.name}>{item.name}</option>));
-                setSelectedCaptain(JSON.stringify(rawCaptainList[0]));
-                resolve(JSON.stringify(rawCaptainList));
             }
-        }));
+
+            setCaptains(rawCaptainList.map(captain => (
+                <option key={captain.name} value={captain.name}>{captain.name}</option>
+            )))
+
+            if (rawCaptainList.length > 0) {
+                setSelectedCaptain(JSON.stringify(rawCaptainList[0]));
+            }
+        } catch (err) {
+            console.log("Error fetching captains:", err);
+        }
     };
 
     const captainSelect = (captain) => {
